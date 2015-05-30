@@ -6,7 +6,6 @@
 package Metier;
 
 import Metier.interfaces.CourierService;
-import Physique.CourierWB;
 import Physique.PhysiqueDataFactory;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class CourierServiceImpl implements CourierService{
     
     @Override
     public Courier register(String name, String firstname, String mail, String password, int scheduler) throws Exception {
-        return new Courier(mail, password, name, firstname, scheduler);
+        return add(new Courier(mail, password, name, firstname, scheduler));
     }
     
     @Override
@@ -35,14 +34,12 @@ public class CourierServiceImpl implements CourierService{
             throw new Exception("Veuillez saisir une adresse mail valide");
         }
         
-        Courier courierTemp = this.getByMail(courier.getMail());
+        /*Courier courierTemp = this.getByMail(courier.getMail());
         if(courierTemp.getMail().equals(courier.getMail())){
             throw new Exception(courier.toString()+" existe déjà");
-        }
+        }*/
         
-        //return courierPhysiqueService.add(courier);
-        //return adherentPhysiqueService.add(adherent);
-        return null;
+        return courierPhysiqueService.add(courier);
     }
 
     @Override
@@ -55,17 +52,29 @@ public class CourierServiceImpl implements CourierService{
 
     @Override
     public void delete(int idCourier) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (idCourier < 0) {
+            throw new NullPointerException("Courier null !");
+        }
+        courierPhysiqueService.delete(idCourier);
     }
 
     @Override
     public Courier login(String mail, String password) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (mail.equals("") || password.equals("")) {
+            throw new Exception("Attention un champs n'est pas renseigné");
+        }
+        if (!mail.contains("@") || !mail.contains(".")) {
+            throw new Exception("Veuillez saisir une adresse mail valide");
+        }
+        return courierPhysiqueService.login(mail, password);
     }
 
     @Override
     public Courier getById(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (id < 0) {
+            throw new Exception("Identifiant Courier incorrect");
+        }
+        return courierPhysiqueService.getById(id);
     }
 
     @Override

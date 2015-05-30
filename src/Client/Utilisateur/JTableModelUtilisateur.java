@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class JTableModelUtilisateur extends AbstractTableModel {
     
-    private List<Courier> couriers = null;
+    private List<Courier> couriers = new ArrayList<>();
     private final CourierService courierMetierService = MetierServiceFactory.getCourierService();
     
     private String[] entetes = {"Id", "Nom", "Prenom", "Mail", "Administrateur"};
@@ -113,6 +113,20 @@ public class JTableModelUtilisateur extends AbstractTableModel {
                 Logger.getLogger(JTableModelBibliothecaire.class.getName()).log(Level.SEVERE, null, ex);
                 MetierServiceFactory.getBibliotheque().getTab().setStatut("<html><body><font color='red'>"+ex.getMessage()+"</font></body></html>", "admin");
             }
+        }*/
+    }
+    
+    public void addCourier(Courier courier) throws Exception{
+        /*courier.setNom(courier.getName().replace("\'", "\\'"));
+        courier.setFirstname(bibliothecaire.getPrenom().replace("\'", "\\'"));
+        Bibliothecaire add = adherentMetierService.addBiblio(bibliothecaire);
+        bibliothecaire.setNom(bibliothecaire.getNom().replace("\\'", "\'"));
+        bibliothecaire.setPrenom(bibliothecaire.getPrenom().replace("\\'", "\'"));*/
+        couriers.add(courier);
+        fireTableRowsInserted(couriers.size() - 1, couriers.size() - 1);
+        /*if (couriers.size() > (perpage * page)) {
+            couriers.remove(0);
+            fireTableRowsDeleted(0, 0);
         }*/
     }
     

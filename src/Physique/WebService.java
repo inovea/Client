@@ -23,7 +23,7 @@ import org.json.JSONObject;
 	public WebService() throws JSONException {
        
         }
-        public JSONObject connexion(URL url) throws JSONException{
+        public JSONObject getElement(URL url) throws JSONException{
             JSONObject obj;
             try {
                
@@ -45,7 +45,7 @@ import org.json.JSONObject;
                 }
                 String tempStr =  str.substring(0, (str.indexOf("<!--")));
                 
-              obj = new JSONObject(tempStr);
+                obj = new JSONObject(tempStr);
           
                 
                 conn.disconnect();
@@ -63,7 +63,7 @@ import org.json.JSONObject;
           
             return obj;
         }
-           public JSONObject recupAllSteed(URL url) throws JSONException{
+           public JSONObject getListElements(URL url) throws JSONException{
             JSONObject obj;
             try {
                

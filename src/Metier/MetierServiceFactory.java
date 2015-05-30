@@ -25,12 +25,4 @@ public class MetierServiceFactory {
         return courierService;
     }
     
-    
-    public static Bibliotheque getBibliotheque() {
-        if(bibliotheque == null) {
-            bibliotheque = new Bibliotheque();
-        }
-        return bibliotheque;
-    }
-    
 }

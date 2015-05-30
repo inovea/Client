@@ -9,7 +9,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author drouinjonathan
+ * @author Bentalha Oussama
  */
 public class Selected extends Thread {
     

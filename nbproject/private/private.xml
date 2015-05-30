@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Metier/interfaces/CourierService.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Client/TableauDeBord.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Physique/WebService.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Physique/Steed.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Metier/Courier.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Client/Utilisateur/JTableModelUtilisateur.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Metier/CourierServiceImpl.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Metier/MetierServiceFactory.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Physique/CourierWB.java</file>
-            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/Inovea/src/Physique/Connexion.java</file>
+            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/dev_git/Inovea/src/Metier/CourierServiceImpl.java</file>
+            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/dev_git/Inovea/src/Client/Utilisateur/JTableModelUtilisateur.java</file>
+            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/dev_git/Inovea/src/Physique/WebService.java</file>
+            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/dev_git/Inovea/src/Physique/CourierWB.java</file>
+            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/dev_git/Inovea/src/Client/Utilisateur/AddUtilisateur.java</file>
+            <file>file:/C:/Users/Oussama/Google%20Drive/ESGI/Projet%20Annuel/dev_git/Inovea/src/Client/TableauDeBord.java</file>
         </group>
     </open-files>
 </project-private>

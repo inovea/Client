@@ -87,7 +87,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="2"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Biblioth&#xe9;caire connect&#xe9; : -"/>
+            <Property name="text" type="java.lang.String" value="Utilisateur connect&#xe9; : -"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonQuit">
@@ -335,11 +335,11 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabelNbFoundBiblio" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabelNbFoundCourier" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel19" min="-2" pref="80" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldSearchBiblio" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldSearchCourier" min="-2" pref="180" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -354,23 +354,24 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSearchBiblio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSearchCourier" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabelNbFoundBiblio" max="32767" attributes="0"/>
+                              <Component id="jLabelNbFoundCourier" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextFieldSearchBiblio">
+                    <Component class="javax.swing.JTextField" name="jTextFieldSearchCourier">
                       <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchBiblioKeyTyped"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSearchCourierActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchCourierKeyTyped"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabelNbFoundBiblio">
+                    <Component class="javax.swing.JLabel" name="jLabelNbFoundCourier">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="3"/>
@@ -471,6 +472,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableCourierMouseClicked"/>
+                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableCourierMousePressed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -535,6 +537,7 @@
                 <Property name="text" type="java.lang.String" value="Supprimer un coursier"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonDelCourierMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDelCourierActionPerformed"/>
               </Events>
             </Component>

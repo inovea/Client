@@ -7,7 +7,7 @@ package Client;
 /*import Client.Adherents.AddAdherent;
 import Client.Adherents.EditAdherent;
 import Client.Adherents.JTableModelAdherent;
-import Client.Bibliothecaire.AddBiblio;
+import Client.Bibliothecaire.AddUtilisateur;
 import Client.Bibliothecaire.ConfSupprWithPass;
 import Client.Bibliothecaire.EditBiblio;
 import Client.Bibliothecaire.JTableModelBibliothecaire;
@@ -24,6 +24,7 @@ import Metier.Adherent;
 import Metier.AdherentService;
 import Metier.Bibliothecaire;*/
 import Client.Thread.Selected;
+import Client.Utilisateur.AddUtilisateur;
 import Client.Utilisateur.JTableModelUtilisateur;
 import Metier.Courier;
 /*import Metier.Emprunt;
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -110,8 +112,8 @@ public class TableauDeBord extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jRadioButtonLoginBiblio = new javax.swing.JRadioButton();
         jPanel7 = new javax.swing.JPanel();
-        jTextFieldSearchBiblio = new javax.swing.JTextField();
-        jLabelNbFoundBiblio = new javax.swing.JLabel();
+        jTextFieldSearchCourier = new javax.swing.JTextField();
+        jLabelNbFoundCourier = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jSeparator20 = new javax.swing.JSeparator();
@@ -133,7 +135,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         });
 
         jLabelBC.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
-        jLabelBC.setText("Bibliothécaire connecté : -");
+        jLabelBC.setText("Utilisateur connecté : -");
 
         jButtonQuit.setText("Déconnexion");
         jButtonQuit.addActionListener(new java.awt.event.ActionListener() {
@@ -240,15 +242,20 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextFieldSearchBiblio.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldSearchCourier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSearchCourierActionPerformed(evt);
+            }
+        });
+        jTextFieldSearchCourier.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldSearchBiblioKeyTyped(evt);
+                jTextFieldSearchCourierKeyTyped(evt);
             }
         });
 
-        jLabelNbFoundBiblio.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabelNbFoundBiblio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNbFoundBiblio.setText("Aucun coursier n'a été cherché");
+        jLabelNbFoundCourier.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabelNbFoundCourier.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNbFoundCourier.setText("Aucun coursier n'a été cherché");
 
         jLabel20.setForeground(new java.awt.Color(255, 102, 0));
         jLabel20.setText("<- Appuyer sur Entrée");
@@ -263,11 +270,11 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabelNbFoundBiblio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNbFoundCourier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldSearchBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSearchCourier, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel20)))
                 .addContainerGap())
@@ -278,10 +285,10 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextFieldSearchBiblio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSearchCourier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelNbFoundBiblio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelNbFoundCourier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -325,6 +332,9 @@ public class TableauDeBord extends javax.swing.JFrame {
         jTableCourier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableCourierMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTableCourierMousePressed(evt);
             }
         });
         jScrollPane4.setViewportView(jTableCourier);
@@ -378,6 +388,11 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jButtonDelCourier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/delAdmin.png"))); // NOI18N
         jButtonDelCourier.setText("Supprimer un coursier");
+        jButtonDelCourier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDelCourierMouseClicked(evt);
+            }
+        });
         jButtonDelCourier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDelCourierActionPerformed(evt);
@@ -475,36 +490,33 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPanePrincipalMouseClicked
 
     private void jButtonDelCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelCourierActionPerformed
-        // TODO add your handling code here:
-        /*if (!jLabelBiblioSelected.getText().equals("Aucun")) {
-            if (!MetierServiceFactory.getBibliotheque().isSuperAdminConnected()) {
-                ConfSupprWithPass confSupprWithPass = new ConfSupprWithPass(this, true);
-                confSupprWithPass.setBiblio(this.selectedB);
-                confSupprWithPass.setModelBiblio(bibliothecaires);
-                confSupprWithPass.setVisible(true);
-            } else {
-                int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedB.getNom() + "</b> <i>" + this.selectedB.getPrenom() + "</i></font> comme bibliothécaire ?</body></html>\n(Supprimé un bibliothécaire revient à lui donner le statut d'adhérent)");
-                if (answer == 0) {
-                    try {
-                        bibliothecaires.removeBiblio(this.selectedB);
-                    } catch (Exception ex) {
-                        Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
-                    }
+        if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
+            int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedC.getName() + "</b> <i>" + this.selectedC.getFirstname() + "</i></font> ?</body></html>\n");
+            if (answer == 0) {
+                try {
+                    courierMetierService.delete(this.selectedC.getId());
+                    this.actualisation();
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
                 }
-            }
+            }  
         } else {
-            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
-        }*/
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un utilisateur...", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonDelCourierActionPerformed
 
     private void jTableCourierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCourierMouseClicked
-        // TODO add your handling code here:
         try {
-            //int id = (int) utilisateur.getValueAt(jTableBiblio.getSelectedRow(), 0);
-            String mail = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), jTableCourier.getSelectedColumn());
-            //Courier courier = MetierServiceFactory.getCourierService().getByMail(mail);
-            Courier courier = new Courier("..@gmail.com", "", "", "", 1);
+            int id = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 0);
+            String nom = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 1);
+            String prenom = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 2);
+            String mail = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 3);
+            int scheduler = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 4);
+            
+            Courier courier = new Courier(mail, null, nom, prenom, scheduler);
+            courier.setId(id);
+            
             this.setCourierSelected(courier);
             jLabelUtilisateurSelected.setText("<html><body><font color='#FF6666'><b>" + courier.getName() + "</b> <i>" + courier.getFirstname()+ "</i></font> authentifié(e) par <font color='#FF6666' >" + courier.getMail() + "</font></body></html>");
         } catch (Exception ex) {
@@ -512,41 +524,41 @@ public class TableauDeBord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTableCourierMouseClicked
 
-    private void jTextFieldSearchBiblioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchBiblioKeyTyped
+    private void jTextFieldSearchCourierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourierKeyTyped
         // TODO add your handling code here:
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            String toSearch = jTextFieldSearchBiblio.getText();
+            String toSearch = jTextFieldSearchCourier.getText();
             if (jRadioButtonIdBiblio.isSelected()) {
                 try {
                     this.searchByIdBiblio(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                    jLabelNbFoundBiblio.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
             } else if (jRadioButtonNomBiblio.isSelected()) {
                 try {
                     this.searchByNomBiblio(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                    jLabelNbFoundBiblio.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
             } else if (jRadioButtonPrenomBiblio.isSelected()) {
                 try {
                     this.searchByPrenomBiblio(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                    jLabelNbFoundBiblio.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
             } else if (jRadioButtonLoginBiblio.isSelected()) {
                 try {
                     this.searchByLoginBiblio(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                    jLabelNbFoundBiblio.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
             }
         }
-    }//GEN-LAST:event_jTextFieldSearchBiblioKeyTyped
+    }//GEN-LAST:event_jTextFieldSearchCourierKeyTyped
 
     private void jButtonEditCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCourierActionPerformed
         // TODO add your handling code here:
@@ -565,11 +577,22 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditCourierActionPerformed
 
     private void jButtonAddCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourierActionPerformed
-        // TODO add your handling code here:
-        /*AddBiblio addBiblio = new AddBiblio(this, true);
-        addBiblio.setModelBiblio(bibliothecaires);
-        addBiblio.setVisible(true);*/
+        AddUtilisateur addBiblio = new AddUtilisateur(this, true);
+        addBiblio.setModelBiblio(utilisateurs);
+        addBiblio.setVisible(true);
     }//GEN-LAST:event_jButtonAddCourierActionPerformed
+
+    private void jTextFieldSearchCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchCourierActionPerformed
+
+    private void jTableCourierMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCourierMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableCourierMousePressed
+
+    private void jButtonDelCourierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelCourierMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDelCourierMouseClicked
 
     /**
      * @param args the command line arguments
@@ -613,7 +636,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabelBC;
-    private javax.swing.JLabel jLabelNbFoundBiblio;
+    private javax.swing.JLabel jLabelNbFoundCourier;
     private javax.swing.JLabel jLabelUtilisateurSelected;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -633,7 +656,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator21;
     private javax.swing.JTabbedPane jTabbedPanePrincipal;
     private javax.swing.JTable jTableCourier;
-    private javax.swing.JTextField jTextFieldSearchBiblio;
+    private javax.swing.JTextField jTextFieldSearchCourier;
     // End of variables declaration//GEN-END:variables
 
     public void actualisation() {
@@ -657,8 +680,8 @@ public class TableauDeBord extends javax.swing.JFrame {
             jRadioButtonNomAdherent.setSelected(true);
         } else */if (jPanelUtilisateur.isShowing()) {
             this.fireJTableCourier(null, null);
-            jTextFieldSearchBiblio.setText("");
-            jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
+            jTextFieldSearchCourier.setText("");
+            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
             jLabelUtilisateurSelected.setText("Aucun");
             jRadioButtonNomBiblio.setSelected(true);
         }
@@ -809,7 +832,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 jTableCourier.setRowSorter(sorter);
             } catch (Exception ex) {
                 Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                jLabelNbFoundBiblio.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
             }
         }
     }
