@@ -25,6 +25,7 @@ import Metier.AdherentService;
 import Metier.Bibliothecaire;*/
 import Client.Thread.Selected;
 import Client.Utilisateur.AddUtilisateur;
+import Client.Utilisateur.EditUtilisateur;
 import Client.Utilisateur.JTableModelUtilisateur;
 import Metier.Courier;
 /*import Metier.Emprunt;
@@ -561,7 +562,21 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSearchCourierKeyTyped
 
     private void jButtonEditCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCourierActionPerformed
-        // TODO add your handling code here:
+        if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
+            try {
+                EditUtilisateur editUtilisateur = new EditUtilisateur(this, true);
+                editUtilisateur.setUtilisateurSelected(this.selectedC);
+                editUtilisateur.setModelBiblio(utilisateurs);
+                editUtilisateur.setVisible(true);
+                this.actualisation();
+            } catch (Exception ex) {
+                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un utilisateur...", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+        
         /*if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
             if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
                 EditBiblio editBiblio = new EditBiblio(this, true);

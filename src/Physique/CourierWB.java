@@ -45,7 +45,15 @@ public class CourierWB implements CourierService{
 
     @Override
     public Courier update(Courier courier) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        wb = new WebService();
+        //System.out.println("http://inovea.herobo.com/webhost/courier.php?tag=update&idCourier="+courier.getId()+"&name="+courier.getName()+"&firstname="+courier.getFirstname()+"&mail="+courier.getMail()+"&scheduler="+courier.getScheduler());
+        
+        JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/courier.php?tag=update&idCourier="+courier.getId()+"&name="+courier.getName()+"&firstname="+courier.getFirstname()+"&mail="+courier.getMail()+"&scheduler="+courier.getScheduler()));
+        if(jsonObject.getInt("error") != 0){
+            throw new Exception("Impossible de modifier l'utilisateur");
+        }
+
+        return getCourier(jsonObject);
     }
 
     @Override

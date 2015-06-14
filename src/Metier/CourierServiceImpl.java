@@ -47,7 +47,7 @@ public class CourierServiceImpl implements CourierService{
         if (courier == null) {
             throw new NullPointerException("Courier null !");
         }
-        return null;
+        return courierPhysiqueService.update(courier);
     }
 
     @Override
