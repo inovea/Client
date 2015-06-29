@@ -107,11 +107,11 @@ public class TableauDeBord extends javax.swing.JFrame {
         jSeparator17 = new javax.swing.JSeparator();
         jSeparator18 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
-        jRadioButtonIdBiblio = new javax.swing.JRadioButton();
-        jRadioButtonNomBiblio = new javax.swing.JRadioButton();
-        jRadioButtonPrenomBiblio = new javax.swing.JRadioButton();
+        jRadioButtonIdCourier = new javax.swing.JRadioButton();
+        jRadioButtonNomCourier = new javax.swing.JRadioButton();
+        jRadioButtonPrenomCourier = new javax.swing.JRadioButton();
         jLabel21 = new javax.swing.JLabel();
-        jRadioButtonLoginBiblio = new javax.swing.JRadioButton();
+        jRadioButtonMailCourier = new javax.swing.JRadioButton();
         jPanel7 = new javax.swing.JPanel();
         jTextFieldSearchCourier = new javax.swing.JTextField();
         jLabelNbFoundCourier = new javax.swing.JLabel();
@@ -193,21 +193,21 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jSeparator18.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonIdBiblio);
-        jRadioButtonIdBiblio.setText("Par identifiant");
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonIdCourier);
+        jRadioButtonIdCourier.setText("Par identifiant");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonNomBiblio);
-        jRadioButtonNomBiblio.setSelected(true);
-        jRadioButtonNomBiblio.setText("Par nom");
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonNomCourier);
+        jRadioButtonNomCourier.setSelected(true);
+        jRadioButtonNomCourier.setText("Par nom");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonPrenomBiblio);
-        jRadioButtonPrenomBiblio.setText("Par prénom");
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonPrenomCourier);
+        jRadioButtonPrenomCourier.setText("Par prénom");
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel21.setText("Critères de recherches :");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonLoginBiblio);
-        jRadioButtonLoginBiblio.setText("Par login");
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonMailCourier);
+        jRadioButtonMailCourier.setText("Par mail");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -219,12 +219,12 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButtonIdBiblio)
-                            .addComponent(jRadioButtonPrenomBiblio))
+                            .addComponent(jRadioButtonIdCourier)
+                            .addComponent(jRadioButtonPrenomCourier))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButtonNomBiblio)
-                            .addComponent(jRadioButtonLoginBiblio))))
+                            .addComponent(jRadioButtonNomCourier)
+                            .addComponent(jRadioButtonMailCourier))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -234,12 +234,12 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonIdBiblio)
-                    .addComponent(jRadioButtonNomBiblio))
+                    .addComponent(jRadioButtonIdCourier)
+                    .addComponent(jRadioButtonNomCourier))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonPrenomBiblio)
-                    .addComponent(jRadioButtonLoginBiblio))
+                    .addComponent(jRadioButtonPrenomCourier)
+                    .addComponent(jRadioButtonMailCourier))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -526,31 +526,30 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableCourierMouseClicked
 
     private void jTextFieldSearchCourierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourierKeyTyped
-        // TODO add your handling code here:
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
             String toSearch = jTextFieldSearchCourier.getText();
-            if (jRadioButtonIdBiblio.isSelected()) {
+            if (jRadioButtonIdCourier.isSelected()) {
                 try {
-                    this.searchByIdBiblio(toSearch);
+                    this.searchByIdCourier(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                     jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
-            } else if (jRadioButtonNomBiblio.isSelected()) {
+            } else if (jRadioButtonNomCourier.isSelected()) {
                 try {
                     this.searchByNomBiblio(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                     jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
-            } else if (jRadioButtonPrenomBiblio.isSelected()) {
+            } else if (jRadioButtonPrenomCourier.isSelected()) {
                 try {
                     this.searchByPrenomBiblio(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                     jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
-            } else if (jRadioButtonLoginBiblio.isSelected()) {
+            } else if (jRadioButtonMailCourier.isSelected()) {
                 try {
                     this.searchByLoginBiblio(toSearch);
                 } catch (Exception ex) {
@@ -572,7 +571,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
-            }
+                }
         } else {
             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un utilisateur...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
@@ -660,10 +659,10 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMenuAdmin;
     private javax.swing.JPanel jPanelUtilisateur;
     private javax.swing.JPanel jPanelUtilisateurSelected;
-    private javax.swing.JRadioButton jRadioButtonIdBiblio;
-    private javax.swing.JRadioButton jRadioButtonLoginBiblio;
-    private javax.swing.JRadioButton jRadioButtonNomBiblio;
-    private javax.swing.JRadioButton jRadioButtonPrenomBiblio;
+    private javax.swing.JRadioButton jRadioButtonIdCourier;
+    private javax.swing.JRadioButton jRadioButtonMailCourier;
+    private javax.swing.JRadioButton jRadioButtonNomCourier;
+    private javax.swing.JRadioButton jRadioButtonPrenomCourier;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
@@ -698,7 +697,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jTextFieldSearchCourier.setText("");
             jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
             jLabelUtilisateurSelected.setText("Aucun");
-            jRadioButtonNomBiblio.setSelected(true);
+            jRadioButtonNomCourier.setSelected(true);
         }
     }
 
@@ -1121,25 +1120,25 @@ public class TableauDeBord extends javax.swing.JFrame {
         }*/
     }
 
-    private void searchByIdBiblio(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
+    private void searchByIdCourier(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
             try {
                 int id = Integer.parseInt(toSearch);
-                Bibliothecaire byId = adherentMetierService.getBiblioById(id);
+                Courier byId = courierMetierService.getById(id);
                 if (byId != null) {
-                    jLabelNbFoundBiblio.setText("1 bibliothécaire a été trouvé");
+                    jLabelNbFoundCourier.setText("1 bibliothécaire a été trouvé");
                     this.fireJTableCourier(null, byId);
                 } else {
-                    jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
+                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
                     this.fireJTableCourier(null, null);
                 }
             } catch (NumberFormatException nfe) {
-                jLabelNbFoundBiblio.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
+                jLabelNbFoundCourier.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
             }
         } else {
-            jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
+            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
             this.fireJTableCourier(null, null);
-        }*/
+        }
     }
 
     private void searchByNomBiblio(String toSearch) throws Exception {

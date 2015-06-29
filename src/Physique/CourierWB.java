@@ -46,7 +46,6 @@ public class CourierWB implements CourierService{
     @Override
     public Courier update(Courier courier) throws Exception {
         wb = new WebService();
-        //System.out.println("http://inovea.herobo.com/webhost/courier.php?tag=update&idCourier="+courier.getId()+"&name="+courier.getName()+"&firstname="+courier.getFirstname()+"&mail="+courier.getMail()+"&scheduler="+courier.getScheduler());
         
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/courier.php?tag=update&idCourier="+courier.getId()+"&name="+courier.getName()+"&firstname="+courier.getFirstname()+"&mail="+courier.getMail()+"&scheduler="+courier.getScheduler()));
         if(jsonObject.getInt("error") != 0){

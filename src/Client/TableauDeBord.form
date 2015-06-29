@@ -249,13 +249,13 @@
                                   <Component id="jLabel21" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonIdBiblio" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonPrenomBiblio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonIdCourier" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonPrenomCourier" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonNomBiblio" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonLoginBiblio" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonNomCourier" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonMailCourier" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -270,13 +270,13 @@
                               <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButtonIdBiblio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonNomBiblio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonIdCourier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonNomCourier" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButtonPrenomBiblio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonLoginBiblio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonPrenomCourier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonMailCourier" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -284,7 +284,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonIdBiblio">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonIdCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
@@ -292,7 +292,7 @@
                         <Property name="text" type="java.lang.String" value="Par identifiant"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonNomBiblio">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonNomCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
@@ -301,7 +301,7 @@
                         <Property name="text" type="java.lang.String" value="Par nom"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonPrenomBiblio">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonPrenomCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
@@ -317,12 +317,12 @@
                         <Property name="text" type="java.lang.String" value="Crit&#xe8;res de recherches :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonLoginBiblio">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonMailCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Par login"/>
+                        <Property name="text" type="java.lang.String" value="Par mail"/>
                       </Properties>
                     </Component>
                   </SubComponents>
