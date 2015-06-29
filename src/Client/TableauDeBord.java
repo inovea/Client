@@ -137,7 +137,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jLabelUtilisateurSelected = new javax.swing.JLabel();
         jButtonDelCourier = new javax.swing.JButton();
         jSeparator21 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelMenuContain = new javax.swing.JPanel();
         jPanelMenuContainer = new javax.swing.JPanel();
         jButtonAddContainer = new javax.swing.JButton();
         jButtonEditContain = new javax.swing.JButton();
@@ -734,28 +734,28 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelMenuContainLayout = new javax.swing.GroupLayout(jPanelMenuContain);
+        jPanelMenuContain.setLayout(jPanelMenuContainLayout);
+        jPanelMenuContainLayout.setHorizontalGroup(
+            jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1155, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMenuContainLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanelMenuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelMenuContainLayout.setVerticalGroup(
+            jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 720, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuContainLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelMenuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jTabbedPanePrincipal.addTab("Conteneurs", jPanel1);
+        jTabbedPanePrincipal.addTab("Conteneurs", jPanelMenuContain);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -764,7 +764,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addComponent(jPanelDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
+                .addComponent(jTabbedPanePrincipal)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1020,7 +1020,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNbFoundBiblio2;
     private javax.swing.JLabel jLabelNbFoundCourier;
     private javax.swing.JLabel jLabelUtilisateurSelected;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel6;
@@ -1031,6 +1030,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelContainerSelected;
     private javax.swing.JPanel jPanelDetails;
     private javax.swing.JPanel jPanelMenuAdmin;
+    private javax.swing.JPanel jPanelMenuContain;
     private javax.swing.JPanel jPanelMenuContainer;
     private javax.swing.JPanel jPanelUtilisateur;
     private javax.swing.JPanel jPanelUtilisateurSelected;
@@ -1066,7 +1066,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jLabelNbFoundCourier.setText("Aucun utilisateur n'a été cherché");
             jLabelUtilisateurSelected.setText("Aucun");
             jRadioButtonNomCourier.setSelected(true);
-        } else if (jPanelUtilisateur.isShowing()) {
+        } else if (jPanelMenuContain.isShowing()) {
             this.fireJTableContainer(null, null);
             jTextFieldSearchBiblio2.setText("");
             jLabelNbFoundBiblio2.setText("Aucun container n'a été cherché");
