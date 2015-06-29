@@ -23,24 +23,31 @@ import Client.Utilisateur.JTableModelUtilisateur;
 import Metier.Adherent;
 import Metier.AdherentService;
 import Metier.Bibliothecaire;*/
+import Client.Container.AddContainer;
+import Client.Container.JTableModelContainer;
+import Client.Container.UpdateContainer;
 import Client.Thread.Selected;
 import Client.Utilisateur.AddUtilisateur;
 import Client.Utilisateur.EditUtilisateur;
 import Client.Utilisateur.JTableModelUtilisateur;
+import Metier.Containers;
 import Metier.Courier;
 /*import Metier.Emprunt;
 import Metier.EmpruntService;
 import Metier.Livre;
 import Metier.LivreService;*/
 import Metier.MetierServiceFactory;
+import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -56,13 +63,14 @@ public class TableauDeBord extends javax.swing.JFrame {
     private AdherentService adherentMetierService = MetierServiceFactory.getAdherentService();
     private EmpruntService empruntMetierService = MetierServiceFactory.getEmpruntService();*/
     private CourierService courierMetierService = MetierServiceFactory.getCourierService();
+    private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
     
     /*private JTableModelBooks books = null;
     private JTableModelAdherent adherents = null;
     private JTableModelEmprunt emprunts = null;
     private JTableModelBibliothecaire bibliothecaires = null;*/
     private JTableModelUtilisateur utilisateurs = null;
-    
+    private JTableModelContainer containerModel = null;
     /*private Livre selectedL;
     private Adherent selectedA;
     private Emprunt selectedE;
@@ -76,6 +84,9 @@ public class TableauDeBord extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(this.getExtendedState() | TableauDeBord.MAXIMIZED_BOTH);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTableContainer.setDefaultRenderer(String.class, centerRenderer);
         //this.bibliothecaireConnecte = this.bibliotheque.getBibliothecaireConnecte();
         /*if (this.bibliothecaireConnecte == null) {
             this.dispose();
@@ -126,6 +137,33 @@ public class TableauDeBord extends javax.swing.JFrame {
         jLabelUtilisateurSelected = new javax.swing.JLabel();
         jButtonDelCourier = new javax.swing.JButton();
         jSeparator21 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jPanelMenuContainer = new javax.swing.JPanel();
+        jButtonAddContainer = new javax.swing.JButton();
+        jButtonEditContain = new javax.swing.JButton();
+        jPanelBarSearchContainer = new javax.swing.JPanel();
+        jSeparator25 = new javax.swing.JSeparator();
+        jSeparator26 = new javax.swing.JSeparator();
+        jPanel10 = new javax.swing.JPanel();
+        jRadioButtonIdBiblio2 = new javax.swing.JRadioButton();
+        jRadioButtonNomBiblio2 = new javax.swing.JRadioButton();
+        jRadioButtonPrenomBiblio2 = new javax.swing.JRadioButton();
+        jLabel27 = new javax.swing.JLabel();
+        jRadioButtonLoginBiblio2 = new javax.swing.JRadioButton();
+        jPanel11 = new javax.swing.JPanel();
+        jTextFieldSearchBiblio2 = new javax.swing.JTextField();
+        jLabelNbFoundBiblio2 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jSeparator27 = new javax.swing.JSeparator();
+        jPanelContainer = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableContainer = new javax.swing.JTable();
+        jPanelContainerSelected = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabelContainerSelected = new javax.swing.JLabel();
+        jButtonDelContain = new javax.swing.JButton();
+        jSeparator28 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Centre de gestion de la bibliothèque");
@@ -353,7 +391,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelUtilisateurLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -371,7 +409,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanelUtilisateurSelectedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelUtilisateurSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
                     .addGroup(jPanelUtilisateurSelectedLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabelUtilisateurSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -443,6 +481,282 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jTabbedPanePrincipal.addTab("Administration", jPanelMenuAdmin);
 
+        jButtonAddContainer.setText("Ajouter un conteneur");
+        jButtonAddContainer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddContainerActionPerformed(evt);
+            }
+        });
+
+        jButtonEditContain.setText("Modifier un conteneur");
+        jButtonEditContain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditContainActionPerformed(evt);
+            }
+        });
+
+        jSeparator25.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jSeparator26.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jRadioButtonIdBiblio2.setText("Par identifiant");
+        jRadioButtonIdBiblio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonIdBiblio2ActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonNomBiblio2.setSelected(true);
+        jRadioButtonNomBiblio2.setText("Par nom");
+
+        jRadioButtonPrenomBiblio2.setText("Par Nom");
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jLabel27.setText("Critères de recherches :");
+
+        jRadioButtonLoginBiblio2.setText("Par login");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonIdBiblio2)
+                            .addComponent(jRadioButtonPrenomBiblio2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonNomBiblio2)
+                            .addComponent(jRadioButtonLoginBiblio2))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonIdBiblio2)
+                    .addComponent(jRadioButtonNomBiblio2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonPrenomBiblio2)
+                    .addComponent(jRadioButtonLoginBiblio2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTextFieldSearchBiblio2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchBiblio2KeyTyped(evt);
+            }
+        });
+
+        jLabelNbFoundBiblio2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabelNbFoundBiblio2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNbFoundBiblio2.setText("Aucun conteneur n'a été cherché");
+
+        jLabel28.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel28.setText("<- Appuyer sur Entrée");
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jLabel29.setText("Recherches :");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabelNbFoundBiblio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSearchBiblio2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel28)))
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jTextFieldSearchBiblio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelNbFoundBiblio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanelBarSearchContainerLayout = new javax.swing.GroupLayout(jPanelBarSearchContainer);
+        jPanelBarSearchContainer.setLayout(jPanelBarSearchContainerLayout);
+        jPanelBarSearchContainerLayout.setHorizontalGroup(
+            jPanelBarSearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBarSearchContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(411, Short.MAX_VALUE))
+        );
+        jPanelBarSearchContainerLayout.setVerticalGroup(
+            jPanelBarSearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBarSearchContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelBarSearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator26)
+                    .addComponent(jSeparator25)
+                    .addGroup(jPanelBarSearchContainerLayout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 51, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jTableContainer.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Identifiant", "Nom", "Adresse", "Latitude", "Longitude", "Etat"
+            }
+        ));
+        jTableContainer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableContainerMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTableContainer);
+
+        javax.swing.GroupLayout jPanelContainerLayout = new javax.swing.GroupLayout(jPanelContainer);
+        jPanelContainer.setLayout(jPanelContainerLayout);
+        jPanelContainerLayout.setHorizontalGroup(
+            jPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6)
+                .addContainerGap())
+        );
+        jPanelContainerLayout.setVerticalGroup(
+            jPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jLabel30.setText("Conteneur sélectionné :");
+
+        jLabelContainerSelected.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelContainerSelected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelContainerSelected.setText("Aucun");
+
+        javax.swing.GroupLayout jPanelContainerSelectedLayout = new javax.swing.GroupLayout(jPanelContainerSelected);
+        jPanelContainerSelected.setLayout(jPanelContainerSelectedLayout);
+        jPanelContainerSelectedLayout.setHorizontalGroup(
+            jPanelContainerSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContainerSelectedLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelContainerSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelContainerSelectedLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelContainerSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelContainerSelectedLayout.setVerticalGroup(
+            jPanelContainerSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContainerSelectedLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelContainerSelected, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jButtonDelContain.setText("Supprimer un conteneur");
+        jButtonDelContain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDelContainActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelMenuContainerLayout = new javax.swing.GroupLayout(jPanelMenuContainer);
+        jPanelMenuContainer.setLayout(jPanelMenuContainerLayout);
+        jPanelMenuContainerLayout.setHorizontalGroup(
+            jPanelMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator28)
+                    .addComponent(jPanelContainer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelBarSearchContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelMenuContainerLayout.createSequentialGroup()
+                        .addComponent(jButtonAddContainer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEditContain)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonDelContain)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelContainerSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator27))
+                .addContainerGap())
+        );
+        jPanelMenuContainerLayout.setVerticalGroup(
+            jPanelMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonDelContain, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(jButtonEditContain, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelContainerSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAddContainer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelBarSearchContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1155, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanelMenuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelMenuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jTabbedPanePrincipal.addTab("Conteneurs", jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -450,7 +764,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addComponent(jPanelDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPanePrincipal)
+                .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -608,6 +922,51 @@ public class TableauDeBord extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDelCourierMouseClicked
 
+    private void jButtonAddContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContainerActionPerformed
+
+        new AddContainer(this);
+        List<Containers> list = new ArrayList<Containers>();
+        try {
+            list   = containerMetierService.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.fireJTableContainer(list,null);
+
+    }//GEN-LAST:event_jButtonAddContainerActionPerformed
+
+    private void jButtonEditContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContainActionPerformed
+        int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+        try {
+            new UpdateContainer(this,idContainer);
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonEditContainActionPerformed
+
+    private void jRadioButtonIdBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIdBiblio2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonIdBiblio2ActionPerformed
+
+    private void jTextFieldSearchBiblio2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchBiblio2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchBiblio2KeyTyped
+
+    private void jTableContainerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContainerMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableContainerMouseClicked
+
+    private void jButtonDelContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelContainActionPerformed
+        try {
+            int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+            System.out.println(containerModel.getValueAt(jTableContainer.getSelectedRow(), 0));
+            containerMetierService.delete(idContainer);
+            this.fireJTableContainer(containerMetierService.getAll(), null);
+        } catch (Exception ex) {
+            Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonDelContainActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -641,90 +1000,83 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupCritereRechercheAdherent;
     private javax.swing.ButtonGroup buttonGroupCritereRechercheBooks;
     private javax.swing.ButtonGroup buttonGroupCritereRechercheEmprunt;
+    private javax.swing.JButton jButtonAddContainer;
     private javax.swing.JButton jButtonAddCourier;
+    private javax.swing.JButton jButtonDelContain;
     private javax.swing.JButton jButtonDelCourier;
+    private javax.swing.JButton jButtonEditContain;
     private javax.swing.JButton jButtonEditCourier;
     private javax.swing.JButton jButtonQuit;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabelBC;
+    private javax.swing.JLabel jLabelContainerSelected;
+    private javax.swing.JLabel jLabelNbFoundBiblio2;
     private javax.swing.JLabel jLabelNbFoundCourier;
     private javax.swing.JLabel jLabelUtilisateurSelected;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanelBarSearchContainer;
     private javax.swing.JPanel jPanelBarSearchUtilisateur;
+    private javax.swing.JPanel jPanelContainer;
+    private javax.swing.JPanel jPanelContainerSelected;
     private javax.swing.JPanel jPanelDetails;
     private javax.swing.JPanel jPanelMenuAdmin;
+    private javax.swing.JPanel jPanelMenuContainer;
     private javax.swing.JPanel jPanelUtilisateur;
     private javax.swing.JPanel jPanelUtilisateurSelected;
+    private javax.swing.JRadioButton jRadioButtonIdBiblio2;
     private javax.swing.JRadioButton jRadioButtonIdCourier;
+    private javax.swing.JRadioButton jRadioButtonLoginBiblio2;
     private javax.swing.JRadioButton jRadioButtonMailCourier;
+    private javax.swing.JRadioButton jRadioButtonNomBiblio2;
     private javax.swing.JRadioButton jRadioButtonNomCourier;
+    private javax.swing.JRadioButton jRadioButtonPrenomBiblio2;
     private javax.swing.JRadioButton jRadioButtonPrenomCourier;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator25;
+    private javax.swing.JSeparator jSeparator26;
+    private javax.swing.JSeparator jSeparator27;
+    private javax.swing.JSeparator jSeparator28;
     private javax.swing.JTabbedPane jTabbedPanePrincipal;
+    private javax.swing.JTable jTableContainer;
     private javax.swing.JTable jTableCourier;
+    private javax.swing.JTextField jTextFieldSearchBiblio2;
     private javax.swing.JTextField jTextFieldSearchCourier;
     // End of variables declaration//GEN-END:variables
 
     public void actualisation() {
-        /*if (jPanelEmprunt.isShowing()) {
-            this.fireJTableEmprunt(null, null);
-            jTextFieldSearchEmprunt.setText("");
-            jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-            jLabelEmpruntSelected.setText("Aucun");
-            jRadioButtonEmpruntByAdherent.setSelected(true);
-        } else if (jPanelLivres.isShowing()) {
-            this.fireJTableBooks(null, null);
-            jTextFieldSearchLivre.setText("");
-            jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-            jLabelLivreSelected.setText("Aucun");
-            jRadioButtonAllLivre.setSelected(true);
-        } else if (jPanelAdherent.isShowing()) {
-            this.fireJTableAdherents(null, null);
-            jTextFieldSearchAdherent.setText("");
-            jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
-            jLabelAdherentSelected.setText("Aucun");
-            jRadioButtonNomAdherent.setSelected(true);
-        } else */if (jPanelUtilisateur.isShowing()) {
+        if (jPanelUtilisateur.isShowing()) {
             this.fireJTableCourier(null, null);
             jTextFieldSearchCourier.setText("");
-            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            jLabelNbFoundCourier.setText("Aucun utilisateur n'a été cherché");
             jLabelUtilisateurSelected.setText("Aucun");
             jRadioButtonNomCourier.setSelected(true);
+        } else if (jPanelUtilisateur.isShowing()) {
+            this.fireJTableContainer(null, null);
+            jTextFieldSearchBiblio2.setText("");
+            jLabelNbFoundBiblio2.setText("Aucun container n'a été cherché");
+            jLabelUtilisateurSelected.setText("Aucun");
+            jRadioButtonNomBiblio2.setSelected(true);
         }
     }
 
     private void createAllJTable() throws Exception {
-        /*if (emprunts == null) {
-            emprunts = new JTableModelEmprunt(0, Integer.parseInt((String) jComboBoxNbPerPageEmprunt.getSelectedItem()), 1);
-        }
-        jTableEmprunt.setModel(emprunts);
-        TableRowSorter<TableModel> sorterEmprunt = new TableRowSorter<>(jTableEmprunt.getModel());
-        jTableEmprunt.setRowSorter(sorterEmprunt);
-
-        if (books == null) {
-            books = new JTableModelBooks(0, Integer.parseInt((String) jComboBoxNbPerPageLivre.getSelectedItem()), 1);
-        }
-        jTableLivres.setModel(books);
-        jTableLivres.setDefaultRenderer(Boolean.class, new BooleanCellRenderer());
-        TableRowSorter<TableModel> sorterLivre = new TableRowSorter<>(jTableLivres.getModel());
-        jTableLivres.setRowSorter(sorterLivre);
-        jTableLivres.setDefaultEditor(Boolean.class, new DisponibiliteCellEditor());
-
-        if (adherents == null) {
-            adherents = new JTableModelAdherent(0, Integer.parseInt((String) jComboBoxNbPerPageAdherent.getSelectedItem()), 1);
-        }
-        jTableAdherent.setModel(adherents);
-        TableRowSorter<TableModel> sorterAdherent = new TableRowSorter<>(jTableAdherent.getModel());
-        jTableAdherent.setRowSorter(sorterAdherent);*/
-
+        
         if (utilisateurs == null) {
             utilisateurs = new JTableModelUtilisateur();
         }
@@ -732,15 +1084,19 @@ public class TableauDeBord extends javax.swing.JFrame {
         TableRowSorter<TableModel> sorterCourier = new TableRowSorter<>(jTableCourier.getModel());
         jTableCourier.setRowSorter(sorterCourier);
 
-        /*Selected livre = new Selected(jTableEmprunt, jLabelEmpruntSelected);
-        livre.start();
-        Selected adherent = new Selected(jTableAdherent, jLabelAdherentSelected);
-        adherent.start();
-        Selected emprunt = new Selected(jTableEmprunt, jLabelEmpruntSelected);
-        emprunt.start();*/
-        
         Selected utilisateur = new Selected(jTableCourier, jLabelUtilisateurSelected);
         utilisateur.start();
+        
+        if (containerModel == null) {
+            containerModel = new JTableModelContainer();
+        }
+        jTableContainer.setModel(containerModel);
+        TableRowSorter<TableModel> sorterContainer = new TableRowSorter<>(jTableContainer.getModel());
+        jTableContainer.setRowSorter(sorterContainer);
+        
+        
+        Selected container = new Selected(jTableContainer, jLabelContainerSelected);
+        container.start();
     }
 
     /*private void fireJTableBooks(List<Livre> list, Livre livre) {
@@ -850,6 +1206,32 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void fireJTableContainer(List<Containers> list, Containers containers) {
+       
+        if (list != null) {
+            containerModel = new JTableModelContainer(list);
+            jTableContainer.setModel(containerModel);
+            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableContainer.getModel());
+            jTableContainer.setRowSorter(sorter);
+        } else if (containers != null) {
+            containerModel = new JTableModelContainer(containers);
+            jTableContainer.setModel(containerModel);
+            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableContainer.getModel());
+            jTableContainer.setRowSorter(sorter);
+        } else {
+            try {
+                containerModel = new JTableModelContainer();
+                jTableContainer.setModel(containerModel);
+                TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableContainer.getModel());
+                jTableContainer.setRowSorter(sorter);
+            } catch (Exception ex) {
+                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                //jLabelNbFoundBiblio.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+            }
+        }
+    }
+    
 
     private void searchByMotsClesLivre(String toSearch) {
         /*try {

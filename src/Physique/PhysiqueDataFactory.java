@@ -11,6 +11,7 @@ import Metier.EmpruntService;
 import Metier.EmpruntServiceImpl;
 import Metier.LivreService;
 import Metier.LivreServiceImpl;*/
+import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
 
 
@@ -32,6 +33,7 @@ public class PhysiqueDataFactory {
     private static AuthentificationService authentificationService;*/
     
     private static CourierService courierService;
+    private static ContainerService containerService;
     
     private PhysiqueDataFactory() {}
     
@@ -41,6 +43,13 @@ public class PhysiqueDataFactory {
         }
         return courierService;
     }
+    public static ContainerService getContainerDataService() {
+        if(containerService == null) {
+            containerService =  new ContainerWB();
+        }
+        return containerService;
+    }
+    
     
     /*public static EmpruntDataService getEmpruntDataService() {
         if(empruntDataService == null) {
