@@ -50,10 +50,25 @@ public class AddContainer extends javax.swing.JFrame {
         tbLng = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                formInputMethodTextChanged(evt);
+            }
+        });
 
         jLabel1.setText("Adresse");
 
         jLabel2.setText("Nom");
+
+        tbAdd.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                tbAddInputMethodTextChanged(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel4.setText("Ajouter un Conteneur");
@@ -151,18 +166,19 @@ public class AddContainer extends javax.swing.JFrame {
 
     private void btnAjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjoutActionPerformed
        String name = tbNom.getText();
-       String lat = tbAdd.getText();
+       String adresse = tbAdd.getText();
+       Containers cont = null;
       try {
          
-          containerMetierService.recupLatAndLong(lat);
+       cont=   containerMetierService.recupLatAndLong(adresse);
       } catch (Exception ex) {
           Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
       }
      
        
     
-   /*   try {
-         containerMetierService.register(name, lat, lng);
+      try {
+         containerMetierService.register(name, cont.getLat(), cont.getLng(),cont.getAddress());
       } catch (Exception ex) {
           Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
       }
@@ -170,9 +186,18 @@ public class AddContainer extends javax.swing.JFrame {
           tb.fireJTableContainer(this.containerMetierService.getAll(),null);
       } catch (Exception ex) {
           Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
-      }*/
+      }
       this.dispose();
     }//GEN-LAST:event_btnAjoutActionPerformed
+
+    private void tbAddInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tbAddInputMethodTextChanged
+       tbLat.enableInputMethods(false);
+       tbLng.enableInputMethods(true);
+    }//GEN-LAST:event_tbAddInputMethodTextChanged
+
+    private void formInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_formInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInputMethodTextChanged
 
     /**
      * @param args the command line arguments

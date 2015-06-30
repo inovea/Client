@@ -27,11 +27,12 @@ public class Containers {
         this.name = name;
     }
 
-    public Containers(String name,double lat, double lng) throws ParseException {
+    public Containers(String name,double lat, double lng,String address) throws ParseException {
         this.lat = lat;
             this.lng = lng;
         this.name = name; 
         this.setLastCollect("00/00/00 00:00:00");
+        this.address = address;
     }
 
     public String getName() {

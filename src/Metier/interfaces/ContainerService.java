@@ -15,7 +15,7 @@ import org.json.JSONObject;
  * @author Lyes Atek
  */
 public interface ContainerService {
-    public Containers register(String name, String lat, String lng) throws Exception;
+    public Containers register(String name, double lat, double lng,String address) throws Exception;
     public Containers add(Containers container) throws Exception;
     public Containers update(Containers container) throws Exception;
     public void delete(int idContainer) throws Exception;
