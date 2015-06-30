@@ -125,5 +125,19 @@ public class CourierWB implements CourierService{
         }
       return  list;
     }
+
+    @Override
+    public void setPassword(String mail, String password, String newPassword) throws Exception {
+        wb = new WebService();
+        System.out.println("http://inovea.herobo.com/webhost/courier.php?tag=changeWord&mail="+mail+"&word1="+password+"&word2="+newPassword);
+        
+        JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/courier.php?tag=changeWord&mail="+mail+"&word1="+password+"&word2="+newPassword));
+        if(jsonObject.getInt("error") != 0){
+            if(jsonObject.getInt("error") == 2){
+                throw new Exception("Mot de passe incorrecte");
+            }
+            throw new Exception("Impossible de modifier le mot de passe");
+        }
+    }
     
 }

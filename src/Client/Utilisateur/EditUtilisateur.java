@@ -300,7 +300,7 @@ public class EditUtilisateur extends javax.swing.JDialog {
         jTextFieldNom.setText(utilisateur.getName());
         jTextFieldPrenom.setText(utilisateur.getFirstname());
         jTextFieldMail.setText(utilisateur.getMail());
-        if(utilisateur.getScheduler()==1){
+        if (utilisateur.getScheduler() == 1) {
             jCheckBoxScheduler.setSelected(true);
         }
     }//GEN-LAST:event_formWindowOpened
@@ -310,17 +310,17 @@ public class EditUtilisateur extends javax.swing.JDialog {
         try {
             Courier utilisateurEdited = new Courier(jTextFieldMail.getText(), utilisateur.getPassword(), jTextFieldNom.getText(), jTextFieldPrenom.getText(), jCheckBoxScheduler.isSelected() ? 1 : 0);
             utilisateurEdited.setId(utilisateur.getId());
-            
+
             courierMetierService.update(utilisateurEdited);
-            
+
             /*if (mdpEdited == null) {
-                bibliothecaireEdited = adherentMetierService.newBibliothecaire(jTextFieldNom.getText(), jTextFieldPrenom.getText(), jTextFieldMail.getText(), bibliothecaire.getMotDePasse(), true);
-            } else {
-                bibliothecaireEdited = adherentMetierService.newBibliothecaire(jTextFieldNom.getText(), jTextFieldPrenom.getText(), jTextFieldMail.getText(), mdpEdited, false);
-            }*/
+             bibliothecaireEdited = adherentMetierService.newBibliothecaire(jTextFieldNom.getText(), jTextFieldPrenom.getText(), jTextFieldMail.getText(), bibliothecaire.getMotDePasse(), true);
+             } else {
+             bibliothecaireEdited = adherentMetierService.newBibliothecaire(jTextFieldNom.getText(), jTextFieldPrenom.getText(), jTextFieldMail.getText(), mdpEdited, false);
+             }*/
             /*utilisateurEdited = courierMetierService.
-            bibliothecaireEdited.setId(bibliothecaire.getId());
-            bibliothecaires.updateBiblio(bibliothecaireEdited);*/
+             bibliothecaireEdited.setId(bibliothecaire.getId());
+             bibliothecaires.updateBiblio(bibliothecaireEdited);*/
             this.dispose();
         } catch (Exception ex) {
             Logger.getLogger(EditUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
@@ -329,14 +329,13 @@ public class EditUtilisateur extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonEditActionPerformed
 
     private void jButtonChangePassWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChangePassWordActionPerformed
-        /*if (bibliothecaire.equals(MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte())) {
-            ChangePass changePass = new ChangePass(null, true);
-            changePass.setBibliothecaireSelected(bibliothecaire);
-            changePass.setIhm(this);
-            changePass.setVisible(true);
-        }else{
-            jLabelStatut.setText("<html><body><font color='orange'>Vous n'êtes pas autorisé à modifier le mot de passe</font></body></html>");
-        }*/
+        ChangePass changePass = new ChangePass(null, true);
+        changePass.setCourierSelected(utilisateur);
+        changePass.setIhm(this);
+//        changePass.setBibliothecaireSelected(bibliothecaire);
+//        changePass.setIhm(this);
+        changePass.setVisible(true);
+
     }//GEN-LAST:event_jButtonChangePassWordActionPerformed
 
     private void jCheckBoxSchedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSchedulerActionPerformed
@@ -419,7 +418,7 @@ public class EditUtilisateur extends javax.swing.JDialog {
     public void setMdpEdited(String mdp) {
         this.mdpEdited = mdp;
     }
-    
+
     public void setStatut(String s) {
         jLabelStatut.setText(s);
     }

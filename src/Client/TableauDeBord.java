@@ -788,7 +788,8 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jButtonQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitActionPerformed
         // TODO add your handling code here:
-        //this.bibliotheque.deconnecter();
+        this.dispose();
+        new LoginUser();
     }//GEN-LAST:event_jButtonQuitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
