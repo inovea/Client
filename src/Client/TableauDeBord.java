@@ -5,24 +5,24 @@
 package Client;
 
 /*import Client.Adherents.AddAdherent;
-import Client.Adherents.EditAdherent;
-import Client.Adherents.JTableModelAdherent;
-import Client.Bibliothecaire.AddUtilisateur;
-import Client.Bibliothecaire.ConfSupprWithPass;
-import Client.Bibliothecaire.EditBiblio;
-import Client.Bibliothecaire.JTableModelBibliothecaire;
-import Client.Emprunts.AddEmprunt;
-import Client.Emprunts.JTableModelEmprunt;
-import Client.Livres.AddBook;
-import Client.Livres.BooleanCellRenderer;
-import Client.Livres.DisponibiliteCellEditor;
-import Client.Livres.EditBook;
-import Client.Livres.JTableModelBooks;*/
+ import Client.Adherents.EditAdherent;
+ import Client.Adherents.JTableModelAdherent;
+ import Client.Bibliothecaire.AddUtilisateur;
+ import Client.Bibliothecaire.ConfSupprWithPass;
+ import Client.Bibliothecaire.EditBiblio;
+ import Client.Bibliothecaire.JTableModelBibliothecaire;
+ import Client.Emprunts.AddEmprunt;
+ import Client.Emprunts.JTableModelEmprunt;
+ import Client.Livres.AddBook;
+ import Client.Livres.BooleanCellRenderer;
+ import Client.Livres.DisponibiliteCellEditor;
+ import Client.Livres.EditBook;
+ import Client.Livres.JTableModelBooks;*/
 /*import Client.Thread.Selected;
-import Client.Utilisateur.JTableModelUtilisateur;
-import Metier.Adherent;
-import Metier.AdherentService;
-import Metier.Bibliothecaire;*/
+ import Client.Utilisateur.JTableModelUtilisateur;
+ import Metier.Adherent;
+ import Metier.AdherentService;
+ import Metier.Bibliothecaire;*/
 import Client.Container.AddContainer;
 import Client.Container.JTableModelContainer;
 import Client.Container.UpdateContainer;
@@ -33,9 +33,9 @@ import Client.Utilisateur.JTableModelUtilisateur;
 import Metier.Containers;
 import Metier.Courier;
 /*import Metier.Emprunt;
-import Metier.EmpruntService;
-import Metier.Livre;
-import Metier.LivreService;*/
+ import Metier.EmpruntService;
+ import Metier.Livre;
+ import Metier.LivreService;*/
 import Metier.MetierServiceFactory;
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
@@ -59,23 +59,24 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     //private Bibliothecaire bibliothecaireConnecte = null;
     /*private Bibliotheque bibliotheque = MetierServiceFactory.getBibliotheque();
-    private LivreService livreMetierService = MetierServiceFactory.getLivreService();
-    private AdherentService adherentMetierService = MetierServiceFactory.getAdherentService();
-    private EmpruntService empruntMetierService = MetierServiceFactory.getEmpruntService();*/
+     private LivreService livreMetierService = MetierServiceFactory.getLivreService();
+     private AdherentService adherentMetierService = MetierServiceFactory.getAdherentService();
+     private EmpruntService empruntMetierService = MetierServiceFactory.getEmpruntService();*/
     private CourierService courierMetierService = MetierServiceFactory.getCourierService();
     private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
-    
+
     /*private JTableModelBooks books = null;
-    private JTableModelAdherent adherents = null;
-    private JTableModelEmprunt emprunts = null;
-    private JTableModelBibliothecaire bibliothecaires = null;*/
+     private JTableModelAdherent adherents = null;
+     private JTableModelEmprunt emprunts = null;
+     private JTableModelBibliothecaire bibliothecaires = null;*/
     private JTableModelUtilisateur utilisateurs = null;
     private JTableModelContainer containerModel = null;
     /*private Livre selectedL;
-    private Adherent selectedA;
-    private Emprunt selectedE;
-    private Bibliothecaire selectedB;*/
+     private Adherent selectedA;
+     private Emprunt selectedE;
+     private Bibliothecaire selectedB;*/
     private Courier selectedC;
+    private Courier courierConnected;
 
     /**
      * Creates new form TableauDeBord
@@ -85,15 +86,21 @@ public class TableauDeBord extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setExtendedState(this.getExtendedState() | TableauDeBord.MAXIMIZED_BOTH);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
+
         //this.bibliothecaireConnecte = this.bibliotheque.getBibliothecaireConnecte();
         /*if (this.bibliothecaireConnecte == null) {
-            this.dispose();
-        } else {
-            jLabelBC.setText("Bibliothécaire connecté : " + bibliothecaireConnecte.getPrenom() + " " + bibliothecaireConnecte.getNom());
-        }*/
+         this.dispose();
+         } else {
+         jLabelBC.setText("Bibliothécaire connecté : " + bibliothecaireConnecte.getPrenom() + " " + bibliothecaireConnecte.getNom());
+         }*/
         this.setVisible(true);
+
+    }
+
+    public void setCourierConnected(Courier courier) {
+        this.courierConnected = courier;
     }
 
     /**
@@ -787,17 +794,17 @@ public class TableauDeBord extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         /*if (this.bibliothecaireConnecte == null) {
-            JOptionPane.showMessageDialog(this, "Bibliothécaire inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
-            this.dispose();
-        } else {
-            jLabelBC.setText("Bibliothécaire connecté : " + bibliothecaireConnecte.getPrenom() + " " + bibliothecaireConnecte.getNom());
-        }
-        try {
-            this.createAllJTable();
-        } catch (Exception ex) {
-            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-            jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-        }*/
+         JOptionPane.showMessageDialog(this, "Bibliothécaire inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
+         this.dispose();
+         } else {
+         jLabelBC.setText("Bibliothécaire connecté : " + bibliothecaireConnecte.getPrenom() + " " + bibliothecaireConnecte.getNom());
+         }
+         try {
+         this.createAllJTable();
+         } catch (Exception ex) {
+         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+         jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+         }*/
     }//GEN-LAST:event_formWindowOpened
 
     private void jTabbedPanePrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPanePrincipalMouseClicked
@@ -807,16 +814,21 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jButtonDelCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelCourierActionPerformed
         if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
-            int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedC.getName() + "</b> <i>" + this.selectedC.getFirstname() + "</i></font> ?</body></html>\n");
-            if (answer == 0) {
-                try {
-                    courierMetierService.delete(this.selectedC.getId());
-                    this.actualisation();
-                } catch (Exception ex) {
-                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+            if (selectedC != courierConnected) {
+                int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedC.getName() + "</b> <i>" + this.selectedC.getFirstname() + "</i></font> ?</body></html>\n");
+                if (answer == 0) {
+                    try {
+                        courierMetierService.delete(this.selectedC.getId());
+                        this.actualisation();
+                    } catch (Exception ex) {
+                        Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
-            }  
+            } else{
+                JOptionPane.showMessageDialog(this, "Attention, l'utilisateur est connecté", "Attention", JOptionPane.WARNING_MESSAGE);
+            }
+
         } else {
             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un utilisateur...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
@@ -829,12 +841,12 @@ public class TableauDeBord extends javax.swing.JFrame {
             String prenom = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 2);
             String mail = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 3);
             int scheduler = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 4);
-            
+
             Courier courier = new Courier(mail, null, nom, prenom, scheduler);
             courier.setId(id);
-            
+
             this.setCourierSelected(courier);
-            jLabelUtilisateurSelected.setText("<html><body><font color='#FF6666'><b>" + courier.getName() + "</b> <i>" + courier.getFirstname()+ "</i></font> authentifié(e) par <font color='#FF6666' >" + courier.getMail() + "</font></body></html>");
+            jLabelUtilisateurSelected.setText("<html><body><font color='#FF6666'><b>" + courier.getName() + "</b> <i>" + courier.getFirstname() + "</i></font> authentifié(e) par <font color='#FF6666' >" + courier.getMail() + "</font></body></html>");
         } catch (Exception ex) {
             Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -886,23 +898,23 @@ public class TableauDeBord extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
-                }
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un utilisateur...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
-        
+
         /*if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
-            if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
-                EditBiblio editBiblio = new EditBiblio(this, true);
-                editBiblio.setBibliothecaireSelected(this.selectedB);
-                editBiblio.setModelBiblio(bibliothecaires);
-                editBiblio.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à modifier ce bibliothécaire !", "Accès interdit", JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
-        }*/
+         if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
+         EditBiblio editBiblio = new EditBiblio(this, true);
+         editBiblio.setBibliothecaireSelected(this.selectedB);
+         editBiblio.setModelBiblio(bibliothecaires);
+         editBiblio.setVisible(true);
+         } else {
+         JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à modifier ce bibliothécaire !", "Accès interdit", JOptionPane.WARNING_MESSAGE);
+         }
+         } else {
+         JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
+         }*/
     }//GEN-LAST:event_jButtonEditCourierActionPerformed
 
     private void jButtonAddCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourierActionPerformed
@@ -928,18 +940,18 @@ public class TableauDeBord extends javax.swing.JFrame {
         new AddContainer(this);
         List<Containers> list = new ArrayList<Containers>();
         try {
-            list   = containerMetierService.getAll();
+            list = containerMetierService.getAll();
         } catch (Exception ex) {
             Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.fireJTableContainer(list,null);
+        this.fireJTableContainer(list, null);
 
     }//GEN-LAST:event_jButtonAddContainerActionPerformed
 
     private void jButtonEditContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContainActionPerformed
         int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
         try {
-            new UpdateContainer(this,idContainer);
+            new UpdateContainer(this, idContainer);
         } catch (Exception ex) {
             Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1077,7 +1089,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     }
 
     private void createAllJTable() throws Exception {
-        
+
         if (utilisateurs == null) {
             utilisateurs = new JTableModelUtilisateur();
         }
@@ -1087,104 +1099,102 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         Selected utilisateur = new Selected(jTableCourier, jLabelUtilisateurSelected);
         utilisateur.start();
-        
+
         if (containerModel == null) {
             containerModel = new JTableModelContainer();
         }
         jTableContainer.setModel(containerModel);
         TableRowSorter<TableModel> sorterContainer = new TableRowSorter<>(jTableContainer.getModel());
         jTableContainer.setRowSorter(sorterContainer);
-        
-        
+
         Selected container = new Selected(jTableContainer, jLabelContainerSelected);
         container.start();
     }
 
     /*private void fireJTableBooks(List<Livre> list, Livre livre) {
-        int page = Integer.parseInt(jLabelNumPageLivre.getText());
-        int perpage = Integer.parseInt((String) jComboBoxNbPerPageLivre.getSelectedItem());
-        int debut = (perpage * page) - perpage;
-        if (list != null) {
-            books = new JTableModelBooks(list, perpage, page);
-            jTableLivres.setModel(books);
-            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
-            jTableLivres.setRowSorter(sorter);
-        } else if (livre != null) {
-            books = new JTableModelBooks(livre, perpage, page);
-            jTableLivres.setModel(books);
-            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
-            jTableLivres.setRowSorter(sorter);
-        } else {
-            try {
-                books = new JTableModelBooks(debut, perpage, page);
-                jTableLivres.setModel(books);
-                TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
-                jTableLivres.setRowSorter(sorter);
-            } catch (Exception ex) {
-                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-            }
-        }
-    }
+     int page = Integer.parseInt(jLabelNumPageLivre.getText());
+     int perpage = Integer.parseInt((String) jComboBoxNbPerPageLivre.getSelectedItem());
+     int debut = (perpage * page) - perpage;
+     if (list != null) {
+     books = new JTableModelBooks(list, perpage, page);
+     jTableLivres.setModel(books);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
+     jTableLivres.setRowSorter(sorter);
+     } else if (livre != null) {
+     books = new JTableModelBooks(livre, perpage, page);
+     jTableLivres.setModel(books);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
+     jTableLivres.setRowSorter(sorter);
+     } else {
+     try {
+     books = new JTableModelBooks(debut, perpage, page);
+     jTableLivres.setModel(books);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
+     jTableLivres.setRowSorter(sorter);
+     } catch (Exception ex) {
+     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+     jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+     }
+     }
+     }
 
-    private void fireJTableAdherents(List<Adherent> list, Adherent adherent) {
-        int page = Integer.parseInt(jLabelNumPageAdherent.getText());
-        int perpage = Integer.parseInt((String) jComboBoxNbPerPageAdherent.getSelectedItem());
-        int debut = (perpage * page) - perpage;
-        if (list != null) {
-            adherents = new JTableModelAdherent(list, perpage, page);
-            jTableAdherent.setModel(adherents);
-            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
-            jTableAdherent.setRowSorter(sorter);
-        } else if (adherent != null) {
-            adherents = new JTableModelAdherent(adherent, perpage, page);
-            jTableAdherent.setModel(adherents);
-            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
-            jTableAdherent.setRowSorter(sorter);
-        } else {
-            try {
-                adherents = new JTableModelAdherent(debut, perpage, page);
-                jTableAdherent.setModel(adherents);
-                TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
-                jTableAdherent.setRowSorter(sorter);
-            } catch (Exception ex) {
-                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                jLabelNbFoundAdherent.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-            }
-        }
-    }
+     private void fireJTableAdherents(List<Adherent> list, Adherent adherent) {
+     int page = Integer.parseInt(jLabelNumPageAdherent.getText());
+     int perpage = Integer.parseInt((String) jComboBoxNbPerPageAdherent.getSelectedItem());
+     int debut = (perpage * page) - perpage;
+     if (list != null) {
+     adherents = new JTableModelAdherent(list, perpage, page);
+     jTableAdherent.setModel(adherents);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
+     jTableAdherent.setRowSorter(sorter);
+     } else if (adherent != null) {
+     adherents = new JTableModelAdherent(adherent, perpage, page);
+     jTableAdherent.setModel(adherents);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
+     jTableAdherent.setRowSorter(sorter);
+     } else {
+     try {
+     adherents = new JTableModelAdherent(debut, perpage, page);
+     jTableAdherent.setModel(adherents);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
+     jTableAdherent.setRowSorter(sorter);
+     } catch (Exception ex) {
+     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+     jLabelNbFoundAdherent.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+     }
+     }
+     }
 
-    private void fireJTableEmprunt(List<Emprunt> list, Emprunt emprunt) {
-        int page = Integer.parseInt(jLabelNumPageEmprunt.getText());
-        int perpage = Integer.parseInt((String) jComboBoxNbPerPageEmprunt.getSelectedItem());
-        int debut = (perpage * page) - perpage;
-        if (list != null) {
-            emprunts = new JTableModelEmprunt(list, perpage, page);
-            jTableEmprunt.setModel(emprunts);
-            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
-            jTableEmprunt.setRowSorter(sorter);
-        } else if (emprunt != null) {
-            emprunts = new JTableModelEmprunt(emprunt, perpage, page);
-            jTableEmprunt.setModel(emprunts);
-            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
-            jTableEmprunt.setRowSorter(sorter);
-        } else {
-            try {
-                emprunts = new JTableModelEmprunt(debut, perpage, page);
-                jTableEmprunt.setModel(emprunts);
-                TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
-                jTableEmprunt.setRowSorter(sorter);
-            } catch (Exception ex) {
-                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                jLabelNbFoundEmprunt.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-            }
-        }
-    }*/
-
+     private void fireJTableEmprunt(List<Emprunt> list, Emprunt emprunt) {
+     int page = Integer.parseInt(jLabelNumPageEmprunt.getText());
+     int perpage = Integer.parseInt((String) jComboBoxNbPerPageEmprunt.getSelectedItem());
+     int debut = (perpage * page) - perpage;
+     if (list != null) {
+     emprunts = new JTableModelEmprunt(list, perpage, page);
+     jTableEmprunt.setModel(emprunts);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
+     jTableEmprunt.setRowSorter(sorter);
+     } else if (emprunt != null) {
+     emprunts = new JTableModelEmprunt(emprunt, perpage, page);
+     jTableEmprunt.setModel(emprunts);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
+     jTableEmprunt.setRowSorter(sorter);
+     } else {
+     try {
+     emprunts = new JTableModelEmprunt(debut, perpage, page);
+     jTableEmprunt.setModel(emprunts);
+     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
+     jTableEmprunt.setRowSorter(sorter);
+     } catch (Exception ex) {
+     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+     jLabelNbFoundEmprunt.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+     }
+     }
+     }*/
     private void fireJTableCourier(List<Courier> list, Courier courier) {
         /*int page = Integer.parseInt(jLabelNumPageBiblio.getText());
-        int perpage = Integer.parseInt((String) jComboBoxNbPerPageBiblio.getSelectedItem());
-        int debut = (perpage * page) - perpage;*/
+         int perpage = Integer.parseInt((String) jComboBoxNbPerPageBiblio.getSelectedItem());
+         int debut = (perpage * page) - perpage;*/
         if (list != null) {
             utilisateurs = new JTableModelUtilisateur(list);
             jTableCourier.setModel(utilisateurs);
@@ -1207,9 +1217,9 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void fireJTableContainer(List<Containers> list, Containers containers) {
-       
+
         if (list != null) {
             containerModel = new JTableModelContainer(list);
             jTableContainer.setModel(containerModel);
@@ -1232,275 +1242,274 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         }
     }
-    
 
     private void searchByMotsClesLivre(String toSearch) {
         /*try {
-            StringTokenizer st = new StringTokenizer(toSearch, " ");
-            System.out.println(st.countTokens() + "");
-            if (st.countTokens() != 0) {
-                List<String> list = new ArrayList<>();
-                for (int i = 0; i < st.countTokens() + 1; i++) {
-                    list.add(st.nextToken());
-                }
-                List<Livre> byMotsClefs = livreMetierService.getByMotsClefs(list);
-                if (byMotsClefs.size() > 1) {
-                    jLabelNbFoundLivre.setText(byMotsClefs.size() + " livres ont été trouvés");
-                    this.fireJTableBooks(byMotsClefs, null);
-                } else {
-                    if (byMotsClefs.size() == 1) {
-                        jLabelNbFoundLivre.setText(byMotsClefs.size() + " livre a été trouvé");
-                        this.fireJTableBooks(byMotsClefs, null);
-                    } else {
-                        jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-                        this.fireJTableBooks(null, null);
-                    }
-                }
-            } else {
-                jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-                this.fireJTableBooks(null, null);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-            jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-        }*/
+         StringTokenizer st = new StringTokenizer(toSearch, " ");
+         System.out.println(st.countTokens() + "");
+         if (st.countTokens() != 0) {
+         List<String> list = new ArrayList<>();
+         for (int i = 0; i < st.countTokens() + 1; i++) {
+         list.add(st.nextToken());
+         }
+         List<Livre> byMotsClefs = livreMetierService.getByMotsClefs(list);
+         if (byMotsClefs.size() > 1) {
+         jLabelNbFoundLivre.setText(byMotsClefs.size() + " livres ont été trouvés");
+         this.fireJTableBooks(byMotsClefs, null);
+         } else {
+         if (byMotsClefs.size() == 1) {
+         jLabelNbFoundLivre.setText(byMotsClefs.size() + " livre a été trouvé");
+         this.fireJTableBooks(byMotsClefs, null);
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
+         this.fireJTableBooks(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
+         this.fireJTableBooks(null, null);
+         }
+         } catch (Exception ex) {
+         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+         jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+         }*/
     }
 
     private void searchByIdLivre(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            try {
-                int id = Integer.parseInt(toSearch);
-                Livre byId = livreMetierService.getById(id);
-                if (byId != null) {
-                    jLabelNbFoundLivre.setText("1 livre a été trouvé");
-                    this.fireJTableBooks(null, byId);
-                } else {
-                    jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-                    this.fireJTableBooks(null, null);
-                }
-            } catch (NumberFormatException nfe) {
-                jLabelNbFoundLivre.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
-            }
-        } else {
-            jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-            this.fireJTableBooks(null, null);
-        }*/
+         try {
+         int id = Integer.parseInt(toSearch);
+         Livre byId = livreMetierService.getById(id);
+         if (byId != null) {
+         jLabelNbFoundLivre.setText("1 livre a été trouvé");
+         this.fireJTableBooks(null, byId);
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
+         this.fireJTableBooks(null, null);
+         }
+         } catch (NumberFormatException nfe) {
+         jLabelNbFoundLivre.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
+         }
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
+         this.fireJTableBooks(null, null);
+         }*/
     }
 
     private void searchByAutorLivre(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            List<Livre> byAuteur = livreMetierService.getByAuteur(toSearch);
-            if (byAuteur.size() > 1) {
-                jLabelNbFoundLivre.setText(byAuteur.size() + " livres ont été trouvés");
-                this.fireJTableBooks(byAuteur, null);
-            } else {
-                if (byAuteur.size() == 1) {
-                    jLabelNbFoundLivre.setText(byAuteur.size() + " livre a été trouvé");
-                    this.fireJTableBooks(byAuteur, null);
-                } else {
-                    jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-                    this.fireJTableBooks(null, null);
-                }
-            }
-        } else {
-            jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-            this.fireJTableBooks(null, null);
-        }*/
+         List<Livre> byAuteur = livreMetierService.getByAuteur(toSearch);
+         if (byAuteur.size() > 1) {
+         jLabelNbFoundLivre.setText(byAuteur.size() + " livres ont été trouvés");
+         this.fireJTableBooks(byAuteur, null);
+         } else {
+         if (byAuteur.size() == 1) {
+         jLabelNbFoundLivre.setText(byAuteur.size() + " livre a été trouvé");
+         this.fireJTableBooks(byAuteur, null);
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
+         this.fireJTableBooks(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
+         this.fireJTableBooks(null, null);
+         }*/
     }
 
     private void searchByTitleLivre(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            List<Livre> byTitre = livreMetierService.getByTitre(toSearch);
-            if (byTitre.size() > 1) {
-                jLabelNbFoundLivre.setText(byTitre.size() + " livres ont été trouvés");
-                this.fireJTableBooks(byTitre, null);
-            } else {
-                if (byTitre.size() == 1) {
-                    jLabelNbFoundLivre.setText(byTitre.size() + " livre a été trouvé");
-                    this.fireJTableBooks(byTitre, null);
-                } else {
-                    jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-                    this.fireJTableBooks(null, null);
-                }
-            }
-        } else {
-            jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-            this.fireJTableBooks(null, null);
-        }*/
+         List<Livre> byTitre = livreMetierService.getByTitre(toSearch);
+         if (byTitre.size() > 1) {
+         jLabelNbFoundLivre.setText(byTitre.size() + " livres ont été trouvés");
+         this.fireJTableBooks(byTitre, null);
+         } else {
+         if (byTitre.size() == 1) {
+         jLabelNbFoundLivre.setText(byTitre.size() + " livre a été trouvé");
+         this.fireJTableBooks(byTitre, null);
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
+         this.fireJTableBooks(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
+         this.fireJTableBooks(null, null);
+         }*/
     }
 
     private void searchByIdAdherent(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            try {
-                int id = Integer.parseInt(toSearch);
-                Adherent byId = adherentMetierService.getById(id);
-                if (byId != null) {
-                    jLabelNbFoundAdherent.setText("1 adhérent a été trouvé");
-                    this.fireJTableAdherents(null, byId);
-                } else {
-                    jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
-                    this.fireJTableAdherents(null, null);
-                }
-            } catch (NumberFormatException nfe) {
-                jLabelNbFoundAdherent.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
-            }
-        } else {
-            jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
-            this.fireJTableAdherents(null, null);
-        }*/
+         try {
+         int id = Integer.parseInt(toSearch);
+         Adherent byId = adherentMetierService.getById(id);
+         if (byId != null) {
+         jLabelNbFoundAdherent.setText("1 adhérent a été trouvé");
+         this.fireJTableAdherents(null, byId);
+         } else {
+         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
+         this.fireJTableAdherents(null, null);
+         }
+         } catch (NumberFormatException nfe) {
+         jLabelNbFoundAdherent.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
+         }
+         } else {
+         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
+         this.fireJTableAdherents(null, null);
+         }*/
     }
 
     private void searchByNomAdherent(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            List<Adherent> byNom = adherentMetierService.getByNom(toSearch);
-            if (byNom.size() > 1) {
-                jLabelNbFoundAdherent.setText(byNom.size() + " adhérents ont été trouvés");
-                this.fireJTableAdherents(byNom, null);
-            } else {
-                if (byNom.size() == 1) {
-                    jLabelNbFoundAdherent.setText(byNom.size() + " adhérent a été trouvé");
-                    this.fireJTableAdherents(byNom, null);
-                } else {
-                    jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
-                    this.fireJTableAdherents(null, null);
-                }
-            }
-        } else {
-            jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
-            this.fireJTableAdherents(null, null);
-        }*/
+         List<Adherent> byNom = adherentMetierService.getByNom(toSearch);
+         if (byNom.size() > 1) {
+         jLabelNbFoundAdherent.setText(byNom.size() + " adhérents ont été trouvés");
+         this.fireJTableAdherents(byNom, null);
+         } else {
+         if (byNom.size() == 1) {
+         jLabelNbFoundAdherent.setText(byNom.size() + " adhérent a été trouvé");
+         this.fireJTableAdherents(byNom, null);
+         } else {
+         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
+         this.fireJTableAdherents(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
+         this.fireJTableAdherents(null, null);
+         }*/
     }
 
     private void searchByPrenomAdherent(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            List<Adherent> byPrenom = adherentMetierService.getByPrenom(toSearch);
-            if (byPrenom.size() > 1) {
-                jLabelNbFoundAdherent.setText(byPrenom.size() + " adhérents ont été trouvés");
-                this.fireJTableAdherents(byPrenom, null);
-            } else {
-                if (byPrenom.size() == 1) {
-                    jLabelNbFoundAdherent.setText(byPrenom.size() + " adhérent a été trouvé");
-                    this.fireJTableAdherents(byPrenom, null);
-                } else {
-                    jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
-                    this.fireJTableAdherents(null, null);
-                }
-            }
-        } else {
-            jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
-            this.fireJTableAdherents(null, null);
-        }*/
+         List<Adherent> byPrenom = adherentMetierService.getByPrenom(toSearch);
+         if (byPrenom.size() > 1) {
+         jLabelNbFoundAdherent.setText(byPrenom.size() + " adhérents ont été trouvés");
+         this.fireJTableAdherents(byPrenom, null);
+         } else {
+         if (byPrenom.size() == 1) {
+         jLabelNbFoundAdherent.setText(byPrenom.size() + " adhérent a été trouvé");
+         this.fireJTableAdherents(byPrenom, null);
+         } else {
+         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
+         this.fireJTableAdherents(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
+         this.fireJTableAdherents(null, null);
+         }*/
     }
 
     private void searchByIdEmprunt(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            try {
-                int id = Integer.parseInt(toSearch);
-                Emprunt byId = empruntMetierService.getById(id);
-                if (byId != null) {
-                    jLabelNbFoundEmprunt.setText("1 emprunt a été trouvé");
-                    this.fireJTableEmprunt(null, byId);
-                } else {
-                    jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-                    this.fireJTableEmprunt(null, null);
-                }
-            } catch (NumberFormatException nfe) {
-                jLabelNbFoundEmprunt.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
-            }
-        } else {
-            jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-            this.fireJTableEmprunt(null, null);
-        }*/
+         try {
+         int id = Integer.parseInt(toSearch);
+         Emprunt byId = empruntMetierService.getById(id);
+         if (byId != null) {
+         jLabelNbFoundEmprunt.setText("1 emprunt a été trouvé");
+         this.fireJTableEmprunt(null, byId);
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
+         this.fireJTableEmprunt(null, null);
+         }
+         } catch (NumberFormatException nfe) {
+         jLabelNbFoundEmprunt.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
+         }
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
+         this.fireJTableEmprunt(null, null);
+         }*/
     }
 
     private void searchByAdherentEmprunt(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            List<Adherent> byNom = adherentMetierService.getByNom(toSearch);
-            List<Emprunt> byAdherent = new ArrayList<>();
-            for (int i = 0; i < byNom.size(); i++) {
-                byAdherent.addAll(empruntMetierService.getByAdherent(byNom.get(i)));
-            }
-            if (byAdherent.size() > 1) {
-                jLabelNbFoundEmprunt.setText(byAdherent.size() + " emprunts ont été trouvés");
-                this.fireJTableEmprunt(byAdherent, null);
-            } else {
-                if (byAdherent.size() == 1) {
-                    jLabelNbFoundEmprunt.setText(byAdherent.size() + " emprunt a été trouvé");
-                    this.fireJTableEmprunt(byAdherent, null);
-                } else {
-                    jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-                    this.fireJTableEmprunt(null, null);
-                }
-            }
-        } else {
-            jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-            this.fireJTableEmprunt(null, null);
-        }*/
+         List<Adherent> byNom = adherentMetierService.getByNom(toSearch);
+         List<Emprunt> byAdherent = new ArrayList<>();
+         for (int i = 0; i < byNom.size(); i++) {
+         byAdherent.addAll(empruntMetierService.getByAdherent(byNom.get(i)));
+         }
+         if (byAdherent.size() > 1) {
+         jLabelNbFoundEmprunt.setText(byAdherent.size() + " emprunts ont été trouvés");
+         this.fireJTableEmprunt(byAdherent, null);
+         } else {
+         if (byAdherent.size() == 1) {
+         jLabelNbFoundEmprunt.setText(byAdherent.size() + " emprunt a été trouvé");
+         this.fireJTableEmprunt(byAdherent, null);
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
+         this.fireJTableEmprunt(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
+         this.fireJTableEmprunt(null, null);
+         }*/
     }
 
     private void searchByLivreEmprunt(String toSearch) throws Exception {
         /*try {
-            StringTokenizer st = new StringTokenizer(toSearch, " ");
-            if (st.countTokens() != 0) {
-                List<String> list = new ArrayList<>();
-                for (int i = 0; i < st.countTokens() + 1; i++) {
-                    list.add(st.nextToken());
-                }
-                List<Livre> byMotsClefs = livreMetierService.getByMotsClefs(list);
-                List<Emprunt> byLivre = new ArrayList<>();
-                for (int i = 0; i < byMotsClefs.size(); i++) {
-                    Emprunt byLivre1 = empruntMetierService.getByLivre(byMotsClefs.get(i));
-                    if (byLivre1 != null) {
-                        byLivre.add(byLivre1);
-                    }
-                }
-                if (byLivre.size() > 1) {
-                    jLabelNbFoundEmprunt.setText(byLivre.size() + " emprunts ont été trouvés");
-                    this.fireJTableEmprunt(byLivre, null);
-                } else {
-                    if (byLivre.size() == 1) {
-                        jLabelNbFoundEmprunt.setText(byLivre.size() + " emprunt a été trouvé");
-                        this.fireJTableEmprunt(byLivre, null);
-                    } else {
-                        jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-                        this.fireJTableEmprunt(null, null);
-                    }
-                }
-            } else {
-                jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-                this.fireJTableEmprunt(null, null);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-            jLabelNbFoundEmprunt.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-        }*/
+         StringTokenizer st = new StringTokenizer(toSearch, " ");
+         if (st.countTokens() != 0) {
+         List<String> list = new ArrayList<>();
+         for (int i = 0; i < st.countTokens() + 1; i++) {
+         list.add(st.nextToken());
+         }
+         List<Livre> byMotsClefs = livreMetierService.getByMotsClefs(list);
+         List<Emprunt> byLivre = new ArrayList<>();
+         for (int i = 0; i < byMotsClefs.size(); i++) {
+         Emprunt byLivre1 = empruntMetierService.getByLivre(byMotsClefs.get(i));
+         if (byLivre1 != null) {
+         byLivre.add(byLivre1);
+         }
+         }
+         if (byLivre.size() > 1) {
+         jLabelNbFoundEmprunt.setText(byLivre.size() + " emprunts ont été trouvés");
+         this.fireJTableEmprunt(byLivre, null);
+         } else {
+         if (byLivre.size() == 1) {
+         jLabelNbFoundEmprunt.setText(byLivre.size() + " emprunt a été trouvé");
+         this.fireJTableEmprunt(byLivre, null);
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
+         this.fireJTableEmprunt(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
+         this.fireJTableEmprunt(null, null);
+         }
+         } catch (Exception ex) {
+         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+         jLabelNbFoundEmprunt.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+         }*/
     }
 
     private void searchByDateEmprunt(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            try {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                Date parse = sdf.parse(toSearch);
-                List<Emprunt> byDate = empruntMetierService.getByDate(parse);
-                if (byDate.size() > 1) {
-                    jLabelNbFoundEmprunt.setText(byDate.size() + " emprunts ont été trouvés");
-                    this.fireJTableEmprunt(byDate, null);
-                } else {
-                    if (byDate.size() == 1) {
-                        jLabelNbFoundEmprunt.setText(byDate.size() + " emprunt a été trouvé");
-                        this.fireJTableEmprunt(byDate, null);
-                    } else {
-                        jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-                        this.fireJTableEmprunt(null, null);
-                    }
-                }
-            } catch (ParseException e) {
-                jLabelNbFoundEmprunt.setText("<html><body><font color='red'>Cette date n'est pas valide</font></body></html>");
-            }
-        } else {
-            jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-            this.fireJTableEmprunt(null, null);
-        }*/
+         try {
+         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+         Date parse = sdf.parse(toSearch);
+         List<Emprunt> byDate = empruntMetierService.getByDate(parse);
+         if (byDate.size() > 1) {
+         jLabelNbFoundEmprunt.setText(byDate.size() + " emprunts ont été trouvés");
+         this.fireJTableEmprunt(byDate, null);
+         } else {
+         if (byDate.size() == 1) {
+         jLabelNbFoundEmprunt.setText(byDate.size() + " emprunt a été trouvé");
+         this.fireJTableEmprunt(byDate, null);
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
+         this.fireJTableEmprunt(null, null);
+         }
+         }
+         } catch (ParseException e) {
+         jLabelNbFoundEmprunt.setText("<html><body><font color='red'>Cette date n'est pas valide</font></body></html>");
+         }
+         } else {
+         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
+         this.fireJTableEmprunt(null, null);
+         }*/
     }
 
     private void searchByIdCourier(String toSearch) throws Exception {
@@ -1526,60 +1535,60 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void searchByNomBiblio(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            List<Bibliothecaire> byNom = adherentMetierService.getBiblioByNom(toSearch);
-            if (byNom.size() > 1) {
-                jLabelNbFoundBiblio.setText(byNom.size() + " bibliothécaires ont été trouvés");
-                this.fireJTableCourier(byNom, null);
-            } else {
-                if (byNom.size() == 1) {
-                    jLabelNbFoundBiblio.setText(byNom.size() + " bibliothécaire a été trouvé");
-                    this.fireJTableCourier(byNom, null);
-                } else {
-                    jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
-                    this.fireJTableCourier(null, null);
-                }
-            }
-        } else {
-            jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
-            this.fireJTableCourier(null, null);
-        }*/
+         List<Bibliothecaire> byNom = adherentMetierService.getBiblioByNom(toSearch);
+         if (byNom.size() > 1) {
+         jLabelNbFoundBiblio.setText(byNom.size() + " bibliothécaires ont été trouvés");
+         this.fireJTableCourier(byNom, null);
+         } else {
+         if (byNom.size() == 1) {
+         jLabelNbFoundBiblio.setText(byNom.size() + " bibliothécaire a été trouvé");
+         this.fireJTableCourier(byNom, null);
+         } else {
+         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
+         this.fireJTableCourier(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
+         this.fireJTableCourier(null, null);
+         }*/
     }
 
     private void searchByPrenomBiblio(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            List<Bibliothecaire> byPrenom = adherentMetierService.getBiblioByPrenom(toSearch);
-            if (byPrenom.size() > 1) {
-                jLabelNbFoundBiblio.setText(byPrenom.size() + " bibliothécaires ont été trouvés");
-                this.fireJTableCourier(byPrenom, null);
-            } else {
-                if (byPrenom.size() == 1) {
-                    jLabelNbFoundBiblio.setText(byPrenom.size() + " bibliothécaire a été trouvé");
-                    this.fireJTableCourier(byPrenom, null);
-                } else {
-                    jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
-                    this.fireJTableCourier(null, null);
-                }
-            }
-        } else {
-            jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
-            this.fireJTableCourier(null, null);
-        }*/
+         List<Bibliothecaire> byPrenom = adherentMetierService.getBiblioByPrenom(toSearch);
+         if (byPrenom.size() > 1) {
+         jLabelNbFoundBiblio.setText(byPrenom.size() + " bibliothécaires ont été trouvés");
+         this.fireJTableCourier(byPrenom, null);
+         } else {
+         if (byPrenom.size() == 1) {
+         jLabelNbFoundBiblio.setText(byPrenom.size() + " bibliothécaire a été trouvé");
+         this.fireJTableCourier(byPrenom, null);
+         } else {
+         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
+         this.fireJTableCourier(null, null);
+         }
+         }
+         } else {
+         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
+         this.fireJTableCourier(null, null);
+         }*/
     }
 
     private void searchByLoginBiblio(String toSearch) throws Exception {
         /*if (!toSearch.equals("")) {
-            Bibliothecaire byLogin = adherentMetierService.getByLogin(toSearch);
-            if (byLogin != null) {
-                jLabelNbFoundBiblio.setText("1 bibliothécaire a été trouvé");
-                this.fireJTableCourier(null, byLogin);
-            } else {
-                jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
-                this.fireJTableCourier(null, null);
-            }
-        } else {
-            jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
-            this.fireJTableCourier(null, null);
-        }*/
+         Bibliothecaire byLogin = adherentMetierService.getByLogin(toSearch);
+         if (byLogin != null) {
+         jLabelNbFoundBiblio.setText("1 bibliothécaire a été trouvé");
+         this.fireJTableCourier(null, byLogin);
+         } else {
+         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
+         this.fireJTableCourier(null, null);
+         }
+         } else {
+         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
+         this.fireJTableCourier(null, null);
+         }*/
     }
 
     public JTableModelUtilisateur getJTableModelUtilisateur() {
@@ -1590,23 +1599,22 @@ public class TableauDeBord extends javax.swing.JFrame {
         return jLabelUtilisateurSelected;
     }
 
-
     public void setCourierSelected(Courier courier) {
         this.selectedC = courier;
     }
 
     public void setStatut(String statut, String label) {
         /*if (label.equals("livre")) {
-            jLabelNbFoundLivre.setText(statut);
-        }
-        if (label.equals("adherent")) {
-            jLabelNbFoundAdherent.setText(statut);
-        }
-        if (label.equals("emprunt")) {
-            jLabelNbFoundEmprunt.setText(statut);
-        }
-        if(label.equals("admin")) {
-            jLabelNbFoundBiblio.setText(statut);
-        }*/
+         jLabelNbFoundLivre.setText(statut);
+         }
+         if (label.equals("adherent")) {
+         jLabelNbFoundAdherent.setText(statut);
+         }
+         if (label.equals("emprunt")) {
+         jLabelNbFoundEmprunt.setText(statut);
+         }
+         if(label.equals("admin")) {
+         jLabelNbFoundBiblio.setText(statut);
+         }*/
     }
 }

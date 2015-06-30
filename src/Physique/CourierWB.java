@@ -68,7 +68,7 @@ public class CourierWB implements CourierService{
     public Courier login(String mail, String password) throws Exception {
        wb = new WebService();
       JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/courier.php?tag=login&mail="+mail+"&password="+password));
-      System.out.println(jsonObject.getInt("error"));
+     
       if(jsonObject.getInt("error") != 0){
             throw new Exception("Mot de passe ou Adresse mail incorrect");
         } 

@@ -22,6 +22,8 @@ private CourierService courierMetierService = MetierServiceFactory.getCourierSer
     /**
      * Creates new form LoginUser
      */
+private TableauDeBord tb = null;
+
     public LoginUser() {
         initComponents();
         this.setVisible(true);
@@ -158,15 +160,14 @@ private CourierService courierMetierService = MetierServiceFactory.getCourierSer
        Courier courier = null;
     try {
       courier=  courierMetierService.login(tbUser.getText(), tbPass.getText());
-   System.out.println(   courier.getMail());
-   System.out.println(   courier.getPassword());
     } catch (Exception ex) {
        JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
        // Logger.getLogger(LoginUser.class.getName()).log(Level.SEVERE, null, ex);
     }
     if (courier != null)
-         new TableauDeBord();
-
+       tb = new TableauDeBord();
+       tb.setCourierConnected(courier);
+       this.dispose();
     }//GEN-LAST:event_btnConnexionActionPerformed
 
     /**
