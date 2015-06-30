@@ -65,7 +65,11 @@ public class JTableModelUtilisateur extends AbstractTableModel {
                 return null;
         }
     }
-    
+
+    public List<Courier> getCouriers() {
+        return couriers;
+    }
+
     @Override
     public String getColumnName(int columnIndex) {
         return entetes[columnIndex];

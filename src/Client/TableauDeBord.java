@@ -47,6 +47,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -865,21 +867,21 @@ public class TableauDeBord extends javax.swing.JFrame {
                 }
             } else if (jRadioButtonNomCourier.isSelected()) {
                 try {
-                    this.searchByNomBiblio(toSearch);
+                    this.searchByNomUtilisateur(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                     jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
             } else if (jRadioButtonPrenomCourier.isSelected()) {
                 try {
-                    this.searchByPrenomBiblio(toSearch);
+                    this.searchByPrenomUtilisateur(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                     jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
                 }
             } else if (jRadioButtonMailCourier.isSelected()) {
                 try {
-                    this.searchByLoginBiblio(toSearch);
+                    this.searchByMailUtilisateur(toSearch);
                 } catch (Exception ex) {
                     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                     jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
@@ -1534,62 +1536,85 @@ public class TableauDeBord extends javax.swing.JFrame {
         }
     }
 
-    private void searchByNomBiblio(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         List<Bibliothecaire> byNom = adherentMetierService.getBiblioByNom(toSearch);
-         if (byNom.size() > 1) {
-         jLabelNbFoundBiblio.setText(byNom.size() + " bibliothécaires ont été trouvés");
-         this.fireJTableCourier(byNom, null);
-         } else {
-         if (byNom.size() == 1) {
-         jLabelNbFoundBiblio.setText(byNom.size() + " bibliothécaire a été trouvé");
-         this.fireJTableCourier(byNom, null);
-         } else {
-         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
-         this.fireJTableCourier(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
-         this.fireJTableCourier(null, null);
-         }*/
+    private void searchByNomUtilisateur(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            List<Courier> newCourier = new ArrayList<Courier>();
+            List<Courier> couriers = utilisateurs.getCouriers();
+            for (Courier courier : couriers) {
+                if(courier.getName().contains(toSearch)){
+                    newCourier.add(courier);
+                }
+            }
+            if (newCourier.size() > 1) {
+                jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaires ont été trouvés");
+                this.fireJTableCourier(newCourier, null);
+            } else {
+                if (newCourier.size() == 1) {
+                    jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaire a été trouvé");
+                    this.fireJTableCourier(newCourier, null);
+                } else {
+                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
+                    this.fireJTableCourier(null, null);
+            }
+            }
+        } else {
+            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            this.fireJTableCourier(null, null);
+        }
     }
 
-    private void searchByPrenomBiblio(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         List<Bibliothecaire> byPrenom = adherentMetierService.getBiblioByPrenom(toSearch);
-         if (byPrenom.size() > 1) {
-         jLabelNbFoundBiblio.setText(byPrenom.size() + " bibliothécaires ont été trouvés");
-         this.fireJTableCourier(byPrenom, null);
-         } else {
-         if (byPrenom.size() == 1) {
-         jLabelNbFoundBiblio.setText(byPrenom.size() + " bibliothécaire a été trouvé");
-         this.fireJTableCourier(byPrenom, null);
-         } else {
-         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
-         this.fireJTableCourier(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
-         this.fireJTableCourier(null, null);
-         }*/
+    private void searchByPrenomUtilisateur(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            List<Courier> newCourier = new ArrayList<Courier>();
+            List<Courier> couriers = utilisateurs.getCouriers();
+            for (Courier courier : couriers) {
+                if(courier.getFirstname().contains(toSearch)){
+                    newCourier.add(courier);
+                }
+            }
+            if (newCourier.size() > 1) {
+                jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaires ont été trouvés");
+                this.fireJTableCourier(newCourier, null);
+            } else {
+                if (newCourier.size() == 1) {
+                    jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaire a été trouvé");
+                    this.fireJTableCourier(newCourier, null);
+                } else {
+                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
+                    this.fireJTableCourier(null, null);
+            }
+            }
+        } else {
+            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            this.fireJTableCourier(null, null);
+        }
     }
 
-    private void searchByLoginBiblio(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         Bibliothecaire byLogin = adherentMetierService.getByLogin(toSearch);
-         if (byLogin != null) {
-         jLabelNbFoundBiblio.setText("1 bibliothécaire a été trouvé");
-         this.fireJTableCourier(null, byLogin);
-         } else {
-         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été trouvé");
-         this.fireJTableCourier(null, null);
-         }
-         } else {
-         jLabelNbFoundBiblio.setText("Aucun bibliothécaire n'a été cherché");
-         this.fireJTableCourier(null, null);
-         }*/
+    private void searchByMailUtilisateur(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            List<Courier> newCourier = new ArrayList<Courier>();
+            List<Courier> couriers = utilisateurs.getCouriers();
+            for (Courier courier : couriers) {
+                if(courier.getMail().contains(toSearch)){
+                    newCourier.add(courier);
+                }
+            }
+            if (newCourier.size() > 1) {
+                jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaires ont été trouvés");
+                this.fireJTableCourier(newCourier, null);
+            } else {
+                if (newCourier.size() == 1) {
+                    jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaire a été trouvé");
+                    this.fireJTableCourier(newCourier, null);
+                } else {
+                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
+                    this.fireJTableCourier(null, null);
+            }
+            }
+        } else {
+            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            this.fireJTableCourier(null, null);
+        }
     }
 
     public JTableModelUtilisateur getJTableModelUtilisateur() {
