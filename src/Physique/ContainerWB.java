@@ -41,6 +41,11 @@ public class ContainerWB implements ContainerService{
             Containers container = new Containers();
             JSONObject tempCont = containers.getJSONObject(i);          
             container.setId(tempCont.getInt("idContainer"));
+            if (tempCont.getString("address").equals(null)){
+                 container.setAddress("");
+            }else{
+               container.setAddress(tempCont.getString("address"));  
+            }
            // container.setAddress(tempSteed.getString("address"));
             container.setLat(tempCont.getDouble("lat"));
             container.setLng(tempCont.getDouble("lng"));
@@ -57,12 +62,16 @@ public class ContainerWB implements ContainerService{
           
           Containers container = new Containers();        
             container.setId(obj.getJSONObject("container").getInt("idContainer"));
-//            container.setAddress(obj.getJSONObject("container") .getString("address"));
+            if (obj.getJSONObject("container") .getString("address").equals(null)){
+                 container.setAddress("");
+            }else{
+               container.setAddress(obj.getJSONObject("container") .getString("address"));  
+            }
             container.setLat(obj.getJSONObject("container").getDouble("lat"));
             container.setLng(obj.getJSONObject("container").getDouble("lng"));
            container.setName(obj.getJSONObject("container").getString("name"));
             container.setState(obj.getJSONObject("container").getInt("state"));
-//            container.setLastCollect(obj.getJSONObject("container").getString("date"));
+          //  container.setLastCollect(obj.getJSONObject("container").getString("date"));
             container.setIdErrand(obj.getJSONObject("container").getLong("Errand_idErrand"));
         return container;
     

@@ -17,7 +17,7 @@ public interface CourierService {
     public Courier add(Courier courier) throws Exception;
     public Courier update(Courier courier) throws Exception;
     public void delete(int idCourier) throws Exception;
-    
+   
     public Courier login(String mail, String password) throws Exception;
     public Courier getById(int id) throws Exception;
     public Courier getByMail(String mail) throws Exception;

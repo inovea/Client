@@ -17,6 +17,8 @@ public class CourierServiceImpl implements CourierService{
     
     private CourierService courierPhysiqueService = PhysiqueDataFactory.getCourierDataService();
     
+    
+    
     @Override
     public Courier register(String name, String firstname, String mail, String password, int scheduler) throws Exception {
         return add(new Courier(mail, password, name, firstname, scheduler));
@@ -63,9 +65,9 @@ public class CourierServiceImpl implements CourierService{
         if (mail.equals("") || password.equals("")) {
             throw new Exception("Attention un champs n'est pas renseigné");
         }
-        if (!mail.contains("@") || !mail.contains(".")) {
+       /* if (!mail.contains("@") || !mail.contains(".")) {
             throw new Exception("Veuillez saisir une adresse mail valide");
-        }
+        }*/
         return courierPhysiqueService.login(mail, password);
     }
 
@@ -93,5 +95,7 @@ public class CourierServiceImpl implements CourierService{
         //TODO
         return null;
     }
+
+   
 
 }

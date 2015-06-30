@@ -93,6 +93,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         } else {
             jLabelBC.setText("Bibliothécaire connecté : " + bibliothecaireConnecte.getPrenom() + " " + bibliothecaireConnecte.getNom());
         }*/
+        this.setVisible(true);
     }
 
     /**
