@@ -793,18 +793,18 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        /*if (this.bibliothecaireConnecte == null) {
-         JOptionPane.showMessageDialog(this, "Bibliothécaire inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
-         this.dispose();
+        if (this.courierConnected == null) {
+            JOptionPane.showMessageDialog(this, "Bibliothécaire inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
+            this.dispose();
          } else {
-         jLabelBC.setText("Bibliothécaire connecté : " + bibliothecaireConnecte.getPrenom() + " " + bibliothecaireConnecte.getNom());
+            jLabelBC.setText("Bibliothécaire connecté : " + courierConnected.getFirstname()+ " " + courierConnected.getName());
          }
          try {
-         this.createAllJTable();
+            this.createAllJTable();
          } catch (Exception ex) {
-         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-         jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-         }*/
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+            jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+         }
     }//GEN-LAST:event_formWindowOpened
 
     private void jTabbedPanePrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPanePrincipalMouseClicked
@@ -814,7 +814,7 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jButtonDelCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelCourierActionPerformed
         if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
-            if (selectedC != courierConnected) {
+            if (selectedC.getId() != courierConnected.getId()) {
                 int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedC.getName() + "</b> <i>" + this.selectedC.getFirstname() + "</i></font> ?</body></html>\n");
                 if (answer == 0) {
                     try {

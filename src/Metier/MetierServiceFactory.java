@@ -15,7 +15,7 @@ public class MetierServiceFactory {
     
     
     private static CourierService courierService;
-    private static Bibliotheque bibliotheque;
+//    private static Bibliotheque bibliotheque;
     private static ContainerService containerService;
     
     private MetierServiceFactory() {}

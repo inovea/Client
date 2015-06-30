@@ -64,7 +64,7 @@ public class AddUtilisateur extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Ajouter un bibliothécaire");
+        jLabel2.setText("Ajouter un utilisateur");
 
         jLabel1.setText("Nom :");
 
