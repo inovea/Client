@@ -24,14 +24,14 @@ import org.json.JSONObject;
  */
 public class ContainerWB implements ContainerService{
 //Reception du JSONObject
-    public Containers getLatAndLong(JSONObject obj) throws Exception {
+    public Containers getLatAndLong(JSONObject obj,String adress) throws Exception {
         Containers cont = new Containers();
-                System.out.println(obj.getJSONArray("results"));
-       // System.out.println(obj.getJSONArray("results")..get("location"));
-        System.out.println("test");
+                System.out.println("Result: "+obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
+        
       //  System.out.println(obj.getJSONArray("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
-        cont.setLat(obj.getJSONObject("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
-        cont.setLng(obj.getJSONObject("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
+        cont.setAddress(adress);
+        cont.setLat(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
+        cont.setLng(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
         return cont;
     }
      public List<Containers> getAllContainers(JSONObject obj) throws JSONException{
@@ -63,7 +63,7 @@ public class ContainerWB implements ContainerService{
           Containers container = new Containers();        
             container.setId(obj.getJSONObject("container").getInt("idContainer"));
             if (obj.getJSONObject("container") .getString("address").equals(null)){
-                 container.setAddress("");
+                 container.setAddress(" ");
             }else{
                container.setAddress(obj.getJSONObject("container") .getString("address"));  
             }
@@ -116,18 +116,13 @@ public class ContainerWB implements ContainerService{
     }
 
     @Override
-    public Containers register(String name, String lat, String lng) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public Containers recupLatAndLong(String address) throws Exception {
       
       WebServiceContainers wb = new WebServiceContainers();
       
       JSONObject obj = wb.recupLatAndLong(new URL("https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyB7H3ni8L2xvycZEckSvE5lzYIKMkYYgNU"));
 //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-      return this.getLatAndLong(obj);
+      return this.getLatAndLong(obj,address);
       
     }
 
@@ -138,6 +133,11 @@ public class ContainerWB implements ContainerService{
         
        JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=getById&idContainer="+id));
        return this.getById(jsonObject);
+    }
+
+    @Override
+    public Containers register(String name, double lat, double lng, String address) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
   

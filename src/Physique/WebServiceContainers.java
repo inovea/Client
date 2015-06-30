@@ -212,7 +212,7 @@ public class WebServiceContainers {
                 strTemp = strTemp.replaceAll(" ","");
                         
               obj = new JSONObject(strTemp);
-         
+              System.out.println("Objet : " +obj.toString());
                 
                 conn.disconnect();
                   return obj;

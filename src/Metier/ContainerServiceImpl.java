@@ -53,19 +53,19 @@ public class ContainerServiceImpl implements ContainerService{
     }
 
     @Override
-    public Containers register(String name, String lat, String lng) throws Exception {
+    public Containers register(String name, double lat, double lng,String address) throws Exception {
         Double latitude ;
         Double longitude ;
-        if(name.equals("") || lat.equals("") || lng.equals("")){
+       /* if(name.equals("") || lat.equals("") || lng.equals("")){
             throw new NullPointerException("Un champ n'est pas renseigné");
-        }
+        }*/
         try {
-            latitude=  Double.parseDouble(lat);
-            longitude=  Double.parseDouble(lng);
+           // latitude=  Double.parseDouble(lat);
+           // longitude=  Double.parseDouble(lng);
         } catch (Exception e) {
             throw new Exception("La valeur n'est pas numerique");
         }
-        Containers ctn = new Containers(name,latitude,longitude);
+        Containers ctn = new Containers(name,lat,lng,address);
         return containerPhysiqueService.add(ctn);
     }
 
