@@ -90,8 +90,8 @@ public class TableauDeBord extends javax.swing.JFrame {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
-        jTabbedPane.add("Map", new SwingFXWebView());
-     
+        SwingFXWebView sw = new SwingFXWebView();
+        jTabbedPane.add("Map",sw);
         //this.bibliothecaireConnecte = this.bibliotheque.getBibliothecaireConnecte();
         /*if (this.bibliothecaireConnecte == null) {
          this.dispose();
@@ -798,10 +798,10 @@ public class TableauDeBord extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         if (this.courierConnected == null) {
-            JOptionPane.showMessageDialog(this, "Bibliothécaire inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Utilisateur inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
             this.dispose();
          } else {
-            jLabelBC.setText("Bibliothécaire connecté : " + courierConnected.getFirstname()+ " " + courierConnected.getName());
+            jLabelBC.setText("Utilisateur connecté : " + courierConnected.getFirstname()+ " " + courierConnected.getName());
          }
          try {
             this.createAllJTable();
@@ -1522,17 +1522,17 @@ public class TableauDeBord extends javax.swing.JFrame {
                 int id = Integer.parseInt(toSearch);
                 Courier byId = courierMetierService.getById(id);
                 if (byId != null) {
-                    jLabelNbFoundCourier.setText("1 bibliothécaire a été trouvé");
+                    jLabelNbFoundCourier.setText("1 Utilisateur a été trouvé");
                     this.fireJTableCourier(null, byId);
                 } else {
-                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
+                    jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été trouvé");
                     this.fireJTableCourier(null, null);
                 }
             } catch (NumberFormatException nfe) {
                 jLabelNbFoundCourier.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
             }
         } else {
-            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été cherché");
             this.fireJTableCourier(null, null);
         }
     }
@@ -1547,19 +1547,19 @@ public class TableauDeBord extends javax.swing.JFrame {
                 }
             }
             if (newCourier.size() > 1) {
-                jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaires ont été trouvés");
+                jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateurs ont été trouvés");
                 this.fireJTableCourier(newCourier, null);
             } else {
                 if (newCourier.size() == 1) {
-                    jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaire a été trouvé");
+                    jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateur a été trouvé");
                     this.fireJTableCourier(newCourier, null);
                 } else {
-                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
+                    jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été trouvé");
                     this.fireJTableCourier(null, null);
             }
             }
         } else {
-            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été cherché");
             this.fireJTableCourier(null, null);
         }
     }
@@ -1574,19 +1574,19 @@ public class TableauDeBord extends javax.swing.JFrame {
                 }
             }
             if (newCourier.size() > 1) {
-                jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaires ont été trouvés");
+                jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateur ont été trouvés");
                 this.fireJTableCourier(newCourier, null);
             } else {
                 if (newCourier.size() == 1) {
-                    jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaire a été trouvé");
+                    jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateur a été trouvé");
                     this.fireJTableCourier(newCourier, null);
                 } else {
-                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
+                    jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été trouvé");
                     this.fireJTableCourier(null, null);
             }
             }
         } else {
-            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été cherché");
             this.fireJTableCourier(null, null);
         }
     }
@@ -1601,19 +1601,19 @@ public class TableauDeBord extends javax.swing.JFrame {
                 }
             }
             if (newCourier.size() > 1) {
-                jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaires ont été trouvés");
+                jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateur ont été trouvés");
                 this.fireJTableCourier(newCourier, null);
             } else {
                 if (newCourier.size() == 1) {
-                    jLabelNbFoundCourier.setText(newCourier.size() + " bibliothécaire a été trouvé");
+                    jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateur a été trouvé");
                     this.fireJTableCourier(newCourier, null);
                 } else {
-                    jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été trouvé");
+                    jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été trouvé");
                     this.fireJTableCourier(null, null);
             }
             }
         } else {
-            jLabelNbFoundCourier.setText("Aucun bibliothécaire n'a été cherché");
+            jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été cherché");
             this.fireJTableCourier(null, null);
         }
     }

@@ -88,8 +88,9 @@ public class SwingFXWebView extends JPanel {
                 browser = new WebView();
                 webEngine = browser.getEngine();
                 
-                final URL urlGoogleMaps = getClass().getResource("googlemaps.html");
-                 webEngine.load(urlGoogleMaps.toExternalForm());
+                final URL urlGoogleMaps = getClass().getResource("../googleMap/googlemaps.html");
+                System.out.println(urlGoogleMaps); 
+                webEngine.load(urlGoogleMaps.toExternalForm());
                 
                 
                 ObservableList<Node> children = root.getChildren();
