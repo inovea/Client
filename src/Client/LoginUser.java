@@ -25,7 +25,8 @@ private CourierService courierMetierService = MetierServiceFactory.getCourierSer
 private TableauDeBord tb = null;
 
     public LoginUser() {
-        initComponents();
+        initComponents(); 
+        this.setResizable(false);
         this.setVisible(true);
     }
 

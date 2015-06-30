@@ -25,6 +25,15 @@ public class ContainerServiceImpl implements ContainerService{
         if(container.getName().equals("")){
            throw  new Exception("Nom manquant");
         }
+        if(container.getAddress().equals("")){
+           throw  new Exception("Adresse manquante");
+        }
+        if(String.valueOf(container.getLat()).equals("")){
+           throw  new Exception("Latitude manquant");
+        }
+        if(String.valueOf(container.getLng()).equals("")){
+           throw  new Exception("Longitude manquante");
+        }
         
       return containerPhysiqueService.add(container);  
      }
@@ -56,14 +65,19 @@ public class ContainerServiceImpl implements ContainerService{
     public Containers register(String name, double lat, double lng,String address) throws Exception {
         Double latitude ;
         Double longitude ;
-       /* if(name.equals("") || lat.equals("") || lng.equals("")){
-            throw new NullPointerException("Un champ n'est pas renseigné");
-        }*/
-        try {
-           // latitude=  Double.parseDouble(lat);
-           // longitude=  Double.parseDouble(lng);
-        } catch (Exception e) {
-            throw new Exception("La valeur n'est pas numerique");
+ 
+        
+        if(name.equals("")){
+           throw  new Exception("Nom manquant");
+        }
+        if(address.equals(null)){
+           throw  new Exception("Adresse manquante");
+        }
+        if(String.valueOf(lat).equals("")){
+           throw  new Exception("Latitude manquant");
+        }
+        if(String.valueOf(lng).equals("")){
+           throw  new Exception("Longitude manquante");
         }
         Containers ctn = new Containers(name,lat,lng,address);
         return containerPhysiqueService.add(ctn);

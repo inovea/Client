@@ -90,7 +90,8 @@ public class TableauDeBord extends javax.swing.JFrame {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
-
+        jTabbedPane.add("Map", new SwingFXWebView());
+     
         //this.bibliothecaireConnecte = this.bibliotheque.getBibliothecaireConnecte();
         /*if (this.bibliothecaireConnecte == null) {
          this.dispose();
@@ -120,7 +121,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jPanelDetails = new javax.swing.JPanel();
         jLabelBC = new javax.swing.JLabel();
         jButtonQuit = new javax.swing.JButton();
-        jTabbedPanePrincipal = new javax.swing.JTabbedPane();
+        jTabbedPane = new javax.swing.JTabbedPane();
         jPanelMenuAdmin = new javax.swing.JPanel();
         jButtonAddCourier = new javax.swing.JButton();
         jButtonEditCourier = new javax.swing.JButton();
@@ -214,10 +215,10 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPanePrincipal.setBackground(new java.awt.Color(255, 0, 102));
-        jTabbedPanePrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTabbedPane.setBackground(new java.awt.Color(255, 0, 102));
+        jTabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPanePrincipalMouseClicked(evt);
+                jTabbedPaneMouseClicked(evt);
             }
         });
 
@@ -489,7 +490,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPanePrincipal.addTab("Administration", jPanelMenuAdmin);
+        jTabbedPane.addTab("Administration", jPanelMenuAdmin);
 
         jButtonAddContainer.setText("Ajouter un conteneur");
         jButtonAddContainer.addActionListener(new java.awt.event.ActionListener() {
@@ -765,7 +766,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jTabbedPanePrincipal.addTab("Conteneurs", jPanelMenuContain);
+        jTabbedPane.addTab("Conteneurs", jPanelMenuContain);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -774,7 +775,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addComponent(jPanelDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPanePrincipal)
+                .addComponent(jTabbedPane)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -782,7 +783,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPanePrincipal))
+                .addComponent(jTabbedPane))
         );
 
         pack();
@@ -810,10 +811,55 @@ public class TableauDeBord extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_formWindowOpened
 
-    private void jTabbedPanePrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPanePrincipalMouseClicked
+    private void jTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMouseClicked
         // TODO add your handling code here:
         this.actualisation();
-    }//GEN-LAST:event_jTabbedPanePrincipalMouseClicked
+    }//GEN-LAST:event_jTabbedPaneMouseClicked
+
+    private void jButtonDelContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelContainActionPerformed
+        try {
+            int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+            System.out.println(containerModel.getValueAt(jTableContainer.getSelectedRow(), 0));
+            containerMetierService.delete(idContainer);
+            this.fireJTableContainer(containerMetierService.getAll(), null);
+        } catch (Exception ex) {
+            Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonDelContainActionPerformed
+
+    private void jTableContainerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContainerMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableContainerMouseClicked
+
+    private void jTextFieldSearchBiblio2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchBiblio2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchBiblio2KeyTyped
+
+    private void jRadioButtonIdBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIdBiblio2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonIdBiblio2ActionPerformed
+
+    private void jButtonEditContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContainActionPerformed
+        int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+        try {
+            new UpdateContainer(this, idContainer);
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonEditContainActionPerformed
+
+    private void jButtonAddContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContainerActionPerformed
+
+        new AddContainer(this);
+        
+        List<Containers> list = new ArrayList<Containers>();
+        try {
+            list = containerMetierService.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.fireJTableContainer(list, null);
+    }//GEN-LAST:event_jButtonAddContainerActionPerformed
 
     private void jButtonDelCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelCourierActionPerformed
         if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
@@ -836,6 +882,14 @@ public class TableauDeBord extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un utilisateur...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButtonDelCourierActionPerformed
+
+    private void jButtonDelCourierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelCourierMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDelCourierMouseClicked
+
+    private void jTableCourierMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCourierMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableCourierMousePressed
 
     private void jTableCourierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCourierMouseClicked
         try {
@@ -890,6 +944,10 @@ public class TableauDeBord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldSearchCourierKeyTyped
 
+    private void jTextFieldSearchCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchCourierActionPerformed
+
     private void jButtonEditCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCourierActionPerformed
         if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
             try {
@@ -907,17 +965,17 @@ public class TableauDeBord extends javax.swing.JFrame {
         }
 
         /*if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
-         if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
-         EditBiblio editBiblio = new EditBiblio(this, true);
-         editBiblio.setBibliothecaireSelected(this.selectedB);
-         editBiblio.setModelBiblio(bibliothecaires);
-         editBiblio.setVisible(true);
-         } else {
-         JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à modifier ce bibliothécaire !", "Accès interdit", JOptionPane.WARNING_MESSAGE);
-         }
-         } else {
-         JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
-         }*/
+            if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
+                EditBiblio editBiblio = new EditBiblio(this, true);
+                editBiblio.setBibliothecaireSelected(this.selectedB);
+                editBiblio.setModelBiblio(bibliothecaires);
+                editBiblio.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à modifier ce bibliothécaire !", "Accès interdit", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
+        }*/
     }//GEN-LAST:event_jButtonEditCourierActionPerformed
 
     private void jButtonAddCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourierActionPerformed
@@ -925,63 +983,6 @@ public class TableauDeBord extends javax.swing.JFrame {
         addBiblio.setModelBiblio(utilisateurs);
         addBiblio.setVisible(true);
     }//GEN-LAST:event_jButtonAddCourierActionPerformed
-
-    private void jTextFieldSearchCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourierActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSearchCourierActionPerformed
-
-    private void jTableCourierMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCourierMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableCourierMousePressed
-
-    private void jButtonDelCourierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelCourierMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDelCourierMouseClicked
-
-    private void jButtonAddContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContainerActionPerformed
-
-        new AddContainer(this);
-        List<Containers> list = new ArrayList<Containers>();
-        try {
-            list = containerMetierService.getAll();
-        } catch (Exception ex) {
-            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.fireJTableContainer(list, null);
-
-    }//GEN-LAST:event_jButtonAddContainerActionPerformed
-
-    private void jButtonEditContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContainActionPerformed
-        int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
-        try {
-            new UpdateContainer(this, idContainer);
-        } catch (Exception ex) {
-            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButtonEditContainActionPerformed
-
-    private void jRadioButtonIdBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIdBiblio2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonIdBiblio2ActionPerformed
-
-    private void jTextFieldSearchBiblio2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchBiblio2KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSearchBiblio2KeyTyped
-
-    private void jTableContainerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContainerMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableContainerMouseClicked
-
-    private void jButtonDelContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelContainActionPerformed
-        try {
-            int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
-            System.out.println(containerModel.getValueAt(jTableContainer.getSelectedRow(), 0));
-            containerMetierService.delete(idContainer);
-            this.fireJTableContainer(containerMetierService.getAll(), null);
-        } catch (Exception ex) {
-            Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButtonDelContainActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1068,7 +1069,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator26;
     private javax.swing.JSeparator jSeparator27;
     private javax.swing.JSeparator jSeparator28;
-    private javax.swing.JTabbedPane jTabbedPanePrincipal;
+    private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTable jTableContainer;
     private javax.swing.JTable jTableCourier;
     private javax.swing.JTextField jTextFieldSearchBiblio2;
