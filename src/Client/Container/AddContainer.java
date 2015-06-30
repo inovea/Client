@@ -14,13 +14,18 @@ import java.util.logging.Logger;
 import com.google.gwt.maps.client.geocode.Geocoder;
 import com.google.gwt.maps.client.geocode.LatLngCallback;
 import com.google.gwt.maps.client.geom.LatLng;
+import javafx.scene.paint.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lyes Atek
  */
 public class AddContainer extends javax.swing.JFrame {
-  private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
-  TableauDeBord tb;
+
+    private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
+    TableauDeBord tb;
+
     public AddContainer(TableauDeBord tb) {
         initComponents();
         this.tb = tb;
@@ -62,6 +67,11 @@ public class AddContainer extends javax.swing.JFrame {
 
         jLabel2.setText("Nom");
 
+        tbAdd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tbAddFocusLost(evt);
+            }
+        });
         tbAdd.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
@@ -165,39 +175,50 @@ public class AddContainer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjoutActionPerformed
-       String name = tbNom.getText();
-       String adresse = tbAdd.getText();
-       Containers cont = null;
-      try {
-         
-       cont=   containerMetierService.recupLatAndLong(adresse);
-      } catch (Exception ex) {
-          Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
-      }
-     
-       
-    
-      try {
-         containerMetierService.register(name, cont.getLat(), cont.getLng(),cont.getAddress());
-      } catch (Exception ex) {
-          Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
-      }
-      try {
-          tb.fireJTableContainer(this.containerMetierService.getAll(),null);
-      } catch (Exception ex) {
-          Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
-      }
-      this.dispose();
+        String name = tbNom.getText();
+        String adresse = tbAdd.getText();
+        Containers cont = null;
+        try {
+            cont = containerMetierService.recupLatAndLong(adresse);
+            containerMetierService.register(name, cont.getLat(), cont.getLng(), adresse);
+            tb.fireJTableContainer(this.containerMetierService.getAll(), null);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+        }
+        if(!cont.equals(null))
+             this.dispose();
     }//GEN-LAST:event_btnAjoutActionPerformed
 
     private void tbAddInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tbAddInputMethodTextChanged
-       tbLat.enableInputMethods(false);
-       tbLng.enableInputMethods(true);
+        tbLat.enableInputMethods(false);
+
+        tbLng.enableInputMethods(true);
     }//GEN-LAST:event_tbAddInputMethodTextChanged
 
     private void formInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_formInputMethodTextChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_formInputMethodTextChanged
+
+    private void tbAddFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tbAddFocusLost
+        if (!tbAdd.getText().equals("")) {
+            String addressTmp = tbAdd.getText();
+            addressTmp = addressTmp.replaceAll(" ", "");
+            String adresse = tbAdd.getText();
+            Containers cont = null;
+            try {
+
+                cont = containerMetierService.recupLatAndLong(addressTmp);
+                tbLat.setText(String.valueOf(cont.getLat()));
+                tbLng.setText(String.valueOf(cont.getLng()));
+                tbLat.setEditable(false);
+                tbLat.setBackground(new java.awt.Color(6, 6, 6, 1));
+                tbLng.setBackground(new java.awt.Color(6, 6, 6, 1));
+                tbLng.setEditable(false);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_tbAddFocusLost
 
     /**
      * @param args the command line arguments
@@ -229,6 +250,7 @@ public class AddContainer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             private TableauDeBord tb;
+
             public void run() {
                 new AddContainer(tb).setVisible(true);
             }

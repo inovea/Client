@@ -41,12 +41,7 @@ public class ContainerWB implements ContainerService{
             Containers container = new Containers();
             JSONObject tempCont = containers.getJSONObject(i);          
             container.setId(tempCont.getInt("idContainer"));
-            if (tempCont.getString("address").equals(null)){
-                 container.setAddress("");
-            }else{
-               container.setAddress(tempCont.getString("address"));  
-            }
-           // container.setAddress(tempSteed.getString("address"));
+            container.setAddress(tempCont.getString("address"));  
             container.setLat(tempCont.getDouble("lat"));
             container.setLng(tempCont.getDouble("lng"));
            container.setName(tempCont.getString("name"));
@@ -62,11 +57,7 @@ public class ContainerWB implements ContainerService{
           
           Containers container = new Containers();        
             container.setId(obj.getJSONObject("container").getInt("idContainer"));
-            if (obj.getJSONObject("container") .getString("address").equals(null)){
-                 container.setAddress(" ");
-            }else{
-               container.setAddress(obj.getJSONObject("container") .getString("address"));  
-            }
+           container.setAddress(obj.getJSONObject("container") .getString("address"));  
             container.setLat(obj.getJSONObject("container").getDouble("lat"));
             container.setLng(obj.getJSONObject("container").getDouble("lng"));
            container.setName(obj.getJSONObject("container").getString("name"));

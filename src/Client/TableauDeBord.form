@@ -38,7 +38,7 @@
           <Component id="jPanelDetails" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPanePrincipal" max="32767" attributes="0"/>
+              <Component id="jTabbedPane" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -48,7 +48,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanelDetails" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPanePrincipal" max="32767" attributes="0"/>
+              <Component id="jTabbedPane" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,14 +100,14 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JTabbedPane" name="jTabbedPanePrincipal">
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="0" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPanePrincipalMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPaneMouseClicked"/>
       </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
