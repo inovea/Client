@@ -96,6 +96,14 @@ public class CourierServiceImpl implements CourierService{
         return null;
     }
 
+    @Override
+    public void setPassword(String mail, String password, String newPassword) throws Exception {
+        if(mail == null){
+            throw new Exception("Impossible de récuperer l'utilisateur");
+        }
+        courierPhysiqueService.setPassword(mail, password, newPassword);
+    }
+
    
 
 }
