@@ -9,6 +9,8 @@ import Metier.Courier;
 import Metier.MetierServiceFactory;
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
+import java.awt.Color;
+import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -26,8 +28,10 @@ private TableauDeBord tb = null;
 
     public LoginUser() {
         initComponents(); 
+        
         this.setResizable(false);
         this.setVisible(true);
+        this.setBackground(new Color(27,68,34));
     }
 
     /**
@@ -50,6 +54,8 @@ private TableauDeBord tb = null;
         btnConnexion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(27, 68, 34));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/logo3.png"))); // NOI18N
 

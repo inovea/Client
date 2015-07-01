@@ -74,7 +74,7 @@ public class ContainerWB implements ContainerService{
         WebServiceContainers wb = new WebServiceContainers();
        //ContainersReception cr = new ContainersReception();
         
-       JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=create&name="+container.getName()+"&lat="+container.getLat()+"&lng="+container.getLng()));
+       JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=create&name="+container.getName()+"&lat="+container.getLat()+"&lng="+container.getLng()+"&address="+container.getAddress()));
        return this.getById(jsonObject);
     }
 

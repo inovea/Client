@@ -178,8 +178,10 @@ public class AddContainer extends javax.swing.JFrame {
         String name = tbNom.getText();
         String adresse = tbAdd.getText();
         Containers cont = null;
+        String addressTmp = adresse;
+        addressTmp = addressTmp.replaceAll(" ", "");
         try {
-            cont = containerMetierService.recupLatAndLong(adresse);
+            cont = containerMetierService.recupLatAndLong(addressTmp);
             containerMetierService.register(name, cont.getLat(), cont.getLng(), adresse);
             tb.fireJTableContainer(this.containerMetierService.getAll(), null);
         } catch (Exception ex) {
