@@ -6,6 +6,7 @@ package Metier;
 
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
+import Metier.interfaces.ErrandService;
 
 /**
  *
@@ -17,9 +18,10 @@ public class MetierServiceFactory {
     private static CourierService courierService;
 //    private static Bibliotheque bibliotheque;
     private static ContainerService containerService;
+     private static ErrandService errandService;
     
     private MetierServiceFactory() {}
-    
+   
     public static CourierService getCourierService() {
         if(courierService == null) {
             courierService = new CourierServiceImpl();
@@ -33,5 +35,12 @@ public class MetierServiceFactory {
         }
         return containerService;
     }
-    
+
+    public static ErrandService getErrandService() {
+        if(errandService == null) {
+            errandService = new ErrandServiceImpl();
+        }
+        return errandService;
+    }
+   
 }

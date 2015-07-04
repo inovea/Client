@@ -26,12 +26,14 @@ package Client;
 import Client.Container.AddContainer;
 import Client.Container.JTableModelContainer;
 import Client.Container.UpdateContainer;
+import Client.Errand.JTableModelErrand;
 import Client.Thread.Selected;
 import Client.Utilisateur.AddUtilisateur;
 import Client.Utilisateur.EditUtilisateur;
 import Client.Utilisateur.JTableModelUtilisateur;
 import Metier.Containers;
 import Metier.Courier;
+import Metier.Errand;
 /*import Metier.Emprunt;
  import Metier.EmpruntService;
  import Metier.Livre;
@@ -39,6 +41,7 @@ import Metier.Courier;
 import Metier.MetierServiceFactory;
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
+import Metier.interfaces.ErrandService;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -66,12 +69,14 @@ public class TableauDeBord extends javax.swing.JFrame {
      private EmpruntService empruntMetierService = MetierServiceFactory.getEmpruntService();*/
     private CourierService courierMetierService = MetierServiceFactory.getCourierService();
     private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
+    private ErrandService errandMetierService = MetierServiceFactory.getErrandService();
 
     /*private JTableModelBooks books = null;
      private JTableModelAdherent adherents = null;
      private JTableModelEmprunt emprunts = null;
      private JTableModelBibliothecaire bibliothecaires = null;*/
     private JTableModelUtilisateur utilisateurs = null;
+    private JTableModelErrand errands = null;
     private JTableModelContainer containerModel = null;
     /*private Livre selectedL;
      private Adherent selectedA;
@@ -79,6 +84,9 @@ public class TableauDeBord extends javax.swing.JFrame {
      private Bibliothecaire selectedB;*/
     private Courier selectedC;
     private Courier courierConnected;
+    private Errand selectedE;
+   
+
 
     /**
      * Creates new form TableauDeBord
@@ -163,7 +171,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jRadioButtonLoginBiblio2 = new javax.swing.JRadioButton();
         jPanel11 = new javax.swing.JPanel();
         jTextFieldSearchBiblio2 = new javax.swing.JTextField();
-        jLabelNbFoundBiblio2 = new javax.swing.JLabel();
+        jLabelNbFoundContainer = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jSeparator27 = new javax.swing.JSeparator();
@@ -175,6 +183,32 @@ public class TableauDeBord extends javax.swing.JFrame {
         jLabelContainerSelected = new javax.swing.JLabel();
         jButtonDelContain = new javax.swing.JButton();
         jSeparator28 = new javax.swing.JSeparator();
+        jPanelMenuCourse = new javax.swing.JPanel();
+        jButtonAddCourse = new javax.swing.JButton();
+        jButtonEditCourse = new javax.swing.JButton();
+        jPanelBarSearchCourse = new javax.swing.JPanel();
+        jSeparator19 = new javax.swing.JSeparator();
+        jSeparator22 = new javax.swing.JSeparator();
+        jPanel8 = new javax.swing.JPanel();
+        jRadioButtonIdCourier1 = new javax.swing.JRadioButton();
+        jRadioButtonNomCourier1 = new javax.swing.JRadioButton();
+        jRadioButtonPrenomCourier1 = new javax.swing.JRadioButton();
+        jLabel22 = new javax.swing.JLabel();
+        jRadioButtonMailCourier1 = new javax.swing.JRadioButton();
+        jPanel9 = new javax.swing.JPanel();
+        jTextFieldSearchCourier1 = new javax.swing.JTextField();
+        jLabelNbFoundCourier1 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jSeparator23 = new javax.swing.JSeparator();
+        jPanelCourse = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableErrand = new javax.swing.JTable();
+        jPanelCourseSelected = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabelErrandSelected = new javax.swing.JLabel();
+        jButtonDelCourse = new javax.swing.JButton();
+        jSeparator24 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Centre de gestion de la bibliothèque");
@@ -246,7 +280,6 @@ public class TableauDeBord extends javax.swing.JFrame {
         jRadioButtonIdCourier.setText("Par identifiant");
 
         buttonGroupCritereRechercheAdherent.add(jRadioButtonNomCourier);
-        jRadioButtonNomCourier.setSelected(true);
         jRadioButtonNomCourier.setText("Par nom");
 
         buttonGroupCritereRechercheAdherent.add(jRadioButtonPrenomCourier);
@@ -567,9 +600,9 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
 
-        jLabelNbFoundBiblio2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabelNbFoundBiblio2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNbFoundBiblio2.setText("Aucun conteneur n'a été cherché");
+        jLabelNbFoundContainer.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabelNbFoundContainer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNbFoundContainer.setText("Aucun conteneur n'a été cherché");
 
         jLabel28.setForeground(new java.awt.Color(255, 102, 0));
         jLabel28.setText("<- Appuyer sur Entrée");
@@ -584,7 +617,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabelNbFoundBiblio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNbFoundContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -602,7 +635,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addComponent(jTextFieldSearchBiblio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelNbFoundBiblio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelNbFoundContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -768,6 +801,275 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Conteneurs", jPanelMenuContain);
 
+        jButtonAddCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/addAdmin.png"))); // NOI18N
+        jButtonAddCourse.setText("Ajouter un coursier");
+        jButtonAddCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddCourseActionPerformed(evt);
+            }
+        });
+
+        jButtonEditCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/editAdmin.png"))); // NOI18N
+        jButtonEditCourse.setText("Modifier un coursier");
+        jButtonEditCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditCourseActionPerformed(evt);
+            }
+        });
+
+        jSeparator19.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jSeparator22.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonIdCourier1);
+        jRadioButtonIdCourier1.setText("Par identifiant");
+
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonNomCourier1);
+        jRadioButtonNomCourier1.setText("Par nom");
+
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonPrenomCourier1);
+        jRadioButtonPrenomCourier1.setText("Par prénom");
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jLabel22.setText("Critères de recherches :");
+
+        buttonGroupCritereRechercheAdherent.add(jRadioButtonMailCourier1);
+        jRadioButtonMailCourier1.setText("Par mail");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonIdCourier1)
+                            .addComponent(jRadioButtonPrenomCourier1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonNomCourier1)
+                            .addComponent(jRadioButtonMailCourier1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonIdCourier1)
+                    .addComponent(jRadioButtonNomCourier1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonPrenomCourier1)
+                    .addComponent(jRadioButtonMailCourier1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTextFieldSearchCourier1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSearchCourier1ActionPerformed(evt);
+            }
+        });
+        jTextFieldSearchCourier1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchCourier1KeyTyped(evt);
+            }
+        });
+
+        jLabelNbFoundCourier1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabelNbFoundCourier1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNbFoundCourier1.setText("Aucun coursier n'a été cherché");
+
+        jLabel23.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel23.setText("<- Appuyer sur Entrée");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jLabel25.setText("Recherches :");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabelNbFoundCourier1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSearchCourier1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23)))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jTextFieldSearchCourier1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelNbFoundCourier1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanelBarSearchCourseLayout = new javax.swing.GroupLayout(jPanelBarSearchCourse);
+        jPanelBarSearchCourse.setLayout(jPanelBarSearchCourseLayout);
+        jPanelBarSearchCourseLayout.setHorizontalGroup(
+            jPanelBarSearchCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBarSearchCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelBarSearchCourseLayout.setVerticalGroup(
+            jPanelBarSearchCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBarSearchCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelBarSearchCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator22)
+                    .addComponent(jSeparator19)
+                    .addGroup(jPanelBarSearchCourseLayout.createSequentialGroup()
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 51, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jTableErrand.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Identifiant", "Date de debut", "Date de fin", "Durée", "Distance", "Coursier", "Etat"
+            }
+        ));
+        jTableErrand.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableErrandMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTableErrandMousePressed(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jTableErrand);
+
+        javax.swing.GroupLayout jPanelCourseLayout = new javax.swing.GroupLayout(jPanelCourse);
+        jPanelCourse.setLayout(jPanelCourseLayout);
+        jPanelCourseLayout.setHorizontalGroup(
+            jPanelCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5)
+                .addContainerGap())
+        );
+        jPanelCourseLayout.setVerticalGroup(
+            jPanelCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jLabel26.setText("Coursier sélectionné :");
+
+        jLabelErrandSelected.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelErrandSelected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelErrandSelected.setText("Aucun");
+
+        javax.swing.GroupLayout jPanelCourseSelectedLayout = new javax.swing.GroupLayout(jPanelCourseSelected);
+        jPanelCourseSelected.setLayout(jPanelCourseSelectedLayout);
+        jPanelCourseSelectedLayout.setHorizontalGroup(
+            jPanelCourseSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCourseSelectedLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCourseSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                    .addGroup(jPanelCourseSelectedLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelErrandSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelCourseSelectedLayout.setVerticalGroup(
+            jPanelCourseSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCourseSelectedLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelErrandSelected, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jButtonDelCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/delAdmin.png"))); // NOI18N
+        jButtonDelCourse.setText("Supprimer un coursier");
+        jButtonDelCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDelCourseMouseClicked(evt);
+            }
+        });
+        jButtonDelCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDelCourseActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelMenuCourseLayout = new javax.swing.GroupLayout(jPanelMenuCourse);
+        jPanelMenuCourse.setLayout(jPanelMenuCourseLayout);
+        jPanelMenuCourseLayout.setHorizontalGroup(
+            jPanelMenuCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMenuCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator24)
+                    .addComponent(jPanelCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelBarSearchCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelMenuCourseLayout.createSequentialGroup()
+                        .addComponent(jButtonAddCourse)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEditCourse)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonDelCourse)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelCourseSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator23))
+                .addContainerGap())
+        );
+        jPanelMenuCourseLayout.setVerticalGroup(
+            jPanelMenuCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMenuCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonDelCourse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(jButtonEditCourse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCourseSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAddCourse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelBarSearchCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane.addTab("Liste des courses", jPanelMenuCourse);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -851,7 +1153,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private void jButtonAddContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContainerActionPerformed
 
         new AddContainer(this);
-        
+
         List<Containers> list = new ArrayList<Containers>();
         try {
             list = containerMetierService.getAll();
@@ -984,6 +1286,38 @@ public class TableauDeBord extends javax.swing.JFrame {
         addBiblio.setVisible(true);
     }//GEN-LAST:event_jButtonAddCourierActionPerformed
 
+    private void jButtonAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddCourseActionPerformed
+
+    private void jButtonEditCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditCourseActionPerformed
+
+    private void jTextFieldSearchCourier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourier1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchCourier1ActionPerformed
+
+    private void jTextFieldSearchCourier1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourier1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchCourier1KeyTyped
+
+    private void jTableErrandMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableErrandMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableErrandMouseClicked
+
+    private void jTableErrandMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableErrandMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableErrandMousePressed
+
+    private void jButtonDelCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelCourseMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDelCourseMouseClicked
+
+    private void jButtonDelCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelCourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDelCourseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1019,52 +1353,76 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupCritereRechercheEmprunt;
     private javax.swing.JButton jButtonAddContainer;
     private javax.swing.JButton jButtonAddCourier;
+    private javax.swing.JButton jButtonAddCourse;
     private javax.swing.JButton jButtonDelContain;
     private javax.swing.JButton jButtonDelCourier;
+    private javax.swing.JButton jButtonDelCourse;
     private javax.swing.JButton jButtonEditContain;
     private javax.swing.JButton jButtonEditCourier;
+    private javax.swing.JButton jButtonEditCourse;
     private javax.swing.JButton jButtonQuit;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabelBC;
     private javax.swing.JLabel jLabelContainerSelected;
-    private javax.swing.JLabel jLabelNbFoundBiblio2;
+    private javax.swing.JLabel jLabelErrandSelected;
+    private javax.swing.JLabel jLabelNbFoundContainer;
     private javax.swing.JLabel jLabelNbFoundCourier;
+    private javax.swing.JLabel jLabelNbFoundCourier1;
     private javax.swing.JLabel jLabelUtilisateurSelected;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelBarSearchContainer;
+    private javax.swing.JPanel jPanelBarSearchCourse;
     private javax.swing.JPanel jPanelBarSearchUtilisateur;
     private javax.swing.JPanel jPanelContainer;
     private javax.swing.JPanel jPanelContainerSelected;
+    private javax.swing.JPanel jPanelCourse;
+    private javax.swing.JPanel jPanelCourseSelected;
     private javax.swing.JPanel jPanelDetails;
     private javax.swing.JPanel jPanelMenuAdmin;
     private javax.swing.JPanel jPanelMenuContain;
     private javax.swing.JPanel jPanelMenuContainer;
+    private javax.swing.JPanel jPanelMenuCourse;
     private javax.swing.JPanel jPanelUtilisateur;
     private javax.swing.JPanel jPanelUtilisateurSelected;
     private javax.swing.JRadioButton jRadioButtonIdBiblio2;
     private javax.swing.JRadioButton jRadioButtonIdCourier;
+    private javax.swing.JRadioButton jRadioButtonIdCourier1;
     private javax.swing.JRadioButton jRadioButtonLoginBiblio2;
     private javax.swing.JRadioButton jRadioButtonMailCourier;
+    private javax.swing.JRadioButton jRadioButtonMailCourier1;
     private javax.swing.JRadioButton jRadioButtonNomBiblio2;
     private javax.swing.JRadioButton jRadioButtonNomCourier;
+    private javax.swing.JRadioButton jRadioButtonNomCourier1;
     private javax.swing.JRadioButton jRadioButtonPrenomBiblio2;
     private javax.swing.JRadioButton jRadioButtonPrenomCourier;
+    private javax.swing.JRadioButton jRadioButtonPrenomCourier1;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator22;
+    private javax.swing.JSeparator jSeparator23;
+    private javax.swing.JSeparator jSeparator24;
     private javax.swing.JSeparator jSeparator25;
     private javax.swing.JSeparator jSeparator26;
     private javax.swing.JSeparator jSeparator27;
@@ -1072,8 +1430,10 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTable jTableContainer;
     private javax.swing.JTable jTableCourier;
+    private javax.swing.JTable jTableErrand;
     private javax.swing.JTextField jTextFieldSearchBiblio2;
     private javax.swing.JTextField jTextFieldSearchCourier;
+    private javax.swing.JTextField jTextFieldSearchCourier1;
     // End of variables declaration//GEN-END:variables
 
     public void actualisation() {
@@ -1086,9 +1446,15 @@ public class TableauDeBord extends javax.swing.JFrame {
         } else if (jPanelMenuContain.isShowing()) {
             this.fireJTableContainer(null, null);
             jTextFieldSearchBiblio2.setText("");
-            jLabelNbFoundBiblio2.setText("Aucun container n'a été cherché");
+            jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
             jLabelUtilisateurSelected.setText("Aucun");
             jRadioButtonNomBiblio2.setSelected(true);
+        }else if (jPanelMenuCourse.isShowing()) {
+            this.fireJTableErrand(null, null);
+         //  jTextFieldSearchBiblio2.setText("");
+          // jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
+           // jLabelUtilisateurSelected.setText("Aucun");
+           // jRadioButtonNomBiblio2.setSelected(true);
         }
     }
 
@@ -1113,6 +1479,17 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         Selected container = new Selected(jTableContainer, jLabelContainerSelected);
         container.start();
+       
+        if (errands== null) {
+            errands = new JTableModelErrand();
+        }
+        jTableErrand.setModel(errands);
+        TableRowSorter<TableModel> sorterErrand = new TableRowSorter<>(jTableErrand.getModel());
+        jTableErrand.setRowSorter(sorterErrand);
+
+        Selected errand = new Selected(jTableErrand, jLabelErrandSelected);
+        errand.start();
+        
     }
 
     /*private void fireJTableBooks(List<Livre> list, Livre livre) {
@@ -1218,6 +1595,32 @@ public class TableauDeBord extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                 jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+            }
+        }
+    }
+  private void fireJTableErrand(List<Errand> list, Errand errand) {
+        /*int page = Integer.parseInt(jLabelNumPageBiblio.getText());
+         int perpage = Integer.parseInt((String) jComboBoxNbPerPageBiblio.getSelectedItem());
+         int debut = (perpage * page) - perpage;*/
+        if (list != null) {
+            errands = new JTableModelErrand(list);
+            jTableErrand.setModel(errands);
+            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableErrand.getModel());
+            jTableErrand.setRowSorter(sorter);
+        } else if (errand != null) {
+            errands = new JTableModelErrand(errand);
+            jTableErrand.setModel(errands);
+            TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableErrand.getModel());
+            jTableCourier.setRowSorter(sorter);
+        } else {
+            try {
+                errands = new JTableModelErrand();
+                jTableErrand.setModel(errands);
+                TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableErrand.getModel());
+                jTableErrand.setRowSorter(sorter);
+            } catch (Exception ex) {
+                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                jLabelNbFoundCourier1.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
             }
         }
     }
@@ -1643,5 +2046,25 @@ public class TableauDeBord extends javax.swing.JFrame {
          if(label.equals("admin")) {
          jLabelNbFoundBiblio.setText(statut);
          }*/
+    }
+     private void searchByIdContainer(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            try {
+                int id = Integer.parseInt(toSearch);
+                Containers byId = containerMetierService.getByIdContainers(id);
+                if (byId != null) {
+                    jLabelNbFoundContainer.setText("1 Conteneur a été trouvé");
+                    this.fireJTableContainer(null, byId);
+                } else {
+                    jLabelNbFoundContainer.setText("Aucun Conteneur n'a été trouvé");
+                    this.fireJTableContainer(null, null);
+                }
+            } catch (NumberFormatException nfe) {
+                jLabelNbFoundContainer.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
+            }
+        } else {
+            jLabelNbFoundContainer.setText("Aucun Conteneur n'a été cherché");
+            this.fireJTableContainer(null, null);
+        }
     }
 }

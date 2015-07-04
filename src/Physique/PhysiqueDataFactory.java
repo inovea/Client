@@ -13,6 +13,7 @@ package Physique;
  import Metier.LivreServiceImpl;*/
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
+import Metier.interfaces.ErrandService;
 
 /**
  *
@@ -32,6 +33,7 @@ public class PhysiqueDataFactory {
      private static AuthentificationService authentificationService;*/
     private static CourierService courierService;
     private static ContainerService containerService;
+     private static ErrandService errandService;
 
     private PhysiqueDataFactory() {
     }
@@ -48,6 +50,13 @@ public class PhysiqueDataFactory {
             containerService = new ContainerWB();
         }
         return containerService;
+    }
+    
+    public static ErrandService getErrandDataService() {
+        if (errandService == null) {
+            errandService = new ErrandWB();
+        }
+        return errandService;
     }
 
     /*public static EmpruntDataService getEmpruntDataService() {

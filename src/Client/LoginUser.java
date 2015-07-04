@@ -172,9 +172,12 @@ private TableauDeBord tb = null;
        // Logger.getLogger(LoginUser.class.getName()).log(Level.SEVERE, null, ex);
     }
     if (courier != null)
-       tb = new TableauDeBord();
-       tb.setCourierConnected(courier);
-       this.dispose();
+        if(courier.getScheduler()==1){
+            tb = new TableauDeBord();
+            tb.setCourierConnected(courier);
+            this.dispose();
+        }else
+             JOptionPane.showMessageDialog(this,"Vous devez être administrateur", "Attention", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnConnexionActionPerformed
 
     /**

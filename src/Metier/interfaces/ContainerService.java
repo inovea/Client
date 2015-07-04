@@ -22,6 +22,7 @@ public interface ContainerService {
     public Containers recupLatAndLong(String address) throws Exception;
     public Containers getById(JSONObject obj) throws Exception;
     public Containers getByIdContainers(int id) throws Exception;
+    public List<Containers> getByIdErrand(int id) throws Exception;
     //public Courier getByMail(String mail) throws Exception;
     public List<Containers> getAll() throws Exception;
 }
