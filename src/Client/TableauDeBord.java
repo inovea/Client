@@ -50,6 +50,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private Courier selectedC;
     private Courier courierConnected;
     private Errand selectedE;
+    private Container selectedContainer;
 
     /**
      * Creates new form TableauDeBord
@@ -1086,34 +1087,46 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPaneMouseClicked
 
     private void jButtonDelContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelContainActionPerformed
-        try {
-            int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
-            System.out.println(containerModel.getValueAt(jTableContainer.getSelectedRow(), 0));
-            containerMetierService.delete(idContainer);
-            this.fireJTableContainer(containerMetierService.getAll(), null);
-        } catch (Exception ex) {
-            Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
+        if (!jLabelContainerSelected.getText().equals("Aucun")) {
+            try {
+                int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+                System.out.println(containerModel.getValueAt(jTableContainer.getSelectedRow(), 0));
+                containerMetierService.delete(idContainer);
+                this.actualisation();
+            } catch (Exception ex) {
+                Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un container...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
+
+
     }//GEN-LAST:event_jButtonDelContainActionPerformed
 
     private void jTableContainerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContainerMouseClicked
-//        try {
-//            int id = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 0);
-//            String nom = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 1);
-//            String adresse = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 2);
-//            int lat = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 3);
-//            int lng = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 4);
-//            int state = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 5);
-//
-//            Container container = new Container(nom, lat, lng, adresse);
-//            container.setId(id);
-//            container.setState(state);
-//
-////            this.setCourierSelected(courier);
-//            jLabelContainerSelected.setText("<html><body><font color='#FF6666'><b>" + courier.getName() + "</b> <i>" + courier.getFirstname() + "</i></font> authentifié(e) par <font color='#FF6666' >" + courier.getMail() + "</font></body></html>");
-//        } catch (Exception ex) {
-//            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            int id = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+            String nom = (String) containerModel.getValueAt(jTableContainer.getSelectedRow(), 1);
+            String adresse = (String) containerModel.getValueAt(jTableContainer.getSelectedRow(), 2);
+            double lat = (double) containerModel.getValueAt(jTableContainer.getSelectedRow(), 3);
+            double lng = (double) containerModel.getValueAt(jTableContainer.getSelectedRow(), 4);
+            int state = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 5);
+
+            Container container = new Container(nom, lat, lng, adresse);
+            container.setId(id);
+            container.setState(state);
+
+            setSelectedContainer(container);
+            if (container.getState() == 1) {
+                jLabelContainerSelected.setText("<html><body><font color='#FF6666'><b>" + container.getName() + " </b></font></body></html>");
+            } else {
+                jLabelContainerSelected.setText("<html><body><b>" + container.getName() + " </b></body></html>");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jTableContainerMouseClicked
 
     private void jTextFieldSearchContainerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchContainerKeyTyped
@@ -1156,11 +1169,15 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonIdContainerActionPerformed
 
     private void jButtonEditContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContainActionPerformed
-        int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
-        try {
-            new UpdateContainer(this, idContainer);
-        } catch (Exception ex) {
-            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        if (!jLabelContainerSelected.getText().equals("Aucun")) {
+            int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+            try {
+                new UpdateContainer(this, idContainer);
+            } catch (Exception ex) {
+                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un container...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButtonEditContainActionPerformed
 
@@ -1279,19 +1296,6 @@ public class TableauDeBord extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un utilisateur...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
-
-        /*if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
-         if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
-         EditBiblio editBiblio = new EditBiblio(this, true);
-         editBiblio.setBibliothecaireSelected(this.selectedB);
-         editBiblio.setModelBiblio(bibliothecaires);
-         editBiblio.setVisible(true);
-         } else {
-         JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à modifier ce bibliothécaire !", "Accès interdit", JOptionPane.WARNING_MESSAGE);
-         }
-         } else {
-         JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
-         }*/
     }//GEN-LAST:event_jButtonEditCourierActionPerformed
 
     private void jButtonAddCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourierActionPerformed
@@ -1461,11 +1465,11 @@ public class TableauDeBord extends javax.swing.JFrame {
             this.fireJTableContainer(null, null);
             jTextFieldSearchContainer.setText("");
             jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
-            jLabelUtilisateurSelected.setText("Aucun");
+            jLabelContainerSelected.setText("Aucun");
             jRadioButtonNomContainer.setSelected(true);
         } else if (jPanelMenuCourse.isShowing()) {
             this.fireJTableErrand(null, null);
-         //  jTextFieldSearchBiblio2.setText("");
+            //  jTextFieldSearchBiblio2.setText("");
             // jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
             // jLabelUtilisateurSelected.setText("Aucun");
             // jRadioButtonNomBiblio2.setSelected(true);
@@ -1813,30 +1817,14 @@ public class TableauDeBord extends javax.swing.JFrame {
             jLabelNbFoundContainer.setText("Aucun Conteneur n'a été cherché");
             this.fireJTableContainer(null, null);
         }
-
-//        if (!toSearch.equals("")) {
-//            List<Container> newContainer = new ArrayList<Container>();
-//            List<Container> containers = containerModel.getContainer();
-//            for (Container container : containers) {
-//                if (container.getState().contains(toSearch)) {
-//                    newContainer.add(container);
-//                }
-//            }
-//            if (newContainer.size() > 1) {
-//                jLabelNbFoundContainer.setText(newContainer.size() + " Containers ont été trouvés");
-//                this.fireJTableContainer(newContainer, null);
-//            } else {
-//                if (newContainer.size() == 1) {
-//                    jLabelNbFoundContainer.setText(newContainer.size() + " Container a été trouvé");
-//                    this.fireJTableContainer(newContainer, null);
-//                } else {
-//                    jLabelNbFoundContainer.setText("Aucun Container n'a été trouvé");
-//                    this.fireJTableContainer(null, null);
-//                }
-//            }
-//        } else {
-//            jLabelNbFoundContainer.setText("Aucun Container n'a été cherché");
-//            this.fireJTableContainer(null, null);
-//        }
     }
+
+    public Container getSelectedContainer() {
+        return selectedContainer;
+    }
+
+    public void setSelectedContainer(Container selectedContainer) {
+        this.selectedContainer = selectedContainer;
+    }
+
 }

@@ -1,4 +1,3 @@
-
 package Client.Container;
 
 import Client.TableauDeBord;
@@ -9,31 +8,34 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UpdateContainer extends javax.swing.JFrame {
-private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
-  TableauDeBord tb;
-  Container cont = new Container();
-  int id;
+
+    private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
+    TableauDeBord tb;
+    Container cont = new Container();
+    int id;
+
     public UpdateContainer(TableauDeBord tb, int idContainer) throws Exception {
         initComponents();
-         this.tb = tb;
-         id = idContainer;
-         this.initfrm();
+        this.tb = tb;
+        id = idContainer;
+        this.initfrm();
         this.setVisible(true);
     }
 
     private UpdateContainer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public void initfrm() throws Exception{
-        
-      cont = containerMetierService.getByIdContainers(id);
+
+    public void initfrm() throws Exception {
+
+        cont = containerMetierService.getByIdContainers(id);
         this.tbLat.setText(Double.toString(cont.getLat()));
         this.tbName.setText(cont.getName());
         this.tbState.setText(Integer.toString(cont.getState()));
         this.tbAdd.setText(cont.getAddress());
         this.tbLng.setText(Double.toString(cont.getLng()));
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,7 +61,6 @@ private ContainerService containerMetierService = MetierServiceFactory.getContai
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(237, 342));
-        setPreferredSize(new java.awt.Dimension(237, 342));
 
         jLabel1.setText("Adresse");
 
@@ -79,7 +80,7 @@ private ContainerService containerMetierService = MetierServiceFactory.getContai
             }
         });
 
-        btnUpdate.setText("Ajouter");
+        btnUpdate.setText("Modifier");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -162,22 +163,20 @@ private ContainerService containerMetierService = MetierServiceFactory.getContai
             cont.setName(tbName.getText());
             cont.setLat(Double.parseDouble(tbLat.getText()));
             cont.setLng(Double.parseDouble(tbLng.getText()));
-            if(tbAdd.equals(null)){
-            cont.setAddress(" ");
-        }else{
+            if (tbAdd.equals(null)) {
+                cont.setAddress(" ");
+            } else {
                 cont.setAddress(tbAdd.getText());
             }
             cont.setState(Integer.parseInt(tbState.getText()));
             cont.setLastCollect("00/00/00");
-                    
-            
-            
+
             containerMetierService.update(cont);
         } catch (Exception ex) {
             Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            tb.fireJTableContainer(this.containerMetierService.getAll(),null);
+            tb.fireJTableContainer(this.containerMetierService.getAll(), null);
         } catch (Exception ex) {
             Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
         }

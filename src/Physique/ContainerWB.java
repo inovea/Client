@@ -22,108 +22,105 @@ import org.json.JSONObject;
  *
  * @author Lyes Atek
  */
-public class ContainerWB implements ContainerService{
+public class ContainerWB implements ContainerService {
 //Reception du JSONObject
-    public Container getLatAndLong(JSONObject obj,String adress) throws Exception {
+
+    public Container getLatAndLong(JSONObject obj, String adress) throws Exception {
         Container cont = new Container();
-                System.out.println("Result: "+obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
-        
-      //  System.out.println(obj.getJSONArray("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
+        System.out.println("Result: " + obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
+
+        //  System.out.println(obj.getJSONArray("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
         cont.setAddress(adress);
         cont.setLat(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
         cont.setLng(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
         return cont;
     }
-     public List<Container> getAllContainers(JSONObject obj) throws JSONException{
-         List<Container> list = new ArrayList<Container>();
+
+    public List<Container> getAllContainers(JSONObject obj) throws JSONException {
+        List<Container> list = new ArrayList<Container>();
         JSONArray containers = obj.getJSONArray("container");
-        for(int i =0;i<containers.length();i++){
+        for (int i = 0; i < containers.length(); i++) {
             Container container = new Container();
-            JSONObject tempCont = containers.getJSONObject(i);          
+            JSONObject tempCont = containers.getJSONObject(i);
             container.setId(tempCont.getInt("idContainer"));
-            container.setAddress(tempCont.getString("address"));  
+            container.setAddress(tempCont.getString("address"));
             container.setLat(tempCont.getDouble("lat"));
             container.setLng(tempCont.getDouble("lng"));
-           container.setName(tempCont.getString("name"));
+            container.setName(tempCont.getString("name"));
             container.setState(tempCont.getInt("state"));
-          //  container.setLastCollect(tempSteed.getString("date"));
+            //  container.setLastCollect(tempSteed.getString("date"));
             container.setIdErrand(tempCont.getLong("Errand_idErrand"));
-            list.add(i,container);
-           
+            list.add(i, container);
+
         }
-      return  list;
+        return list;
     }
-      public Container getById(JSONObject obj) throws JSONException, ParseException{
-          
-          Container container = new Container();        
-            container.setId(obj.getJSONObject("container").getInt("idContainer"));
-           container.setAddress(obj.getJSONObject("container") .getString("address"));  
-            container.setLat(obj.getJSONObject("container").getDouble("lat"));
-            container.setLng(obj.getJSONObject("container").getDouble("lng"));
-           container.setName(obj.getJSONObject("container").getString("name"));
-            container.setState(obj.getJSONObject("container").getInt("state"));
-          //  container.setLastCollect(obj.getJSONObject("container").getString("date"));
-            container.setIdErrand(obj.getJSONObject("container").getLong("Errand_idErrand"));
+
+    public Container getById(JSONObject obj) throws JSONException, ParseException {
+
+        Container container = new Container();
+        container.setId(obj.getJSONObject("container").getInt("idContainer"));
+        container.setAddress(obj.getJSONObject("container").getString("address"));
+        container.setLat(obj.getJSONObject("container").getDouble("lat"));
+        container.setLng(obj.getJSONObject("container").getDouble("lng"));
+        container.setName(obj.getJSONObject("container").getString("name"));
+        container.setState(obj.getJSONObject("container").getInt("state"));
+        //  container.setLastCollect(obj.getJSONObject("container").getString("date"));
+        container.setIdErrand(obj.getJSONObject("container").getLong("Errand_idErrand"));
         return container;
-    
-      }
-    
-       
+
+    }
+
     @Override
     public Container add(Container container) throws Exception {
         WebServiceContainers wb = new WebServiceContainers();
        //ContainersReception cr = new ContainersReception();
-        
-       JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=create&name="+container.getName()+"&lat="+container.getLat()+"&lng="+container.getLng()+"&address="+container.getAddress()));
-       return this.getById(jsonObject);
+
+        JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=create&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "&address=" + container.getAddress()));
+        return this.getById(jsonObject);
     }
 
     @Override
     public Container update(Container container) throws Exception {
-       WebServiceContainers wb = new WebServiceContainers();
-       
-        
-       JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer="+container.getId()+"&name="+container.getName()+"&lat="+container.getLat()+"&lng="+container.getLng()+"+&state="+container.getState()+"&lastCollect="+container.getLastCollect()+"&address="+container.getAddress()+"&idErrand="+container.getIdErrand()));
-       return this.getById(jsonObject);
+        WebServiceContainers wb = new WebServiceContainers();
+
+        JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect=" + container.getLastCollect() + "&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand()));
+        return this.getById(jsonObject);
     }
 
     @Override
     public void delete(int idContainer) throws Exception {
         WebServiceContainers wb = new WebServiceContainers();
-       
-        
-       JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=delete&idContainer="+idContainer));
-      
-    }
 
-   
+        JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=delete&idContainer=" + idContainer));
+
+    }
 
     @Override
     public List<Container> getAll() throws Exception {
-       WebServiceContainers wb = new WebServiceContainers();
-       JSONObject jsonObject = wb.recupAllContainers(new URL("http://inovea.herobo.com/webhost/container.php?tag=getAll"));
-      
-       return this.getAllContainers(jsonObject);
+        WebServiceContainers wb = new WebServiceContainers();
+        JSONObject jsonObject = wb.recupAllContainers(new URL("http://inovea.herobo.com/webhost/container.php?tag=getAll"));
+
+        return this.getAllContainers(jsonObject);
     }
 
     @Override
     public Container recupLatAndLong(String address) throws Exception {
-      
-      WebServiceContainers wb = new WebServiceContainers();
-      
-      JSONObject obj = wb.recupLatAndLong(new URL("https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyB7H3ni8L2xvycZEckSvE5lzYIKMkYYgNU"));
+
+        WebServiceContainers wb = new WebServiceContainers();
+
+        JSONObject obj = wb.recupLatAndLong(new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyB7H3ni8L2xvycZEckSvE5lzYIKMkYYgNU"));
 //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-      return this.getLatAndLong(obj,address);
-      
+        return this.getLatAndLong(obj, address);
+
     }
 
     @Override
     public Container getByIdContainers(int id) throws Exception {
         WebServiceContainers wb = new WebServiceContainers();
-       
-        
-       JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=getById&idContainer="+id));
-       return this.getById(jsonObject);
+
+        JSONObject jsonObject = wb.addContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=getById&idContainer=" + id));
+        return this.getById(jsonObject);
     }
 
     @Override
@@ -136,7 +133,4 @@ public class ContainerWB implements ContainerService{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  
-    
-    
 }

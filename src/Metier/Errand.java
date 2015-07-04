@@ -14,6 +14,7 @@ import java.util.Date;
  * @author Lyes Atek
  */
 public class Errand {
+
     private int idErrand;
     private int state;
     private Date dateDebut;
@@ -21,6 +22,7 @@ public class Errand {
     private double duree;
     private double distance;
     private int idCourier;
+
     public Errand() {
     }
 
@@ -44,8 +46,6 @@ public class Errand {
         this.state = state;
     }
 
-   
-
     public void setDuree(double duree) {
         this.duree = duree;
     }
@@ -58,7 +58,6 @@ public class Errand {
         this.idCourier = idCourier;
     }
 
-
     public double getDuree() {
         return duree;
     }
@@ -70,31 +69,31 @@ public class Errand {
     public int getIdCourier() {
         return idCourier;
     }
-  
 
     public void setDateDebut(String dateDebut) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-        Date d = sdf.parse(dateDebut);    
+        Date d = sdf.parse(dateDebut);
         this.dateDebut = d;
     }
-    public String getDateDebut() {      
-SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss"); 
-String dateFormatee = formatDateJour.format(dateDebut); 
+
+    public String getDateDebut() {
+        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        String dateFormatee = formatDateJour.format(dateDebut);
 
         return dateFormatee;
     }
 
-     public void setDateFin(String dateFin) throws ParseException {
+    public void setDateFin(String dateFin) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-        Date d = sdf.parse(dateFin);    
+        Date d = sdf.parse(dateFin);
         this.dateFin = d;
     }
-    public String getDateFin() {      
-SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss"); 
-String dateFormatee = formatDateJour.format(dateFin); 
+
+    public String getDateFin() {
+        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        String dateFormatee = formatDateJour.format(dateFin);
 
         return dateFormatee;
     }
 
-   
 }

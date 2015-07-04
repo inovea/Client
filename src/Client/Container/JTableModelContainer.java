@@ -22,7 +22,7 @@ public class JTableModelContainer extends AbstractTableModel {
     private List<Container> container = null;
     private final ContainerService containerMetierService = MetierServiceFactory.getContainerService();
 
-    private String[] entetes = {"Id", "Nom", "Adresse", "Latitude", "Longitude", "Etat"};
+    private String[] entetes = {"Id", "Nom", "Adresse", "Latitude", "Longitude", "Etat", "Collecte"};
 
     public JTableModelContainer() throws Exception {
         super();
@@ -65,6 +65,8 @@ public class JTableModelContainer extends AbstractTableModel {
                 return container.get(rowIndex).getLng();
             case 5:
                 return container.get(rowIndex).getState();
+//            case 6:
+//                return container.get(rowIndex).getLastCollect();
             default:
                 return null;
         }

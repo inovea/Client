@@ -32,7 +32,7 @@ public class Container {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
-        this.setLastCollect("00/00/00 00:00:00");
+        this.setLastCollect("00-00-00 00:00:00");
         this.address = address;
     }
 
@@ -73,16 +73,17 @@ public class Container {
     }
 
     public String getLastCollect() {
-        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         String dateFormatee = formatDateJour.format(lastCollect);
 
         return dateFormatee;
     }
 
     public void setLastCollect(String lastCollect) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         Date d = sdf.parse(lastCollect);
         this.lastCollect = d;
+
     }
 
     public String getAddress() {
