@@ -2,7 +2,7 @@
 package Client.Container;
 
 import Client.TableauDeBord;
-import Metier.Containers;
+import Metier.Container;
 import Metier.MetierServiceFactory;
 import Metier.interfaces.ContainerService;
 import java.util.logging.Level;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 public class UpdateContainer extends javax.swing.JFrame {
 private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
   TableauDeBord tb;
-  Containers cont = new Containers();
+  Container cont = new Container();
   int id;
     public UpdateContainer(TableauDeBord tb, int idContainer) throws Exception {
         initComponents();

@@ -6,7 +6,7 @@
 package Client.Container;
 
 import Client.TableauDeBord;
-import Metier.Containers;
+import Metier.Container;
 import Metier.MetierServiceFactory;
 import Metier.interfaces.ContainerService;
 import java.util.logging.Level;
@@ -177,7 +177,7 @@ public class AddContainer extends javax.swing.JFrame {
     private void btnAjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjoutActionPerformed
         String name = tbNom.getText();
         String adresse = tbAdd.getText();
-        Containers cont = null;
+        Container cont = null;
         String addressTmp = adresse;
         addressTmp = addressTmp.replaceAll(" ", "");
         try {
@@ -206,7 +206,7 @@ public class AddContainer extends javax.swing.JFrame {
             String addressTmp = tbAdd.getText();
             addressTmp = addressTmp.replaceAll(" ", "");
             String adresse = tbAdd.getText();
-            Containers cont = null;
+            Container cont = null;
             try {
 
                 cont = containerMetierService.recupLatAndLong(addressTmp);

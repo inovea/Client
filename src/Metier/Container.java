@@ -13,7 +13,8 @@ import java.util.Date;
  *
  * @author Lyes Atek
  */
-public class Containers {
+public class Container {
+
     private int id;
     private double lat;
     private double lng;
@@ -27,10 +28,10 @@ public class Containers {
         this.name = name;
     }
 
-    public Containers(String name,double lat, double lng,String address) throws ParseException {
+    public Container(String name, double lat, double lng, String address) throws ParseException {
         this.lat = lat;
-            this.lng = lng;
-        this.name = name; 
+        this.lng = lng;
+        this.name = name;
         this.setLastCollect("00/00/00 00:00:00");
         this.address = address;
     }
@@ -38,6 +39,7 @@ public class Containers {
     public String getName() {
         return name;
     }
+
     public int getId() {
         return id;
     }
@@ -70,16 +72,16 @@ public class Containers {
         this.state = state;
     }
 
-    public String getLastCollect() {      
-SimpleDateFormat formatDateJour = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss"); 
-String dateFormatee = formatDateJour.format(lastCollect); 
+    public String getLastCollect() {
+        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+        String dateFormatee = formatDateJour.format(lastCollect);
 
         return dateFormatee;
     }
 
     public void setLastCollect(String lastCollect) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yy");
-        Date d = sdf.parse(lastCollect);    
+        Date d = sdf.parse(lastCollect);
         this.lastCollect = d;
     }
 
@@ -99,7 +101,7 @@ String dateFormatee = formatDateJour.format(lastCollect);
         this.idErrand = idErrand;
     }
 
-    public Containers(int id, double lat, double lng, int state, Date lastCollect, String address, long idErrand) {
+    public Container(int id, double lat, double lng, int state, Date lastCollect, String address, long idErrand) {
         this.id = id;
         this.lat = lat;
         this.lng = lng;
@@ -109,12 +111,12 @@ String dateFormatee = formatDateJour.format(lastCollect);
         this.idErrand = idErrand;
     }
 
-    public Containers() {
+    public Container() {
     }
 
     @Override
     public String toString() {
         return "Container{" + "id=" + id + ", lat=" + lat + ", lng=" + lng + ", state=" + state + ", lastCollect=" + lastCollect + ", address=" + address + ", idErrand=" + idErrand + '}';
     }
-    
+
 }

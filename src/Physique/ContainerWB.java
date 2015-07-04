@@ -5,7 +5,7 @@
  */
 package Physique;
 
-import Metier.Containers;
+import Metier.Container;
 import Metier.interfaces.ContainerService;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,8 +24,8 @@ import org.json.JSONObject;
  */
 public class ContainerWB implements ContainerService{
 //Reception du JSONObject
-    public Containers getLatAndLong(JSONObject obj,String adress) throws Exception {
-        Containers cont = new Containers();
+    public Container getLatAndLong(JSONObject obj,String adress) throws Exception {
+        Container cont = new Container();
                 System.out.println("Result: "+obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
         
       //  System.out.println(obj.getJSONArray("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
@@ -34,11 +34,11 @@ public class ContainerWB implements ContainerService{
         cont.setLng(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
         return cont;
     }
-     public List<Containers> getAllContainers(JSONObject obj) throws JSONException{
-         List<Containers> list = new ArrayList<Containers>();
+     public List<Container> getAllContainers(JSONObject obj) throws JSONException{
+         List<Container> list = new ArrayList<Container>();
         JSONArray containers = obj.getJSONArray("container");
         for(int i =0;i<containers.length();i++){
-            Containers container = new Containers();
+            Container container = new Container();
             JSONObject tempCont = containers.getJSONObject(i);          
             container.setId(tempCont.getInt("idContainer"));
             container.setAddress(tempCont.getString("address"));  
@@ -53,9 +53,9 @@ public class ContainerWB implements ContainerService{
         }
       return  list;
     }
-      public Containers getById(JSONObject obj) throws JSONException, ParseException{
+      public Container getById(JSONObject obj) throws JSONException, ParseException{
           
-          Containers container = new Containers();        
+          Container container = new Container();        
             container.setId(obj.getJSONObject("container").getInt("idContainer"));
            container.setAddress(obj.getJSONObject("container") .getString("address"));  
             container.setLat(obj.getJSONObject("container").getDouble("lat"));
@@ -70,7 +70,7 @@ public class ContainerWB implements ContainerService{
     
        
     @Override
-    public Containers add(Containers container) throws Exception {
+    public Container add(Container container) throws Exception {
         WebServiceContainers wb = new WebServiceContainers();
        //ContainersReception cr = new ContainersReception();
         
@@ -79,7 +79,7 @@ public class ContainerWB implements ContainerService{
     }
 
     @Override
-    public Containers update(Containers container) throws Exception {
+    public Container update(Container container) throws Exception {
        WebServiceContainers wb = new WebServiceContainers();
        
         
@@ -99,7 +99,7 @@ public class ContainerWB implements ContainerService{
    
 
     @Override
-    public List<Containers> getAll() throws Exception {
+    public List<Container> getAll() throws Exception {
        WebServiceContainers wb = new WebServiceContainers();
        JSONObject jsonObject = wb.recupAllContainers(new URL("http://inovea.herobo.com/webhost/container.php?tag=getAll"));
       
@@ -107,7 +107,7 @@ public class ContainerWB implements ContainerService{
     }
 
     @Override
-    public Containers recupLatAndLong(String address) throws Exception {
+    public Container recupLatAndLong(String address) throws Exception {
       
       WebServiceContainers wb = new WebServiceContainers();
       
@@ -118,7 +118,7 @@ public class ContainerWB implements ContainerService{
     }
 
     @Override
-    public Containers getByIdContainers(int id) throws Exception {
+    public Container getByIdContainers(int id) throws Exception {
         WebServiceContainers wb = new WebServiceContainers();
        
         
@@ -127,12 +127,12 @@ public class ContainerWB implements ContainerService{
     }
 
     @Override
-    public Containers register(String name, double lat, double lng, String address) throws Exception {
+    public Container register(String name, double lat, double lng, String address) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Containers> getByIdErrand(int id) throws Exception {
+    public List<Container> getByIdErrand(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

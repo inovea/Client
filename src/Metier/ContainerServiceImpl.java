@@ -7,7 +7,7 @@ package Metier;
 
 import Metier.interfaces.ContainerService;
 import java.util.List;
-import Metier.Containers;
+import Metier.Container;
 import Physique.PhysiqueDataFactory;
 import org.json.JSONObject;
 
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class ContainerServiceImpl implements ContainerService{
     private ContainerService containerPhysiqueService = PhysiqueDataFactory.getContainerDataService();
     @Override
-     public Containers add(Containers container) throws Exception {
+     public Container add(Container container) throws Exception {
         if(container == null){
           throw  new NullPointerException("Conteneur null");
         }
@@ -39,7 +39,7 @@ public class ContainerServiceImpl implements ContainerService{
      }
 
     @Override
-    public Containers update(Containers container) throws Exception {
+    public Container update(Container container) throws Exception {
      
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return containerPhysiqueService.update(container);
@@ -51,18 +51,18 @@ public class ContainerServiceImpl implements ContainerService{
     }
 
     @Override
-    public Containers getById(JSONObject obj) throws Exception {
+    public Container getById(JSONObject obj) throws Exception {
     return containerPhysiqueService.getById(obj);
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 @Override
-    public List<Containers> getAll() throws Exception {
+    public List<Container> getAll() throws Exception {
         return containerPhysiqueService.getAll();
     }
 
     @Override
-    public Containers register(String name, double lat, double lng,String address) throws Exception {
+    public Container register(String name, double lat, double lng,String address) throws Exception {
         Double latitude ;
         Double longitude ;
  
@@ -79,12 +79,12 @@ public class ContainerServiceImpl implements ContainerService{
         if(String.valueOf(lng).equals("")){
            throw  new Exception("Longitude manquante");
         }
-        Containers ctn = new Containers(name,lat,lng,address);
+        Container ctn = new Container(name,lat,lng,address);
         return containerPhysiqueService.add(ctn);
     }
 
     @Override
-    public Containers recupLatAndLong(String address) throws Exception {
+    public Container recupLatAndLong(String address) throws Exception {
         if(address.equals("")){
              throw  new Exception("adresse manquante");
         }
@@ -93,13 +93,13 @@ public class ContainerServiceImpl implements ContainerService{
     }
 
     @Override
-    public Containers getByIdContainers(int id) throws Exception {
+    public Container getByIdContainers(int id) throws Exception {
         return containerPhysiqueService.getByIdContainers(id);
 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Containers> getByIdErrand(int id) throws Exception {
+    public List<Container> getByIdErrand(int id) throws Exception {
         return containerPhysiqueService.getByIdErrand(id);
     }
 

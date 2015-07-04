@@ -6,7 +6,7 @@
 package Metier.interfaces;
 
 
-import Metier.Containers;
+import Metier.Container;
 import java.util.List;
 import org.json.JSONObject;
 
@@ -15,14 +15,14 @@ import org.json.JSONObject;
  * @author Lyes Atek
  */
 public interface ContainerService {
-    public Containers register(String name, double lat, double lng,String address) throws Exception;
-    public Containers add(Containers container) throws Exception;
-    public Containers update(Containers container) throws Exception;
+    public Container register(String name, double lat, double lng,String address) throws Exception;
+    public Container add(Container container) throws Exception;
+    public Container update(Container container) throws Exception;
     public void delete(int idContainer) throws Exception;
-    public Containers recupLatAndLong(String address) throws Exception;
-    public Containers getById(JSONObject obj) throws Exception;
-    public Containers getByIdContainers(int id) throws Exception;
-    public List<Containers> getByIdErrand(int id) throws Exception;
+    public Container recupLatAndLong(String address) throws Exception;
+    public Container getById(JSONObject obj) throws Exception;
+    public Container getByIdContainers(int id) throws Exception;
+    public List<Container> getByIdErrand(int id) throws Exception;
     //public Courier getByMail(String mail) throws Exception;
-    public List<Containers> getAll() throws Exception;
+    public List<Container> getAll() throws Exception;
 }

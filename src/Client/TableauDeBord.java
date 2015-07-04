@@ -4,25 +4,6 @@
  */
 package Client;
 
-/*import Client.Adherents.AddAdherent;
- import Client.Adherents.EditAdherent;
- import Client.Adherents.JTableModelAdherent;
- import Client.Bibliothecaire.AddUtilisateur;
- import Client.Bibliothecaire.ConfSupprWithPass;
- import Client.Bibliothecaire.EditBiblio;
- import Client.Bibliothecaire.JTableModelBibliothecaire;
- import Client.Emprunts.AddEmprunt;
- import Client.Emprunts.JTableModelEmprunt;
- import Client.Livres.AddBook;
- import Client.Livres.BooleanCellRenderer;
- import Client.Livres.DisponibiliteCellEditor;
- import Client.Livres.EditBook;
- import Client.Livres.JTableModelBooks;*/
-/*import Client.Thread.Selected;
- import Client.Utilisateur.JTableModelUtilisateur;
- import Metier.Adherent;
- import Metier.AdherentService;
- import Metier.Bibliothecaire;*/
 import Client.Container.AddContainer;
 import Client.Container.JTableModelContainer;
 import Client.Container.UpdateContainer;
@@ -31,13 +12,9 @@ import Client.Thread.Selected;
 import Client.Utilisateur.AddUtilisateur;
 import Client.Utilisateur.EditUtilisateur;
 import Client.Utilisateur.JTableModelUtilisateur;
-import Metier.Containers;
+import Metier.Container;
 import Metier.Courier;
 import Metier.Errand;
-/*import Metier.Emprunt;
- import Metier.EmpruntService;
- import Metier.Livre;
- import Metier.LivreService;*/
 import Metier.MetierServiceFactory;
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
@@ -62,31 +39,17 @@ import javax.swing.table.TableRowSorter;
  */
 public class TableauDeBord extends javax.swing.JFrame {
 
-    //private Bibliothecaire bibliothecaireConnecte = null;
-    /*private Bibliotheque bibliotheque = MetierServiceFactory.getBibliotheque();
-     private LivreService livreMetierService = MetierServiceFactory.getLivreService();
-     private AdherentService adherentMetierService = MetierServiceFactory.getAdherentService();
-     private EmpruntService empruntMetierService = MetierServiceFactory.getEmpruntService();*/
     private CourierService courierMetierService = MetierServiceFactory.getCourierService();
     private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
     private ErrandService errandMetierService = MetierServiceFactory.getErrandService();
 
-    /*private JTableModelBooks books = null;
-     private JTableModelAdherent adherents = null;
-     private JTableModelEmprunt emprunts = null;
-     private JTableModelBibliothecaire bibliothecaires = null;*/
     private JTableModelUtilisateur utilisateurs = null;
     private JTableModelErrand errands = null;
     private JTableModelContainer containerModel = null;
-    /*private Livre selectedL;
-     private Adherent selectedA;
-     private Emprunt selectedE;
-     private Bibliothecaire selectedB;*/
+
     private Courier selectedC;
     private Courier courierConnected;
     private Errand selectedE;
-   
-
 
     /**
      * Creates new form TableauDeBord
@@ -99,13 +62,13 @@ public class TableauDeBord extends javax.swing.JFrame {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
         SwingFXWebView sw = new SwingFXWebView();
-        jTabbedPane.add("Map",sw);
-        //this.bibliothecaireConnecte = this.bibliotheque.getBibliothecaireConnecte();
-        /*if (this.bibliothecaireConnecte == null) {
-         this.dispose();
-         } else {
-         jLabelBC.setText("Bibliothécaire connecté : " + bibliothecaireConnecte.getPrenom() + " " + bibliothecaireConnecte.getNom());
-         }*/
+        jTabbedPane.add("Map", sw);
+
+//        if (courierConnected == null) {
+//            this.dispose();
+//        } else {
+//            jLabelUtilisateurConnecte.setText("Bibliothécaire connecté : " + courierConnected.getFirstname() + " " + courierConnected.getName());
+//        }
         this.setVisible(true);
 
     }
@@ -123,11 +86,11 @@ public class TableauDeBord extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupCritereRechercheBooks = new javax.swing.ButtonGroup();
-        buttonGroupCritereRechercheAdherent = new javax.swing.ButtonGroup();
-        buttonGroupCritereRechercheEmprunt = new javax.swing.ButtonGroup();
+        buttonGroupCritereRechercheContainer = new javax.swing.ButtonGroup();
+        buttonGroupCritereRechercheUtilisateur = new javax.swing.ButtonGroup();
+        buttonGroupCritereRechercheCourse = new javax.swing.ButtonGroup();
         jPanelDetails = new javax.swing.JPanel();
-        jLabelBC = new javax.swing.JLabel();
+        jLabelUtilisateurConnecte = new javax.swing.JLabel();
         jButtonQuit = new javax.swing.JButton();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanelMenuAdmin = new javax.swing.JPanel();
@@ -164,13 +127,13 @@ public class TableauDeBord extends javax.swing.JFrame {
         jSeparator25 = new javax.swing.JSeparator();
         jSeparator26 = new javax.swing.JSeparator();
         jPanel10 = new javax.swing.JPanel();
-        jRadioButtonIdBiblio2 = new javax.swing.JRadioButton();
-        jRadioButtonNomBiblio2 = new javax.swing.JRadioButton();
-        jRadioButtonPrenomBiblio2 = new javax.swing.JRadioButton();
+        jRadioButtonIdContainer = new javax.swing.JRadioButton();
+        jRadioButtonNomContainer = new javax.swing.JRadioButton();
+        jRadioButtonAdresseContainer = new javax.swing.JRadioButton();
         jLabel27 = new javax.swing.JLabel();
-        jRadioButtonLoginBiblio2 = new javax.swing.JRadioButton();
+        jRadioButtonEtatContainer = new javax.swing.JRadioButton();
         jPanel11 = new javax.swing.JPanel();
-        jTextFieldSearchBiblio2 = new javax.swing.JTextField();
+        jTextFieldSearchContainer = new javax.swing.JTextField();
         jLabelNbFoundContainer = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -218,8 +181,8 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
 
-        jLabelBC.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
-        jLabelBC.setText("Utilisateur connecté : -");
+        jLabelUtilisateurConnecte.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
+        jLabelUtilisateurConnecte.setText("Utilisateur connecté : -");
 
         jButtonQuit.setText("Déconnexion");
         jButtonQuit.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +197,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDetailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelBC, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelUtilisateurConnecte, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonQuit)
                 .addContainerGap())
@@ -244,7 +207,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanelDetailsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelBC, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(jLabelUtilisateurConnecte, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                     .addComponent(jButtonQuit))
                 .addContainerGap())
         );
@@ -276,19 +239,19 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jSeparator18.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonIdCourier);
+        buttonGroupCritereRechercheUtilisateur.add(jRadioButtonIdCourier);
         jRadioButtonIdCourier.setText("Par identifiant");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonNomCourier);
+        buttonGroupCritereRechercheUtilisateur.add(jRadioButtonNomCourier);
         jRadioButtonNomCourier.setText("Par nom");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonPrenomCourier);
+        buttonGroupCritereRechercheUtilisateur.add(jRadioButtonPrenomCourier);
         jRadioButtonPrenomCourier.setText("Par prénom");
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel21.setText("Critères de recherches :");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonMailCourier);
+        buttonGroupCritereRechercheUtilisateur.add(jRadioButtonMailCourier);
         jRadioButtonMailCourier.setText("Par mail");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -435,7 +398,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelUtilisateurLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -543,22 +506,26 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jSeparator26.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jRadioButtonIdBiblio2.setText("Par identifiant");
-        jRadioButtonIdBiblio2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroupCritereRechercheContainer.add(jRadioButtonIdContainer);
+        jRadioButtonIdContainer.setText("Par identifiant");
+        jRadioButtonIdContainer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonIdBiblio2ActionPerformed(evt);
+                jRadioButtonIdContainerActionPerformed(evt);
             }
         });
 
-        jRadioButtonNomBiblio2.setSelected(true);
-        jRadioButtonNomBiblio2.setText("Par nom");
+        buttonGroupCritereRechercheContainer.add(jRadioButtonNomContainer);
+        jRadioButtonNomContainer.setSelected(true);
+        jRadioButtonNomContainer.setText("Par nom");
 
-        jRadioButtonPrenomBiblio2.setText("Par Nom");
+        buttonGroupCritereRechercheContainer.add(jRadioButtonAdresseContainer);
+        jRadioButtonAdresseContainer.setText("Par adresse");
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel27.setText("Critères de recherches :");
 
-        jRadioButtonLoginBiblio2.setText("Par login");
+        buttonGroupCritereRechercheContainer.add(jRadioButtonEtatContainer);
+        jRadioButtonEtatContainer.setText("Par état");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -570,12 +537,12 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButtonIdBiblio2)
-                            .addComponent(jRadioButtonPrenomBiblio2))
+                            .addComponent(jRadioButtonIdContainer)
+                            .addComponent(jRadioButtonAdresseContainer))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButtonNomBiblio2)
-                            .addComponent(jRadioButtonLoginBiblio2))))
+                            .addComponent(jRadioButtonNomContainer)
+                            .addComponent(jRadioButtonEtatContainer))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -585,18 +552,18 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonIdBiblio2)
-                    .addComponent(jRadioButtonNomBiblio2))
+                    .addComponent(jRadioButtonIdContainer)
+                    .addComponent(jRadioButtonNomContainer))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonPrenomBiblio2)
-                    .addComponent(jRadioButtonLoginBiblio2))
+                    .addComponent(jRadioButtonAdresseContainer)
+                    .addComponent(jRadioButtonEtatContainer))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextFieldSearchBiblio2.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldSearchContainer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldSearchBiblio2KeyTyped(evt);
+                jTextFieldSearchContainerKeyTyped(evt);
             }
         });
 
@@ -621,7 +588,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldSearchBiblio2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldSearchContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel28)))
                 .addContainerGap())
@@ -632,7 +599,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
-                    .addComponent(jTextFieldSearchBiblio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSearchContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelNbFoundContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -664,7 +631,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addComponent(jSeparator25)
                     .addGroup(jPanelBarSearchContainerLayout.createSequentialGroup()
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 51, Short.MAX_VALUE)))
+                        .addGap(0, 57, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -791,7 +758,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         );
         jPanelMenuContainLayout.setVerticalGroup(
             jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 726, Short.MAX_VALUE)
             .addGroup(jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuContainLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -821,19 +788,19 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jSeparator22.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonIdCourier1);
+        buttonGroupCritereRechercheCourse.add(jRadioButtonIdCourier1);
         jRadioButtonIdCourier1.setText("Par identifiant");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonNomCourier1);
+        buttonGroupCritereRechercheCourse.add(jRadioButtonNomCourier1);
         jRadioButtonNomCourier1.setText("Par nom");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonPrenomCourier1);
+        buttonGroupCritereRechercheCourse.add(jRadioButtonPrenomCourier1);
         jRadioButtonPrenomCourier1.setText("Par prénom");
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel22.setText("Critères de recherches :");
 
-        buttonGroupCritereRechercheAdherent.add(jRadioButtonMailCourier1);
+        buttonGroupCritereRechercheCourse.add(jRadioButtonMailCourier1);
         jRadioButtonMailCourier1.setText("Par mail");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -980,7 +947,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCourseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1102,15 +1069,15 @@ public class TableauDeBord extends javax.swing.JFrame {
         if (this.courierConnected == null) {
             JOptionPane.showMessageDialog(this, "Utilisateur inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
             this.dispose();
-         } else {
-            jLabelBC.setText("Utilisateur connecté : " + courierConnected.getFirstname()+ " " + courierConnected.getName());
-         }
-         try {
+        } else {
+            jLabelUtilisateurConnecte.setText("Utilisateur connecté : " + courierConnected.getFirstname() + " " + courierConnected.getName());
+        }
+        try {
             this.createAllJTable();
-         } catch (Exception ex) {
+        } catch (Exception ex) {
             Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
             jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-         }
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMouseClicked
@@ -1130,16 +1097,63 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDelContainActionPerformed
 
     private void jTableContainerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContainerMouseClicked
-        // TODO add your handling code here:
+//        try {
+//            int id = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 0);
+//            String nom = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 1);
+//            String adresse = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 2);
+//            int lat = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 3);
+//            int lng = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 4);
+//            int state = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 5);
+//
+//            Container container = new Container(nom, lat, lng, adresse);
+//            container.setId(id);
+//            container.setState(state);
+//
+////            this.setCourierSelected(courier);
+//            jLabelContainerSelected.setText("<html><body><font color='#FF6666'><b>" + courier.getName() + "</b> <i>" + courier.getFirstname() + "</i></font> authentifié(e) par <font color='#FF6666' >" + courier.getMail() + "</font></body></html>");
+//        } catch (Exception ex) {
+//            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jTableContainerMouseClicked
 
-    private void jTextFieldSearchBiblio2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchBiblio2KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSearchBiblio2KeyTyped
+    private void jTextFieldSearchContainerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchContainerKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            String toSearch = jTextFieldSearchContainer.getText();
+            if (jRadioButtonIdContainer.isSelected()) {
+                try {
+                    this.searchByIdContainer(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            } else if (jRadioButtonNomContainer.isSelected()) {
+                try {
+                    this.searchByNomContainer(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            } else if (jRadioButtonAdresseContainer.isSelected()) {
+                try {
+                    this.searchByAdresseContainer(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            } else if (jRadioButtonEtatContainer.isSelected()) {
+                try {
+                    this.searchByEtatContainer(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            }
+        }
+    }//GEN-LAST:event_jTextFieldSearchContainerKeyTyped
 
-    private void jRadioButtonIdBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIdBiblio2ActionPerformed
+    private void jRadioButtonIdContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIdContainerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonIdBiblio2ActionPerformed
+    }//GEN-LAST:event_jRadioButtonIdContainerActionPerformed
 
     private void jButtonEditContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContainActionPerformed
         int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
@@ -1154,7 +1168,7 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         new AddContainer(this);
 
-        List<Containers> list = new ArrayList<Containers>();
+        List<Container> list = new ArrayList<Container>();
         try {
             list = containerMetierService.getAll();
         } catch (Exception ex) {
@@ -1176,7 +1190,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Attention, l'utilisateur est connecté", "Attention", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -1267,17 +1281,17 @@ public class TableauDeBord extends javax.swing.JFrame {
         }
 
         /*if (!jLabelUtilisateurSelected.getText().equals("Aucun")) {
-            if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
-                EditBiblio editBiblio = new EditBiblio(this, true);
-                editBiblio.setBibliothecaireSelected(this.selectedB);
-                editBiblio.setModelBiblio(bibliothecaires);
-                editBiblio.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à modifier ce bibliothécaire !", "Accès interdit", JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
-        }*/
+         if ((this.selectedB.getId() == MetierServiceFactory.getBibliotheque().getBibliothecaireConnecte().getId()) || (MetierServiceFactory.getBibliotheque().isSuperAdminConnected())) {
+         EditBiblio editBiblio = new EditBiblio(this, true);
+         editBiblio.setBibliothecaireSelected(this.selectedB);
+         editBiblio.setModelBiblio(bibliothecaires);
+         editBiblio.setVisible(true);
+         } else {
+         JOptionPane.showMessageDialog(this, "Vous n'êtes pas autorisé à modifier ce bibliothécaire !", "Accès interdit", JOptionPane.WARNING_MESSAGE);
+         }
+         } else {
+         JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bibliothécaire...", "Attention", JOptionPane.WARNING_MESSAGE);
+         }*/
     }//GEN-LAST:event_jButtonEditCourierActionPerformed
 
     private void jButtonAddCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourierActionPerformed
@@ -1348,9 +1362,9 @@ public class TableauDeBord extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroupCritereRechercheAdherent;
-    private javax.swing.ButtonGroup buttonGroupCritereRechercheBooks;
-    private javax.swing.ButtonGroup buttonGroupCritereRechercheEmprunt;
+    private javax.swing.ButtonGroup buttonGroupCritereRechercheContainer;
+    private javax.swing.ButtonGroup buttonGroupCritereRechercheCourse;
+    private javax.swing.ButtonGroup buttonGroupCritereRechercheUtilisateur;
     private javax.swing.JButton jButtonAddContainer;
     private javax.swing.JButton jButtonAddCourier;
     private javax.swing.JButton jButtonAddCourse;
@@ -1373,12 +1387,12 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabelBC;
     private javax.swing.JLabel jLabelContainerSelected;
     private javax.swing.JLabel jLabelErrandSelected;
     private javax.swing.JLabel jLabelNbFoundContainer;
     private javax.swing.JLabel jLabelNbFoundCourier;
     private javax.swing.JLabel jLabelNbFoundCourier1;
+    private javax.swing.JLabel jLabelUtilisateurConnecte;
     private javax.swing.JLabel jLabelUtilisateurSelected;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1400,16 +1414,16 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMenuCourse;
     private javax.swing.JPanel jPanelUtilisateur;
     private javax.swing.JPanel jPanelUtilisateurSelected;
-    private javax.swing.JRadioButton jRadioButtonIdBiblio2;
+    private javax.swing.JRadioButton jRadioButtonAdresseContainer;
+    private javax.swing.JRadioButton jRadioButtonEtatContainer;
+    private javax.swing.JRadioButton jRadioButtonIdContainer;
     private javax.swing.JRadioButton jRadioButtonIdCourier;
     private javax.swing.JRadioButton jRadioButtonIdCourier1;
-    private javax.swing.JRadioButton jRadioButtonLoginBiblio2;
     private javax.swing.JRadioButton jRadioButtonMailCourier;
     private javax.swing.JRadioButton jRadioButtonMailCourier1;
-    private javax.swing.JRadioButton jRadioButtonNomBiblio2;
+    private javax.swing.JRadioButton jRadioButtonNomContainer;
     private javax.swing.JRadioButton jRadioButtonNomCourier;
     private javax.swing.JRadioButton jRadioButtonNomCourier1;
-    private javax.swing.JRadioButton jRadioButtonPrenomBiblio2;
     private javax.swing.JRadioButton jRadioButtonPrenomCourier;
     private javax.swing.JRadioButton jRadioButtonPrenomCourier1;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1431,7 +1445,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JTable jTableContainer;
     private javax.swing.JTable jTableCourier;
     private javax.swing.JTable jTableErrand;
-    private javax.swing.JTextField jTextFieldSearchBiblio2;
+    private javax.swing.JTextField jTextFieldSearchContainer;
     private javax.swing.JTextField jTextFieldSearchCourier;
     private javax.swing.JTextField jTextFieldSearchCourier1;
     // End of variables declaration//GEN-END:variables
@@ -1445,16 +1459,16 @@ public class TableauDeBord extends javax.swing.JFrame {
             jRadioButtonNomCourier.setSelected(true);
         } else if (jPanelMenuContain.isShowing()) {
             this.fireJTableContainer(null, null);
-            jTextFieldSearchBiblio2.setText("");
+            jTextFieldSearchContainer.setText("");
             jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
             jLabelUtilisateurSelected.setText("Aucun");
-            jRadioButtonNomBiblio2.setSelected(true);
-        }else if (jPanelMenuCourse.isShowing()) {
+            jRadioButtonNomContainer.setSelected(true);
+        } else if (jPanelMenuCourse.isShowing()) {
             this.fireJTableErrand(null, null);
          //  jTextFieldSearchBiblio2.setText("");
-          // jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
-           // jLabelUtilisateurSelected.setText("Aucun");
-           // jRadioButtonNomBiblio2.setSelected(true);
+            // jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
+            // jLabelUtilisateurSelected.setText("Aucun");
+            // jRadioButtonNomBiblio2.setSelected(true);
         }
     }
 
@@ -1479,8 +1493,8 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         Selected container = new Selected(jTableContainer, jLabelContainerSelected);
         container.start();
-       
-        if (errands== null) {
+
+        if (errands == null) {
             errands = new JTableModelErrand();
         }
         jTableErrand.setModel(errands);
@@ -1489,93 +1503,10 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         Selected errand = new Selected(jTableErrand, jLabelErrandSelected);
         errand.start();
-        
+
     }
 
-    /*private void fireJTableBooks(List<Livre> list, Livre livre) {
-     int page = Integer.parseInt(jLabelNumPageLivre.getText());
-     int perpage = Integer.parseInt((String) jComboBoxNbPerPageLivre.getSelectedItem());
-     int debut = (perpage * page) - perpage;
-     if (list != null) {
-     books = new JTableModelBooks(list, perpage, page);
-     jTableLivres.setModel(books);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
-     jTableLivres.setRowSorter(sorter);
-     } else if (livre != null) {
-     books = new JTableModelBooks(livre, perpage, page);
-     jTableLivres.setModel(books);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
-     jTableLivres.setRowSorter(sorter);
-     } else {
-     try {
-     books = new JTableModelBooks(debut, perpage, page);
-     jTableLivres.setModel(books);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableLivres.getModel());
-     jTableLivres.setRowSorter(sorter);
-     } catch (Exception ex) {
-     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-     jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-     }
-     }
-     }
-
-     private void fireJTableAdherents(List<Adherent> list, Adherent adherent) {
-     int page = Integer.parseInt(jLabelNumPageAdherent.getText());
-     int perpage = Integer.parseInt((String) jComboBoxNbPerPageAdherent.getSelectedItem());
-     int debut = (perpage * page) - perpage;
-     if (list != null) {
-     adherents = new JTableModelAdherent(list, perpage, page);
-     jTableAdherent.setModel(adherents);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
-     jTableAdherent.setRowSorter(sorter);
-     } else if (adherent != null) {
-     adherents = new JTableModelAdherent(adherent, perpage, page);
-     jTableAdherent.setModel(adherents);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
-     jTableAdherent.setRowSorter(sorter);
-     } else {
-     try {
-     adherents = new JTableModelAdherent(debut, perpage, page);
-     jTableAdherent.setModel(adherents);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableAdherent.getModel());
-     jTableAdherent.setRowSorter(sorter);
-     } catch (Exception ex) {
-     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-     jLabelNbFoundAdherent.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-     }
-     }
-     }
-
-     private void fireJTableEmprunt(List<Emprunt> list, Emprunt emprunt) {
-     int page = Integer.parseInt(jLabelNumPageEmprunt.getText());
-     int perpage = Integer.parseInt((String) jComboBoxNbPerPageEmprunt.getSelectedItem());
-     int debut = (perpage * page) - perpage;
-     if (list != null) {
-     emprunts = new JTableModelEmprunt(list, perpage, page);
-     jTableEmprunt.setModel(emprunts);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
-     jTableEmprunt.setRowSorter(sorter);
-     } else if (emprunt != null) {
-     emprunts = new JTableModelEmprunt(emprunt, perpage, page);
-     jTableEmprunt.setModel(emprunts);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
-     jTableEmprunt.setRowSorter(sorter);
-     } else {
-     try {
-     emprunts = new JTableModelEmprunt(debut, perpage, page);
-     jTableEmprunt.setModel(emprunts);
-     TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableEmprunt.getModel());
-     jTableEmprunt.setRowSorter(sorter);
-     } catch (Exception ex) {
-     Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-     jLabelNbFoundEmprunt.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-     }
-     }
-     }*/
     private void fireJTableCourier(List<Courier> list, Courier courier) {
-        /*int page = Integer.parseInt(jLabelNumPageBiblio.getText());
-         int perpage = Integer.parseInt((String) jComboBoxNbPerPageBiblio.getSelectedItem());
-         int debut = (perpage * page) - perpage;*/
         if (list != null) {
             utilisateurs = new JTableModelUtilisateur(list);
             jTableCourier.setModel(utilisateurs);
@@ -1598,10 +1529,8 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         }
     }
-  private void fireJTableErrand(List<Errand> list, Errand errand) {
-        /*int page = Integer.parseInt(jLabelNumPageBiblio.getText());
-         int perpage = Integer.parseInt((String) jComboBoxNbPerPageBiblio.getSelectedItem());
-         int debut = (perpage * page) - perpage;*/
+
+    private void fireJTableErrand(List<Errand> list, Errand errand) {
         if (list != null) {
             errands = new JTableModelErrand(list);
             jTableErrand.setModel(errands);
@@ -1625,7 +1554,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         }
     }
 
-    public void fireJTableContainer(List<Containers> list, Containers containers) {
+    public void fireJTableContainer(List<Container> list, Container containers) {
 
         if (list != null) {
             containerModel = new JTableModelContainer(list);
@@ -1645,278 +1574,9 @@ public class TableauDeBord extends javax.swing.JFrame {
                 jTableContainer.setRowSorter(sorter);
             } catch (Exception ex) {
                 Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                //jLabelNbFoundBiblio.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                jLabelNbFoundContainer.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
             }
         }
-    }
-
-    private void searchByMotsClesLivre(String toSearch) {
-        /*try {
-         StringTokenizer st = new StringTokenizer(toSearch, " ");
-         System.out.println(st.countTokens() + "");
-         if (st.countTokens() != 0) {
-         List<String> list = new ArrayList<>();
-         for (int i = 0; i < st.countTokens() + 1; i++) {
-         list.add(st.nextToken());
-         }
-         List<Livre> byMotsClefs = livreMetierService.getByMotsClefs(list);
-         if (byMotsClefs.size() > 1) {
-         jLabelNbFoundLivre.setText(byMotsClefs.size() + " livres ont été trouvés");
-         this.fireJTableBooks(byMotsClefs, null);
-         } else {
-         if (byMotsClefs.size() == 1) {
-         jLabelNbFoundLivre.setText(byMotsClefs.size() + " livre a été trouvé");
-         this.fireJTableBooks(byMotsClefs, null);
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-         this.fireJTableBooks(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-         this.fireJTableBooks(null, null);
-         }
-         } catch (Exception ex) {
-         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-         jLabelNbFoundLivre.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-         }*/
-    }
-
-    private void searchByIdLivre(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         try {
-         int id = Integer.parseInt(toSearch);
-         Livre byId = livreMetierService.getById(id);
-         if (byId != null) {
-         jLabelNbFoundLivre.setText("1 livre a été trouvé");
-         this.fireJTableBooks(null, byId);
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-         this.fireJTableBooks(null, null);
-         }
-         } catch (NumberFormatException nfe) {
-         jLabelNbFoundLivre.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
-         }
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-         this.fireJTableBooks(null, null);
-         }*/
-    }
-
-    private void searchByAutorLivre(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         List<Livre> byAuteur = livreMetierService.getByAuteur(toSearch);
-         if (byAuteur.size() > 1) {
-         jLabelNbFoundLivre.setText(byAuteur.size() + " livres ont été trouvés");
-         this.fireJTableBooks(byAuteur, null);
-         } else {
-         if (byAuteur.size() == 1) {
-         jLabelNbFoundLivre.setText(byAuteur.size() + " livre a été trouvé");
-         this.fireJTableBooks(byAuteur, null);
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-         this.fireJTableBooks(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-         this.fireJTableBooks(null, null);
-         }*/
-    }
-
-    private void searchByTitleLivre(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         List<Livre> byTitre = livreMetierService.getByTitre(toSearch);
-         if (byTitre.size() > 1) {
-         jLabelNbFoundLivre.setText(byTitre.size() + " livres ont été trouvés");
-         this.fireJTableBooks(byTitre, null);
-         } else {
-         if (byTitre.size() == 1) {
-         jLabelNbFoundLivre.setText(byTitre.size() + " livre a été trouvé");
-         this.fireJTableBooks(byTitre, null);
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été trouvé");
-         this.fireJTableBooks(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundLivre.setText("Aucun livre n'a été cherché");
-         this.fireJTableBooks(null, null);
-         }*/
-    }
-
-    private void searchByIdAdherent(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         try {
-         int id = Integer.parseInt(toSearch);
-         Adherent byId = adherentMetierService.getById(id);
-         if (byId != null) {
-         jLabelNbFoundAdherent.setText("1 adhérent a été trouvé");
-         this.fireJTableAdherents(null, byId);
-         } else {
-         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
-         this.fireJTableAdherents(null, null);
-         }
-         } catch (NumberFormatException nfe) {
-         jLabelNbFoundAdherent.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
-         }
-         } else {
-         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
-         this.fireJTableAdherents(null, null);
-         }*/
-    }
-
-    private void searchByNomAdherent(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         List<Adherent> byNom = adherentMetierService.getByNom(toSearch);
-         if (byNom.size() > 1) {
-         jLabelNbFoundAdherent.setText(byNom.size() + " adhérents ont été trouvés");
-         this.fireJTableAdherents(byNom, null);
-         } else {
-         if (byNom.size() == 1) {
-         jLabelNbFoundAdherent.setText(byNom.size() + " adhérent a été trouvé");
-         this.fireJTableAdherents(byNom, null);
-         } else {
-         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
-         this.fireJTableAdherents(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
-         this.fireJTableAdherents(null, null);
-         }*/
-    }
-
-    private void searchByPrenomAdherent(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         List<Adherent> byPrenom = adherentMetierService.getByPrenom(toSearch);
-         if (byPrenom.size() > 1) {
-         jLabelNbFoundAdherent.setText(byPrenom.size() + " adhérents ont été trouvés");
-         this.fireJTableAdherents(byPrenom, null);
-         } else {
-         if (byPrenom.size() == 1) {
-         jLabelNbFoundAdherent.setText(byPrenom.size() + " adhérent a été trouvé");
-         this.fireJTableAdherents(byPrenom, null);
-         } else {
-         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été trouvé");
-         this.fireJTableAdherents(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundAdherent.setText("Aucun adhérent n'a été cherché");
-         this.fireJTableAdherents(null, null);
-         }*/
-    }
-
-    private void searchByIdEmprunt(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         try {
-         int id = Integer.parseInt(toSearch);
-         Emprunt byId = empruntMetierService.getById(id);
-         if (byId != null) {
-         jLabelNbFoundEmprunt.setText("1 emprunt a été trouvé");
-         this.fireJTableEmprunt(null, byId);
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-         this.fireJTableEmprunt(null, null);
-         }
-         } catch (NumberFormatException nfe) {
-         jLabelNbFoundEmprunt.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
-         }
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-         this.fireJTableEmprunt(null, null);
-         }*/
-    }
-
-    private void searchByAdherentEmprunt(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         List<Adherent> byNom = adherentMetierService.getByNom(toSearch);
-         List<Emprunt> byAdherent = new ArrayList<>();
-         for (int i = 0; i < byNom.size(); i++) {
-         byAdherent.addAll(empruntMetierService.getByAdherent(byNom.get(i)));
-         }
-         if (byAdherent.size() > 1) {
-         jLabelNbFoundEmprunt.setText(byAdherent.size() + " emprunts ont été trouvés");
-         this.fireJTableEmprunt(byAdherent, null);
-         } else {
-         if (byAdherent.size() == 1) {
-         jLabelNbFoundEmprunt.setText(byAdherent.size() + " emprunt a été trouvé");
-         this.fireJTableEmprunt(byAdherent, null);
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-         this.fireJTableEmprunt(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-         this.fireJTableEmprunt(null, null);
-         }*/
-    }
-
-    private void searchByLivreEmprunt(String toSearch) throws Exception {
-        /*try {
-         StringTokenizer st = new StringTokenizer(toSearch, " ");
-         if (st.countTokens() != 0) {
-         List<String> list = new ArrayList<>();
-         for (int i = 0; i < st.countTokens() + 1; i++) {
-         list.add(st.nextToken());
-         }
-         List<Livre> byMotsClefs = livreMetierService.getByMotsClefs(list);
-         List<Emprunt> byLivre = new ArrayList<>();
-         for (int i = 0; i < byMotsClefs.size(); i++) {
-         Emprunt byLivre1 = empruntMetierService.getByLivre(byMotsClefs.get(i));
-         if (byLivre1 != null) {
-         byLivre.add(byLivre1);
-         }
-         }
-         if (byLivre.size() > 1) {
-         jLabelNbFoundEmprunt.setText(byLivre.size() + " emprunts ont été trouvés");
-         this.fireJTableEmprunt(byLivre, null);
-         } else {
-         if (byLivre.size() == 1) {
-         jLabelNbFoundEmprunt.setText(byLivre.size() + " emprunt a été trouvé");
-         this.fireJTableEmprunt(byLivre, null);
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-         this.fireJTableEmprunt(null, null);
-         }
-         }
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-         this.fireJTableEmprunt(null, null);
-         }
-         } catch (Exception ex) {
-         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-         jLabelNbFoundEmprunt.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
-         }*/
-    }
-
-    private void searchByDateEmprunt(String toSearch) throws Exception {
-        /*if (!toSearch.equals("")) {
-         try {
-         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-         Date parse = sdf.parse(toSearch);
-         List<Emprunt> byDate = empruntMetierService.getByDate(parse);
-         if (byDate.size() > 1) {
-         jLabelNbFoundEmprunt.setText(byDate.size() + " emprunts ont été trouvés");
-         this.fireJTableEmprunt(byDate, null);
-         } else {
-         if (byDate.size() == 1) {
-         jLabelNbFoundEmprunt.setText(byDate.size() + " emprunt a été trouvé");
-         this.fireJTableEmprunt(byDate, null);
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été trouvé");
-         this.fireJTableEmprunt(null, null);
-         }
-         }
-         } catch (ParseException e) {
-         jLabelNbFoundEmprunt.setText("<html><body><font color='red'>Cette date n'est pas valide</font></body></html>");
-         }
-         } else {
-         jLabelNbFoundEmprunt.setText("Aucun emprunt n'a été cherché");
-         this.fireJTableEmprunt(null, null);
-         }*/
     }
 
     private void searchByIdCourier(String toSearch) throws Exception {
@@ -1945,7 +1605,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             List<Courier> newCourier = new ArrayList<Courier>();
             List<Courier> couriers = utilisateurs.getCouriers();
             for (Courier courier : couriers) {
-                if(courier.getName().contains(toSearch)){
+                if (courier.getName().contains(toSearch)) {
                     newCourier.add(courier);
                 }
             }
@@ -1959,7 +1619,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 } else {
                     jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été trouvé");
                     this.fireJTableCourier(null, null);
-            }
+                }
             }
         } else {
             jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été cherché");
@@ -1972,7 +1632,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             List<Courier> newCourier = new ArrayList<Courier>();
             List<Courier> couriers = utilisateurs.getCouriers();
             for (Courier courier : couriers) {
-                if(courier.getFirstname().contains(toSearch)){
+                if (courier.getFirstname().contains(toSearch)) {
                     newCourier.add(courier);
                 }
             }
@@ -1986,7 +1646,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 } else {
                     jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été trouvé");
                     this.fireJTableCourier(null, null);
-            }
+                }
             }
         } else {
             jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été cherché");
@@ -1999,12 +1659,12 @@ public class TableauDeBord extends javax.swing.JFrame {
             List<Courier> newCourier = new ArrayList<Courier>();
             List<Courier> couriers = utilisateurs.getCouriers();
             for (Courier courier : couriers) {
-                if(courier.getMail().contains(toSearch)){
+                if (courier.getMail().contains(toSearch)) {
                     newCourier.add(courier);
                 }
             }
             if (newCourier.size() > 1) {
-                jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateur ont été trouvés");
+                jLabelNbFoundCourier.setText(newCourier.size() + " Utilisateurs ont été trouvés");
                 this.fireJTableCourier(newCourier, null);
             } else {
                 if (newCourier.size() == 1) {
@@ -2013,7 +1673,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 } else {
                     jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été trouvé");
                     this.fireJTableCourier(null, null);
-            }
+                }
             }
         } else {
             jLabelNbFoundCourier.setText("Aucun Utilisateur n'a été cherché");
@@ -2047,11 +1707,12 @@ public class TableauDeBord extends javax.swing.JFrame {
          jLabelNbFoundBiblio.setText(statut);
          }*/
     }
-     private void searchByIdContainer(String toSearch) throws Exception {
+
+    private void searchByIdContainer(String toSearch) throws Exception {
         if (!toSearch.equals("")) {
             try {
                 int id = Integer.parseInt(toSearch);
-                Containers byId = containerMetierService.getByIdContainers(id);
+                Container byId = containerMetierService.getByIdContainers(id);
                 if (byId != null) {
                     jLabelNbFoundContainer.setText("1 Conteneur a été trouvé");
                     this.fireJTableContainer(null, byId);
@@ -2066,5 +1727,116 @@ public class TableauDeBord extends javax.swing.JFrame {
             jLabelNbFoundContainer.setText("Aucun Conteneur n'a été cherché");
             this.fireJTableContainer(null, null);
         }
+    }
+
+    private void searchByNomContainer(String toSearch) {
+        if (!toSearch.equals("")) {
+            List<Container> newContainer = new ArrayList<Container>();
+            List<Container> containers = containerModel.getContainer();
+            for (Container container : containers) {
+                if (container.getName().contains(toSearch)) {
+                    newContainer.add(container);
+                }
+            }
+            if (newContainer.size() > 1) {
+                jLabelNbFoundContainer.setText(newContainer.size() + " Containers ont été trouvés");
+                this.fireJTableContainer(newContainer, null);
+            } else {
+                if (newContainer.size() == 1) {
+                    jLabelNbFoundContainer.setText(newContainer.size() + " Container a été trouvé");
+                    this.fireJTableContainer(newContainer, null);
+                } else {
+                    jLabelNbFoundContainer.setText("Aucun Container n'a été trouvé");
+                    this.fireJTableContainer(null, null);
+                }
+            }
+        } else {
+            jLabelNbFoundContainer.setText("Aucun Container n'a été cherché");
+            this.fireJTableContainer(null, null);
+        }
+    }
+
+    private void searchByAdresseContainer(String toSearch) {
+        if (!toSearch.equals("")) {
+            List<Container> newContainer = new ArrayList<Container>();
+            List<Container> containers = containerModel.getContainer();
+            for (Container container : containers) {
+                if (container.getAddress().contains(toSearch)) {
+                    newContainer.add(container);
+                }
+            }
+            if (newContainer.size() > 1) {
+                jLabelNbFoundContainer.setText(newContainer.size() + " Containers ont été trouvés");
+                this.fireJTableContainer(newContainer, null);
+            } else {
+                if (newContainer.size() == 1) {
+                    jLabelNbFoundContainer.setText(newContainer.size() + " Container a été trouvé");
+                    this.fireJTableContainer(newContainer, null);
+                } else {
+                    jLabelNbFoundContainer.setText("Aucun Container n'a été trouvé");
+                    this.fireJTableContainer(null, null);
+                }
+            }
+        } else {
+            jLabelNbFoundContainer.setText("Aucun Container n'a été cherché");
+            this.fireJTableContainer(null, null);
+        }
+    }
+
+    private void searchByEtatContainer(String toSearch) {
+        if (!toSearch.equals("")) {
+            try {
+                int id = Integer.parseInt(toSearch);
+                List<Container> newContainer = new ArrayList<Container>();
+                List<Container> containers = containerModel.getContainer();
+                for (Container container : containers) {
+                    if (container.getState() == id) {
+                        newContainer.add(container);
+                    }
+                }
+                if (newContainer.size() > 1) {
+                    jLabelNbFoundContainer.setText(newContainer.size() + " Containers ont été trouvés");
+                    this.fireJTableContainer(newContainer, null);
+                } else {
+                    if (newContainer.size() == 1) {
+                        jLabelNbFoundContainer.setText(newContainer.size() + " Container a été trouvé");
+                        this.fireJTableContainer(newContainer, null);
+                    } else {
+                        jLabelNbFoundContainer.setText("Aucun Container n'a été trouvé");
+                        this.fireJTableContainer(null, null);
+                    }
+                }
+            } catch (NumberFormatException nfe) {
+                jLabelNbFoundContainer.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
+            }
+        } else {
+            jLabelNbFoundContainer.setText("Aucun Conteneur n'a été cherché");
+            this.fireJTableContainer(null, null);
+        }
+
+//        if (!toSearch.equals("")) {
+//            List<Container> newContainer = new ArrayList<Container>();
+//            List<Container> containers = containerModel.getContainer();
+//            for (Container container : containers) {
+//                if (container.getState().contains(toSearch)) {
+//                    newContainer.add(container);
+//                }
+//            }
+//            if (newContainer.size() > 1) {
+//                jLabelNbFoundContainer.setText(newContainer.size() + " Containers ont été trouvés");
+//                this.fireJTableContainer(newContainer, null);
+//            } else {
+//                if (newContainer.size() == 1) {
+//                    jLabelNbFoundContainer.setText(newContainer.size() + " Container a été trouvé");
+//                    this.fireJTableContainer(newContainer, null);
+//                } else {
+//                    jLabelNbFoundContainer.setText("Aucun Container n'a été trouvé");
+//                    this.fireJTableContainer(null, null);
+//                }
+//            }
+//        } else {
+//            jLabelNbFoundContainer.setText("Aucun Container n'a été cherché");
+//            this.fireJTableContainer(null, null);
+//        }
     }
 }

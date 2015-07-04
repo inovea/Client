@@ -2,11 +2,11 @@
 
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroupCritereRechercheBooks">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupCritereRechercheContainer">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroupCritereRechercheAdherent">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupCritereRechercheUtilisateur">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroupCritereRechercheEmprunt">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupCritereRechercheCourse">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -61,7 +61,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelBC" min="-2" pref="380" max="-2" attributes="0"/>
+                  <Component id="jLabelUtilisateurConnecte" min="-2" pref="380" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButtonQuit" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelBC" alignment="3" pref="26" max="32767" attributes="0"/>
+                      <Component id="jLabelUtilisateurConnecte" alignment="3" pref="26" max="32767" attributes="0"/>
                       <Component id="jButtonQuit" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -82,7 +82,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabelBC">
+        <Component class="javax.swing.JLabel" name="jLabelUtilisateurConnecte">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="2"/>
@@ -287,7 +287,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonIdCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheUtilisateur"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par identifiant"/>
                       </Properties>
@@ -295,7 +295,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonNomCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheUtilisateur"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par nom"/>
                       </Properties>
@@ -303,7 +303,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonPrenomCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheUtilisateur"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par pr&#xe9;nom"/>
                       </Properties>
@@ -319,7 +319,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonMailCourier">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheUtilisateur"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par mail"/>
                       </Properties>
@@ -417,7 +417,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" pref="388" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" pref="394" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -568,7 +568,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="720" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="726" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -674,7 +674,7 @@
                                   <Component id="jSeparator25" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -704,13 +704,13 @@
                                       <Component id="jLabel27" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jRadioButtonIdBiblio2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jRadioButtonPrenomBiblio2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jRadioButtonIdContainer" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jRadioButtonAdresseContainer" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jRadioButtonNomBiblio2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jRadioButtonLoginBiblio2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jRadioButtonNomContainer" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jRadioButtonEtatContainer" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -725,13 +725,13 @@
                                   <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jRadioButtonIdBiblio2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonNomBiblio2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonIdContainer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonNomContainer" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jRadioButtonPrenomBiblio2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonLoginBiblio2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonAdresseContainer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonEtatContainer" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -739,23 +739,32 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButtonIdBiblio2">
+                        <Component class="javax.swing.JRadioButton" name="jRadioButtonIdContainer">
                           <Properties>
+                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                              <ComponentRef name="buttonGroupCritereRechercheContainer"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Par identifiant"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonIdBiblio2ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonIdContainerActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButtonNomBiblio2">
+                        <Component class="javax.swing.JRadioButton" name="jRadioButtonNomContainer">
                           <Properties>
+                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                              <ComponentRef name="buttonGroupCritereRechercheContainer"/>
+                            </Property>
                             <Property name="selected" type="boolean" value="true"/>
                             <Property name="text" type="java.lang.String" value="Par nom"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButtonPrenomBiblio2">
+                        <Component class="javax.swing.JRadioButton" name="jRadioButtonAdresseContainer">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Par Nom"/>
+                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                              <ComponentRef name="buttonGroupCritereRechercheContainer"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Par adresse"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel27">
@@ -766,9 +775,12 @@
                             <Property name="text" type="java.lang.String" value="Crit&#xe8;res de recherches :"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButtonLoginBiblio2">
+                        <Component class="javax.swing.JRadioButton" name="jRadioButtonEtatContainer">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Par login"/>
+                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                              <ComponentRef name="buttonGroupCritereRechercheContainer"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Par &#xe9;tat"/>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -785,7 +797,7 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jLabel29" min="-2" pref="80" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSearchBiblio2" min="-2" pref="180" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSearchContainer" min="-2" pref="180" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -800,7 +812,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldSearchBiblio2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldSearchContainer" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -811,9 +823,9 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JTextField" name="jTextFieldSearchBiblio2">
+                        <Component class="javax.swing.JTextField" name="jTextFieldSearchContainer">
                           <Events>
-                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchBiblio2KeyTyped"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchContainerKeyTyped"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabelNbFoundContainer">
@@ -1140,7 +1152,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonIdCourier1">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par identifiant"/>
                       </Properties>
@@ -1148,7 +1160,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonNomCourier1">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par nom"/>
                       </Properties>
@@ -1156,7 +1168,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonPrenomCourier1">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par pr&#xe9;nom"/>
                       </Properties>
@@ -1172,7 +1184,7 @@
                     <Component class="javax.swing.JRadioButton" name="jRadioButtonMailCourier1">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroupCritereRechercheAdherent"/>
+                          <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Par mail"/>
                       </Properties>
@@ -1270,7 +1282,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" pref="388" max="32767" attributes="0"/>
+                          <Component id="jScrollPane5" pref="394" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
