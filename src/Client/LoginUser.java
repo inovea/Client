@@ -97,6 +97,11 @@ private TableauDeBord tb = null;
             }
         });
 
+        tbPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tbPassMouseEntered(evt);
+            }
+        });
         tbPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tbPassActionPerformed(evt);
@@ -195,6 +200,10 @@ private TableauDeBord tb = null;
     private void tbPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbPassActionPerformed
+
+    private void tbPassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPassMouseEntered
+        this.btnConnexionActionPerformed(null);
+    }//GEN-LAST:event_tbPassMouseEntered
 
     /**
      * @param args the command line arguments

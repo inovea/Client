@@ -174,6 +174,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="tbPass">
       <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbPassMouseEntered"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbPassActionPerformed"/>
       </Events>
     </Component>
