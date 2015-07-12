@@ -19,6 +19,8 @@ public interface ErrandService {
     public void delete(int idCourier) throws Exception;
    
     public Errand getByIdErrand(int id) throws Exception;
+    public List<Errand> getByCourier(int idCourier) throws Exception;
     public Errand getByIdCourier(String mail) throws Exception;
     public List<Errand> getAll() throws Exception;
+    public List<Errand> getByState(int state) throws Exception;
 }

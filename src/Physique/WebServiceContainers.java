@@ -190,7 +190,7 @@ public class WebServiceContainers {
    public JSONObject recupLatAndLong(URL url) throws JSONException{
            JSONObject obj;
             try {
-               System.out.println("Je suis dans WB");
+              
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Accept", "application/json");
@@ -226,7 +226,7 @@ public class WebServiceContainers {
             
                   
             obj = new JSONObject();
-          System.out.println("Je suis dans la merde");
+          
             return obj;
         }
      

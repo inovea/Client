@@ -34,6 +34,8 @@ public class UpdateContainer extends javax.swing.JFrame {
         this.tbState.setText(Integer.toString(cont.getState()));
         this.tbAdd.setText(cont.getAddress());
         this.tbLng.setText(Double.toString(cont.getLng()));
+        this.tbErrand.setText(String.valueOf(cont.getIdErrand()));
+       
     }
 
     /**
@@ -58,6 +60,8 @@ public class UpdateContainer extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         tbState = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        tbErrand = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(237, 342));
@@ -65,6 +69,12 @@ public class UpdateContainer extends javax.swing.JFrame {
         jLabel1.setText("Adresse");
 
         jLabel2.setText("Nom");
+
+        tbAdd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tbAddFocusLost(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Traditional Arabic", 0, 18)); // NOI18N
         jLabel4.setText("Modifier un Conteneur");
@@ -89,39 +99,46 @@ public class UpdateContainer extends javax.swing.JFrame {
 
         jLabel8.setText("Etat");
 
+        jLabel9.setText("Id Errand");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel8))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tbAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tbName, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tbLat, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tbLng, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(tbState, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jButtonAnnuler, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tbErrand, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel8))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tbAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tbName, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tbLat, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tbLng, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(34, 34, 34)
+                                    .addComponent(tbState, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,9 +165,13 @@ public class UpdateContainer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tbState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tbErrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnUpdate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jButtonAnnuler)
                 .addGap(52, 52, 52))
         );
@@ -163,14 +184,9 @@ public class UpdateContainer extends javax.swing.JFrame {
             cont.setName(tbName.getText());
             cont.setLat(Double.parseDouble(tbLat.getText()));
             cont.setLng(Double.parseDouble(tbLng.getText()));
-            if (tbAdd.equals(null)) {
-                cont.setAddress(" ");
-            } else {
-                cont.setAddress(tbAdd.getText());
-            }
+            cont.setAddress(tbAdd.getText());
             cont.setState(Integer.parseInt(tbState.getText()));
-            cont.setLastCollect("00/00/00");
-
+            cont.setIdErrand(Integer.parseInt(tbErrand.getText()));
             containerMetierService.update(cont);
         } catch (Exception ex) {
             Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
@@ -186,6 +202,23 @@ public class UpdateContainer extends javax.swing.JFrame {
     private void jButtonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnulerActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
+
+    private void tbAddFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tbAddFocusLost
+           Container conTmp = new Container();
+           String addressTemp = tbAdd.getText();
+           addressTemp = addressTemp.replaceAll(" ", "");
+        try {
+            conTmp =   containerMetierService.recupLatAndLong(addressTemp);
+        } catch (Exception ex) {
+            Logger.getLogger(UpdateContainer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tbLat.setText(String.valueOf(conTmp.getLat()));
+        tbLng.setText(String.valueOf(conTmp.getLng()));
+        tbLat.setEditable(false);
+        tbLat.setBackground(new java.awt.Color(6, 6, 6, 1));
+        tbLng.setBackground(new java.awt.Color(6, 6, 6, 1));
+        tbLng.setEditable(false);
+    }//GEN-LAST:event_tbAddFocusLost
 
     /**
      * @param args the command line arguments
@@ -231,7 +264,9 @@ public class UpdateContainer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField tbAdd;
+    private javax.swing.JTextField tbErrand;
     private javax.swing.JTextField tbLat;
     private javax.swing.JTextField tbLng;
     private javax.swing.JTextField tbName;

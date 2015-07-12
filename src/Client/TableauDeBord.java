@@ -7,6 +7,9 @@ package Client;
 import Client.Container.AddContainer;
 import Client.Container.JTableModelContainer;
 import Client.Container.UpdateContainer;
+import Client.Errand.EditErrand;
+
+import Client.Errand.EditParamErrand1;
 import Client.Errand.JTableModelErrand;
 import Client.Thread.Selected;
 import Client.Utilisateur.AddUtilisateur;
@@ -148,8 +151,8 @@ public class TableauDeBord extends javax.swing.JFrame {
         jButtonDelContain = new javax.swing.JButton();
         jSeparator28 = new javax.swing.JSeparator();
         jPanelMenuCourse = new javax.swing.JPanel();
-        jButtonAddCourse = new javax.swing.JButton();
-        jButtonEditCourse = new javax.swing.JButton();
+        jButtonEditErrand = new javax.swing.JButton();
+        jButtonEditParamErrand = new javax.swing.JButton();
         jPanelBarSearchCourse = new javax.swing.JPanel();
         jSeparator19 = new javax.swing.JSeparator();
         jSeparator22 = new javax.swing.JSeparator();
@@ -769,19 +772,19 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Conteneurs", jPanelMenuContain);
 
-        jButtonAddCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/addAdmin.png"))); // NOI18N
-        jButtonAddCourse.setText("Ajouter un coursier");
-        jButtonAddCourse.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditErrand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/addAdmin.png"))); // NOI18N
+        jButtonEditErrand.setText("Modifier une course");
+        jButtonEditErrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddCourseActionPerformed(evt);
+                jButtonEditErrandActionPerformed(evt);
             }
         });
 
-        jButtonEditCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/editAdmin.png"))); // NOI18N
-        jButtonEditCourse.setText("Modifier un coursier");
-        jButtonEditCourse.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditParamErrand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/editAdmin.png"))); // NOI18N
+        jButtonEditParamErrand.setText("Modifier les parametres d'une course");
+        jButtonEditParamErrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditCourseActionPerformed(evt);
+                jButtonEditParamErrandActionPerformed(evt);
             }
         });
 
@@ -966,7 +969,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanelCourseSelectedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCourseSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                     .addGroup(jPanelCourseSelectedLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabelErrandSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -983,7 +986,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         );
 
         jButtonDelCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/delAdmin.png"))); // NOI18N
-        jButtonDelCourse.setText("Supprimer un coursier");
+        jButtonDelCourse.setText("Supprimer une course");
         jButtonDelCourse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonDelCourseMouseClicked(evt);
@@ -1006,9 +1009,9 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addComponent(jPanelCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelBarSearchCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelMenuCourseLayout.createSequentialGroup()
-                        .addComponent(jButtonAddCourse)
+                        .addComponent(jButtonEditErrand)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEditCourse)
+                        .addComponent(jButtonEditParamErrand)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonDelCourse)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1022,9 +1025,9 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelMenuCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButtonDelCourse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(jButtonEditCourse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEditParamErrand, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelCourseSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAddCourse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonEditErrand, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1082,21 +1085,27 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMouseClicked
-        // TODO add your handling code here:
+       
         this.actualisation();
     }//GEN-LAST:event_jTabbedPaneMouseClicked
 
     private void jButtonDelContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelContainActionPerformed
         if (!jLabelContainerSelected.getText().equals("Aucun")) {
-            try {
-                int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
-                System.out.println(containerModel.getValueAt(jTableContainer.getSelectedRow(), 0));
-                containerMetierService.delete(idContainer);
-                this.actualisation();
-            } catch (Exception ex) {
-                Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedContainer.getName() + "</b></font> ?</body></html>\n");
+          if (answer == 0) {
+               System.out.println(selectedContainer.getIdErrand());
+              if(selectedContainer.getIdErrand() == 0){
+                  try {
+                            int idContainer = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
+                            containerMetierService.delete(idContainer);
+                             this.actualisation();
+                     } catch (Exception ex) {
+                              Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+              }else{
+                   JOptionPane.showMessageDialog(this, "Le conteneur selectionné est déja affecté dans une course.", "Attention", JOptionPane.WARNING_MESSAGE);
+              }
+        }
         } else {
             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un container...", "Attention", JOptionPane.WARNING_MESSAGE);
         }
@@ -1200,7 +1209,10 @@ public class TableauDeBord extends javax.swing.JFrame {
                 int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedC.getName() + "</b> <i>" + this.selectedC.getFirstname() + "</i></font> ?</body></html>\n");
                 if (answer == 0) {
                     try {
-                        courierMetierService.delete(this.selectedC.getId());
+                        if(errandMetierService.getByCourier(selectedC.getId()).isEmpty())
+                            courierMetierService.delete(this.selectedC.getId());
+                        else
+                           JOptionPane.showMessageDialog(this,"Le coursier ne peut être supprimé car il est affécté à une ou plusieur course", "Attention", JOptionPane.ERROR_MESSAGE); 
                         this.actualisation();
                     } catch (Exception ex) {
                         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
@@ -1304,13 +1316,32 @@ public class TableauDeBord extends javax.swing.JFrame {
         addBiblio.setVisible(true);
     }//GEN-LAST:event_jButtonAddCourierActionPerformed
 
-    private void jButtonAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddCourseActionPerformed
+    private void jButtonEditErrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditErrandActionPerformed
+     if (!jLabelErrandSelected.getText().equals("Aucun")) {
+        EditErrand edit = new EditErrand(this,true);
+        edit.setErrand(selectedE);
+        edit.setVisible(true);
+         } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner une course...", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonEditErrandActionPerformed
 
-    private void jButtonEditCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCourseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEditCourseActionPerformed
+    private void jButtonEditParamErrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditParamErrandActionPerformed
+        if (!jLabelErrandSelected.getText().equals("Aucun")) {
+            try {
+              EditParamErrand1 editParamErrand = new EditParamErrand1(this, true);
+               editParamErrand.setErrandSelected(this.selectedE);
+               editParamErrand.setModelBiblio(errands);
+                editParamErrand.setVisible(true);
+                this.actualisation();
+            } catch (Exception ex) {
+                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner une course...", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonEditParamErrandActionPerformed
 
     private void jTextFieldSearchCourier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourier1ActionPerformed
         // TODO add your handling code here:
@@ -1321,7 +1352,30 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSearchCourier1KeyTyped
 
     private void jTableErrandMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableErrandMouseClicked
-        // TODO add your handling code here:
+          try {
+            int idErrand = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 0);
+            String dateDebut = (String) errands.getValueAt(jTableErrand.getSelectedRow(), 1);
+             String dateFin= (String) errands.getValueAt(jTableErrand.getSelectedRow(), 2);
+             double duree = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 3);
+             double distance = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 4);
+             int idCoursier = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 5);
+             int state = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 6);
+            Errand errand = new Errand(idErrand,state,dateDebut,dateFin,duree,distance,idCoursier);
+
+            setSelectedErrand(errand);
+            Courier courierTmp = new Courier();
+                courierTmp = courierMetierService.getById(errand.getIdCourier());
+            if (courierTmp.getName() != null) {
+          
+                jLabelErrandSelected.setText("<html><body><font color='#FF6666'><b>" + courierTmp.getName() + " </b></font></body></html>");
+            } else {
+                 
+                jLabelErrandSelected.setText("<html><body><b>Aucun coursier est affecté a cette course </b></body></html>");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jTableErrandMouseClicked
 
     private void jTableErrandMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableErrandMousePressed
@@ -1371,13 +1425,13 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupCritereRechercheUtilisateur;
     private javax.swing.JButton jButtonAddContainer;
     private javax.swing.JButton jButtonAddCourier;
-    private javax.swing.JButton jButtonAddCourse;
     private javax.swing.JButton jButtonDelContain;
     private javax.swing.JButton jButtonDelCourier;
     private javax.swing.JButton jButtonDelCourse;
     private javax.swing.JButton jButtonEditContain;
     private javax.swing.JButton jButtonEditCourier;
-    private javax.swing.JButton jButtonEditCourse;
+    private javax.swing.JButton jButtonEditErrand;
+    private javax.swing.JButton jButtonEditParamErrand;
     private javax.swing.JButton jButtonQuit;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
@@ -1469,6 +1523,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jRadioButtonNomContainer.setSelected(true);
         } else if (jPanelMenuCourse.isShowing()) {
             this.fireJTableErrand(null, null);
+            jLabelErrandSelected.setText("Aucun");
             //  jTextFieldSearchBiblio2.setText("");
             // jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
             // jLabelUtilisateurSelected.setText("Aucun");
@@ -1825,6 +1880,9 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     public void setSelectedContainer(Container selectedContainer) {
         this.selectedContainer = selectedContainer;
+    }
+     public void setSelectedErrand(Errand selectedErrand) {
+        this.selectedE = selectedErrand;
     }
 
 }

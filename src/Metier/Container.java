@@ -21,7 +21,7 @@ public class Container {
     private int state;
     private Date lastCollect;
     private String address;
-    private long idErrand;
+    private int idErrand;
     private String name;
 
     public void setName(String name) {
@@ -94,15 +94,15 @@ public class Container {
         this.address = address;
     }
 
-    public long getIdErrand() {
+    public int getIdErrand() {
         return idErrand;
     }
 
-    public void setIdErrand(long idErrand) {
+    public void setIdErrand(int idErrand) {
         this.idErrand = idErrand;
     }
 
-    public Container(int id, double lat, double lng, int state, Date lastCollect, String address, long idErrand) {
+    public Container(int id, double lat, double lng, int state, Date lastCollect, String address, int idErrand) {
         this.id = id;
         this.lat = lat;
         this.lng = lng;
@@ -117,7 +117,6 @@ public class Container {
 
     @Override
     public String toString() {
-        return "Container{" + "id=" + id + ", lat=" + lat + ", lng=" + lng + ", state=" + state + ", lastCollect=" + lastCollect + ", address=" + address + ", idErrand=" + idErrand + '}';
+        return this.getName() + "Adresse : "+this.getAddress();
     }
-
 }

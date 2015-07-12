@@ -50,11 +50,6 @@ public class ContainerServiceImpl implements ContainerService{
          containerPhysiqueService.delete(idContainer);
     }
 
-    @Override
-    public Container getById(JSONObject obj) throws Exception {
-    return containerPhysiqueService.getById(obj);
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 @Override
     public List<Container> getAll() throws Exception {
@@ -100,7 +95,24 @@ public class ContainerServiceImpl implements ContainerService{
 
     @Override
     public List<Container> getByIdErrand(int id) throws Exception {
+        if( String.valueOf(id).equals("")){
+           throw  new Exception("Id manquant");
+       }
         return containerPhysiqueService.getByIdErrand(id);
+    }
+
+    @Override
+    public List<Container> getByState(int state) throws Exception {
+       if( String.valueOf(state).equals("")){
+           throw  new Exception("Etat manquant");
+       }
+       return containerPhysiqueService.getByState(state);
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Container> getContainerWithoutErrand() throws Exception {
+       return containerPhysiqueService.getContainerWithoutErrand();
     }
 
   

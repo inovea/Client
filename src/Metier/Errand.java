@@ -26,11 +26,38 @@ public class Errand {
     public Errand() {
     }
 
+    public Errand(int idErrand, int state, Date dateDebut, Date dateFin, double duree, double distance, int idCourier) {
+        this.idErrand = idErrand;
+        this.state = state;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.duree = duree;
+        this.distance = distance;
+        this.idCourier = idCourier;
+    }
+
+    public Errand(int idErrand, int state, String dateDebut, String dateFin, double duree, double distance, int idCourier) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d = sdf.parse(dateDebut);
+        this.dateDebut = d;
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d2 = sdf2.parse(dateFin);
+        this.dateFin = d2;
+        this.idErrand = idErrand;
+        this.state =   state;
+        this.duree = duree;
+        this.distance = distance;
+        this.idCourier = idCourier;
+       
+    }
+
+    
+    
     public Errand(Date dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public long getIdErrand() {
+    public int getIdErrand() {
         return idErrand;
     }
 
@@ -75,24 +102,24 @@ public class Errand {
         Date d = sdf.parse(dateDebut);
         this.dateDebut = d;
     }
-
+   
     public String getDateDebut() {
-        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateFormatee = formatDateJour.format(dateDebut);
-
+     
         return dateFormatee;
     }
-
+    
     public void setDateFin(String dateFin) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date d = sdf.parse(dateFin);
         this.dateFin = d;
     }
 
     public String getDateFin() {
-        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateFormatee = formatDateJour.format(dateFin);
-
+        
         return dateFormatee;
     }
 

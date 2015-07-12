@@ -79,8 +79,10 @@ public class CourierWB implements CourierService{
     public Courier getById(int id) throws Exception {
         wb = new WebService();
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/courier.php?tag=getById&idCourier="+id));
-        if(jsonObject.getInt("error") != 0){
-            throw new Exception("Aucun utilisateur pour cette ID");
+       if(jsonObject.getInt("error") != 0){
+           Courier courier = new Courier() ;
+          //  throw new Exception("Aucun utilisateur pour cette ID");
+            return courier;
         } 
         return getCourier(jsonObject);
     }

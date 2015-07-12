@@ -24,7 +24,7 @@ private ErrandService errandPhysiqueService = PhysiqueDataFactory.getErrandDataS
 
     @Override
     public Errand update(Errand errand) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return errandPhysiqueService.update(errand);
     }
 
     @Override
@@ -45,6 +45,22 @@ private ErrandService errandPhysiqueService = PhysiqueDataFactory.getErrandDataS
     @Override
     public List<Errand> getAll() throws Exception {
          return errandPhysiqueService.getAll();
+    }
+
+    @Override
+    public List<Errand> getByCourier(int idCourier) throws Exception {
+       if(String.valueOf(idCourier).equals("")){
+           throw new Exception("L'id du Coursier est manquant");
+       }
+       return errandPhysiqueService.getByCourier(idCourier);
+    }
+
+    @Override
+    public List<Errand> getByState(int state) throws Exception {
+        if(String.valueOf(state).equals("")){
+           throw new Exception("L'Etat est manquant");
+       }
+       return errandPhysiqueService.getByCourier(state);
     }
     
 }

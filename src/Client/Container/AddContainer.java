@@ -29,6 +29,8 @@ public class AddContainer extends javax.swing.JFrame {
     public AddContainer(TableauDeBord tb) {
         initComponents();
         this.tb = tb;
+        tbLat.setEditable(false);
+        tbLng.setEditable(false);
         this.setVisible(true);
     }
 
@@ -112,6 +114,24 @@ public class AddContainer extends javax.swing.JFrame {
 
         lblLat.setText("Latitude");
 
+        tbLat.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tbLatFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tbLatFocusLost(evt);
+            }
+        });
+
+        tbLng.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tbLngFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tbLngFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,16 +205,15 @@ public class AddContainer extends javax.swing.JFrame {
             containerMetierService.register(name, cont.getLat(), cont.getLng(), adresse);
             tb.fireJTableContainer(this.containerMetierService.getAll(), null);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Veuillez saisir une adresse exact", "Attention", JOptionPane.ERROR_MESSAGE);
         }
         if(!cont.equals(null))
              this.dispose();
     }//GEN-LAST:event_btnAjoutActionPerformed
 
     private void tbAddInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tbAddInputMethodTextChanged
-        tbLat.enableInputMethods(false);
-
-        tbLng.enableInputMethods(true);
+       
+       
     }//GEN-LAST:event_tbAddInputMethodTextChanged
 
     private void formInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_formInputMethodTextChanged
@@ -217,10 +236,33 @@ public class AddContainer extends javax.swing.JFrame {
                 tbLng.setBackground(new java.awt.Color(6, 6, 6, 1));
                 tbLng.setEditable(false);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,"L'adresse est introuvable", "Attention", JOptionPane.ERROR_MESSAGE);
             }
+        }else{
+           tbLat.setEditable(true);
+           tbLng.setEditable(true);
+           tbLat.setBackground(new java.awt.Color(255, 255, 255));
+           tbLng.setBackground(new java.awt.Color(255, 255, 255));
+           tbLat.setText("");
+           tbLng.setText("");
         }
     }//GEN-LAST:event_tbAddFocusLost
+
+    private void tbLatFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tbLatFocusLost
+     
+    }//GEN-LAST:event_tbLatFocusLost
+
+    private void tbLngFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tbLngFocusLost
+       
+    }//GEN-LAST:event_tbLngFocusLost
+
+    private void tbLatFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tbLatFocusGained
+       
+    }//GEN-LAST:event_tbLatFocusGained
+
+    private void tbLngFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tbLngFocusGained
+          
+    }//GEN-LAST:event_tbLngFocusGained
 
     /**
      * @param args the command line arguments

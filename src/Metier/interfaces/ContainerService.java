@@ -20,9 +20,9 @@ public interface ContainerService {
     public Container update(Container container) throws Exception;
     public void delete(int idContainer) throws Exception;
     public Container recupLatAndLong(String address) throws Exception;
-    public Container getById(JSONObject obj) throws Exception;
     public Container getByIdContainers(int id) throws Exception;
     public List<Container> getByIdErrand(int id) throws Exception;
-    //public Courier getByMail(String mail) throws Exception;
+    public List<Container> getByState(int state) throws Exception;
     public List<Container> getAll() throws Exception;
+    public List<Container>getContainerWithoutErrand() throws Exception;
 }
