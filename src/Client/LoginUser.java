@@ -57,7 +57,7 @@ private TableauDeBord tb = null;
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(27, 68, 34));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/logo3.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Logo/logo_connexion.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

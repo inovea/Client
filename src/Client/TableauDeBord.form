@@ -172,7 +172,7 @@
             <Component class="javax.swing.JButton" name="jButtonAddCourier">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Admin/addAdmin.png"/>
+                  <Image iconType="3" name="/Pictures/Admin/user_add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ajouter un coursier"/>
               </Properties>
@@ -183,7 +183,7 @@
             <Component class="javax.swing.JButton" name="jButtonEditCourier">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Admin/editAdmin.png"/>
+                  <Image iconType="3" name="/Pictures/Admin/user_edit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modifier un coursier"/>
               </Properties>
@@ -206,6 +206,8 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jSeparator18" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -223,6 +225,11 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -397,6 +404,13 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Pictures/Logo/logo_connexion.png"/>
+                    </Property>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JSeparator" name="jSeparator20">
@@ -531,7 +545,7 @@
             <Component class="javax.swing.JButton" name="jButtonDelCourier">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Admin/delAdmin.png"/>
+                  <Image iconType="3" name="/Pictures/Admin/user_remove.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Supprimer un coursier"/>
               </Properties>
@@ -632,6 +646,9 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="jButtonAddContainer">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Pictures/Container/container_add.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Ajouter un conteneur"/>
                   </Properties>
                   <Events>
@@ -640,6 +657,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonEditContain">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Pictures/Container/container_edit.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Modifier un conteneur"/>
                   </Properties>
                   <Events>
@@ -660,7 +680,9 @@
                               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator26" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="411" max="32767" attributes="0"/>
+                              <EmptySpace pref="96" max="32767" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -678,6 +700,11 @@
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -855,6 +882,13 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Pictures/Logo/logo_connexion.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JSeparator" name="jSeparator27">
@@ -965,6 +999,9 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="jButtonDelContain">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Pictures/Container/container_remove.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Supprimer un conteneur"/>
                   </Properties>
                   <Events>
@@ -1037,7 +1074,7 @@
             <Component class="javax.swing.JButton" name="jButtonEditErrand">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Admin/addAdmin.png"/>
+                  <Image iconType="3" name="/Pictures/Errand/errand_add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modifier une course"/>
               </Properties>
@@ -1048,7 +1085,7 @@
             <Component class="javax.swing.JButton" name="jButtonEditParamErrand">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Admin/editAdmin.png"/>
+                  <Image iconType="3" name="/Pictures/Errand/errand_edit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modifier les parametres d&apos;une course"/>
               </Properties>
@@ -1071,6 +1108,8 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jSeparator22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1088,6 +1127,11 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1262,6 +1306,13 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Pictures/Logo/logo_connexion.png"/>
+                    </Property>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JSeparator" name="jSeparator23">
@@ -1414,7 +1465,7 @@
             <Component class="javax.swing.JButton" name="jButtonDelCourse">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Admin/delAdmin.png"/>
+                  <Image iconType="3" name="/Pictures/Errand/errand_remove.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Supprimer une course"/>
               </Properties>
