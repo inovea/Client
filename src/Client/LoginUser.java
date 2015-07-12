@@ -11,6 +11,7 @@ import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -105,6 +106,14 @@ private TableauDeBord tb = null;
         tbPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tbPassActionPerformed(evt);
+            }
+        });
+        tbPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbPassKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tbPassKeyTyped(evt);
             }
         });
 
@@ -202,8 +211,17 @@ private TableauDeBord tb = null;
     }//GEN-LAST:event_tbPassActionPerformed
 
     private void tbPassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPassMouseEntered
-        this.btnConnexionActionPerformed(null);
+        
     }//GEN-LAST:event_tbPassMouseEntered
+
+    private void tbPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPassKeyPressed
+        
+    }//GEN-LAST:event_tbPassKeyPressed
+
+    private void tbPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPassKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER)
+            this.btnConnexionActionPerformed(null);
+    }//GEN-LAST:event_tbPassKeyTyped
 
     /**
      * @param args the command line arguments
