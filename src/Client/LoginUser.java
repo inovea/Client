@@ -50,8 +50,8 @@ private TableauDeBord tb = null;
         lblUser = new javax.swing.JLabel();
         lblPass = new javax.swing.JLabel();
         tbUser = new javax.swing.JTextField();
-        tbPass = new javax.swing.JTextField();
         btnConnexion = new javax.swing.JButton();
+        tbPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -97,6 +97,12 @@ private TableauDeBord tb = null;
             }
         });
 
+        tbPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +115,7 @@ private TableauDeBord tb = null;
                         .addComponent(lblUser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblPass)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tbPass, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -137,11 +143,11 @@ private TableauDeBord tb = null;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tbUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUser))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tbPass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPass, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(42, 42, 42)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPass)
+                    .addComponent(tbPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addComponent(btnConnexion)
                 .addGap(41, 41, 41))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,21 +170,31 @@ private TableauDeBord tb = null;
     }//GEN-LAST:event_tbUserActionPerformed
 
     private void btnConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnexionActionPerformed
-       Courier courier = null;
-    try {
-      courier=  courierMetierService.login(tbUser.getText(), tbPass.getText());
-    } catch (Exception ex) {
-       JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
-       // Logger.getLogger(LoginUser.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    if (courier != null)
-        if(courier.getScheduler()==1){
-            tb = new TableauDeBord();
-            tb.setCourierConnected(courier);
-            this.dispose();
-        }else
-             JOptionPane.showMessageDialog(this,"Vous devez être administrateur", "Attention", JOptionPane.ERROR_MESSAGE);
+        Courier courier = null;
+        char[] mdp = tbPass.getPassword();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < mdp.length; i++) {
+             sb.append(mdp[i]);
+        }
+        try {
+            courier = courierMetierService.login(tbUser.getText(), sb.toString());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(LoginUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (courier != null)
+            if(courier.getScheduler()==1){
+                tb = new TableauDeBord();
+                tb.setCourierConnected(courier);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this,"Vous devez être administrateur", "Attention", JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_btnConnexionActionPerformed
+
+    private void tbPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,7 +239,7 @@ private TableauDeBord tb = null;
     private javax.swing.JLabel lblLogo1;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JTextField tbPass;
+    private javax.swing.JPasswordField tbPass;
     private javax.swing.JTextField tbUser;
     // End of variables declaration//GEN-END:variables
 }

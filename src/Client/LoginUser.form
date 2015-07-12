@@ -36,7 +36,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="tbUser" min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="lblPass" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="tbPass" min="-2" pref="148" max="-2" attributes="0"/>
@@ -74,12 +74,12 @@
                   <Component id="tbUser" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblUser" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tbPass" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPass" alignment="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblPass" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tbPass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="btnConnexion" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>
@@ -164,14 +164,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbUserActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tbPass">
-    </Component>
     <Component class="javax.swing.JButton" name="btnConnexion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Connexion"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConnexionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="tbPass">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tbPassActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

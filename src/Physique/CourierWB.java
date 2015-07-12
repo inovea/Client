@@ -144,5 +144,14 @@ public class CourierWB implements CourierService{
             throw new Exception("Impossible de modifier le mot de passe");
         }
     }
+
+    @Override
+    public void resetPassword(String mail) throws Exception {
+        wb = new WebService();        
+        JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/courier.php?tag=resetPassword&mail="+mail));
+        if(jsonObject.getInt("error") != 0){
+            throw new Exception(jsonObject.getString("error_msg"));
+        }
+    }
     
 }

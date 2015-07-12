@@ -50,6 +50,7 @@ public class ChangePass extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jButtonAnnuler = new javax.swing.JButton();
         jButtonChange = new javax.swing.JButton();
+        jButtonResetPassword = new javax.swing.JButton();
         jLabelStatut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -117,15 +118,27 @@ public class ChangePass extends javax.swing.JDialog {
             }
         });
 
+        jButtonResetPassword.setText("Mot pas de oublié");
+        jButtonResetPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonChange)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonChange)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jButtonResetPassword)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -135,7 +148,9 @@ public class ChangePass extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonChange)
                     .addComponent(jButtonAnnuler))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonResetPassword)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabelStatut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -222,6 +237,21 @@ public class ChangePass extends javax.swing.JDialog {
         }        
     }//GEN-LAST:event_jButtonChangeActionPerformed
 
+    private void jButtonResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetPasswordActionPerformed
+        try {
+            if(courier != null){
+                String mail = courier.getMail();
+                courierService.resetPassword(mail);
+                this.dispose();
+            } else{
+                jLabelStatut.setText("<html><body><font color='red'>Utilisateur inconnu</font></body></html>");
+            }         
+        } catch (Exception ex) {
+            Logger.getLogger(ChangePass.class.getName()).log(Level.SEVERE, null, ex);
+            jLabelStatut.setText("<html><body><font color='red'>"+ex+"</font></body></html>");
+        }   
+    }//GEN-LAST:event_jButtonResetPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,6 +292,7 @@ public class ChangePass extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnnuler;
     private javax.swing.JButton jButtonChange;
+    private javax.swing.JButton jButtonResetPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

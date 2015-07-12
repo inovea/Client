@@ -104,6 +104,17 @@ public class CourierServiceImpl implements CourierService{
         courierPhysiqueService.setPassword(mail, password, newPassword);
     }
 
+    @Override
+    public void resetPassword(String mail) throws Exception {
+        if(mail.equals("")){
+            throw new Exception("Aucune adresse mail renseignée");
+        }
+        if (!mail.contains("@") || !mail.contains(".")) {
+            throw new Exception("Format email incorrecte");
+        }
+        courierPhysiqueService.resetPassword(mail);
+    }
+
    
 
 }
