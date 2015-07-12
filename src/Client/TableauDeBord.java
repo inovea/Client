@@ -67,12 +67,8 @@ public class TableauDeBord extends javax.swing.JFrame {
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
         SwingFXWebView sw = new SwingFXWebView();
         jTabbedPane.add("Map", sw);
-
-//        if (courierConnected == null) {
-//            this.dispose();
-//        } else {
-//            jLabelUtilisateurConnecte.setText("Bibliothécaire connecté : " + courierConnected.getFirstname() + " " + courierConnected.getName());
-//        }
+        jTabbedPane.setSelectedComponent(jTabbedPane.getComponentAt(3));
+        
         this.setVisible(true);
 
     }
