@@ -195,17 +195,20 @@ public class AddContainer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjoutActionPerformed
-        String name = tbNom.getText();
+        String name = tbNom.getText().replaceAll(" ", "");
         String adresse = tbAdd.getText();
         Container cont = null;
         String addressTmp = adresse;
         addressTmp = addressTmp.replaceAll(" ", "");
+       
         try {
             cont = containerMetierService.recupLatAndLong(addressTmp);
-            containerMetierService.register(name, cont.getLat(), cont.getLng(), adresse);
+            cont.setAddress(adresse);
+            cont.setName(name);
+            containerMetierService.add(cont);
             tb.fireJTableContainer(this.containerMetierService.getAll(), null);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this,"Veuillez saisir une adresse exact", "Attention", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
         }
         if(!cont.equals(null))
              this.dispose();

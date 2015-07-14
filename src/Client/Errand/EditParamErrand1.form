@@ -32,11 +32,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabelStatut" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel" alignment="0" pref="331" max="32767" attributes="0"/>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -53,17 +53,12 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelStatut" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabelStatut" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -241,7 +236,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -251,8 +246,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jComboBox2" max="32767" attributes="0"/>
                       <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jSpinner1" alignment="0" max="32767" attributes="0"/>
                       <Component id="jSpinner3" alignment="0" max="32767" attributes="0"/>
                       <Component id="jSpinner4" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -266,7 +261,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -283,7 +278,7 @@
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -317,15 +312,8 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(list.toArray())"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="List&lt;Courier&gt; list = new ArrayList();&#xa;        try {&#xa;            list = courierMetierService.getAll();&#xa;        } catch (Exception ex) {&#xa;            Logger.getLogger(EditParamErrand1.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="List&lt;Courier&gt; list = new ArrayList();&#xa;        try {&#xa;            list = courierMetierService.getAll();&#xa;            Courier c = new Courier();&#xa;           &#xa;        } catch (Exception ex) {&#xa;            Logger.getLogger(EditParamErrand1.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner1">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="2" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinner3">
           <AuxValues>
@@ -340,6 +328,17 @@
             <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date2 = new Date();&#xa;SpinnerDateModel sm2 = &#xa;new SpinnerDateModel(date2, null, null, Calendar.DAY_OF_MONTH);"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinner4, &quot;yyyy-MM-dd HH:mm:ss&quot;);&#xa;jSpinner4.setEditor(de2);"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox2">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="A r&#xe9;aliser"/>
+                <StringItem index="1" value="En cours"/>
+                <StringItem index="2" value="Termin&#xe9;e"/>
+              </StringArray>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

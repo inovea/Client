@@ -29,7 +29,7 @@ private ErrandService errandPhysiqueService = PhysiqueDataFactory.getErrandDataS
 
     @Override
     public void delete(int idCourier) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        errandPhysiqueService.delete(idCourier);
     }
 
     @Override

@@ -108,7 +108,6 @@ import org.json.JSONObject;
       public JSONObject recupLatAndLong(URL url) throws JSONException{
            JSONObject obj;
             try {
-               System.out.println("Je suis dans WB");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Accept", "application/json");
@@ -168,12 +167,9 @@ import org.json.JSONObject;
                 while ((output = br.readLine()) != null) {
                     str.append(	output);   
                 }
-                System.out.println(str);
                 String tempStr =  str.substring(str.indexOf("{"),str.indexOf("<"));
-                System.out.println(tempStr);
               obj = new JSONObject(tempStr);
           
-                System.out.println("test");
                 conn.disconnect();
                   return obj;
             } catch (MalformedURLException ex) {

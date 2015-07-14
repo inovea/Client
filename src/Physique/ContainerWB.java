@@ -31,6 +31,7 @@ public class ContainerWB implements ContainerService {
 
         //  System.out.println(obj.getJSONArray("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
         cont.setAddress(adress);
+        System.out.println("GetLatAndLong :" + cont.getAddress());
         cont.setLat(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
         cont.setLng(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
         return cont;
@@ -42,6 +43,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
             Container container = new Container();
             JSONObject tempCont = containers.getJSONObject(i);
             container.setId(tempCont.getInt("idContainer"));
+            System.out.println("GetListElements : " +tempCont.getString("address"));
             container.setAddress(tempCont.getString("address"));
             container.setLat(tempCont.getDouble("lat"));
             container.setLng(tempCont.getDouble("lng"));
@@ -100,6 +102,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
     @Override
     public Container add(Container container) throws Exception {
         WebService wb = new WebService();
+        System.out.println("http://inovea.herobo.com/webhost/container.php?tag=create&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "&address=" + container.getAddress());
         JSONObject jsonObject = wb.addAndUpdateContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=create&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "&address=" + container.getAddress()));
         return this.getElement(jsonObject);
     }
@@ -107,6 +110,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
     @Override
     public Container update(Container container) throws Exception {
        WebService wb = new WebService();
+        // System.out.println("State dans le WB : "+container.getState() );
         System.out.println("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect=0000-00-00%2000:00:00&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand());
         JSONObject jsonObject = wb.addAndUpdateContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect=0000-00-00%2000:00:00&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand()));
         return this.getElement(jsonObject);

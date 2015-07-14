@@ -14,6 +14,7 @@ package Physique;
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
 import Metier.interfaces.ErrandService;
+import Metier.interfaces.AlertService;
 
 /**
  *
@@ -34,10 +35,16 @@ public class PhysiqueDataFactory {
     private static CourierService courierService;
     private static ContainerService containerService;
      private static ErrandService errandService;
-
+    private static AlertService alertService;
     private PhysiqueDataFactory() {
     }
-
+    public static AlertService getAlertDataService() {
+        if (alertService == null) {
+            alertService = new AlertWB();
+        }
+        return alertService;
+    }
+    
     public static CourierService getCourierDataService() {
         if (courierService == null) {
             courierService = new CourierWB();
