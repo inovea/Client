@@ -32,14 +32,12 @@ import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 public class EditErrand extends javax.swing.JDialog {
-    private Date dateD = new Date();
-    /*private JTableModelBibliothecaire biblio;
-    private AdherentService adherentMetierService = MetierServiceFactory.getAdherentService();*/
     
+    private Date dateD = new Date();
     private ContainerService containerService = MetierServiceFactory.getContainerService();
     private Errand errand = new Errand();
-    private  List<Container>listContainer = new ArrayList<>();
-    private  List<Container>listContainerwithoutErrand = new ArrayList<>();
+    private List<Container>listContainer = new ArrayList<>();
+    private List<Container>listContainerwithoutErrand = new ArrayList<>();
     private boolean date = true;
     /**
      * Creates new form AddBiblio
@@ -206,25 +204,25 @@ public class EditErrand extends javax.swing.JDialog {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
 
-      listContainer.remove((Container)this.listErrand.getSelectedValue());
-       Container contTmp = new Container();
-       contTmp = (Container)this.listErrand.getSelectedValue();
-       listContainerwithoutErrand.add(contTmp);
-         listErrand = new javax.swing.JList(listContainer.toArray());
+        listContainer.remove((Container)this.listErrand.getSelectedValue());
+        Container contTmp = new Container();
+        contTmp = (Container)this.listErrand.getSelectedValue();
+        listContainerwithoutErrand.add(contTmp);
+        listErrand = new javax.swing.JList(listContainer.toArray());
         jScrollPane1.setViewportView(listErrand);
-         listWithoutErrand = new javax.swing.JList(listContainerwithoutErrand.toArray());
+        listWithoutErrand = new javax.swing.JList(listContainerwithoutErrand.toArray());
         jScrollPane2.setViewportView(listWithoutErrand);
        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-         listContainerwithoutErrand.remove((Container)this.listWithoutErrand.getSelectedValue());
-       Container contTmp = new Container();
-       contTmp = (Container)this.listWithoutErrand.getSelectedValue();
-       listContainer.add(contTmp);
-         listWithoutErrand= new javax.swing.JList(listContainerwithoutErrand.toArray());
+        listContainerwithoutErrand.remove((Container)this.listWithoutErrand.getSelectedValue());
+        Container contTmp = new Container();
+        contTmp = (Container)this.listWithoutErrand.getSelectedValue();
+        listContainer.add(contTmp);
+        listWithoutErrand= new javax.swing.JList(listContainerwithoutErrand.toArray());
         jScrollPane2.setViewportView(listWithoutErrand);
-         listErrand = new javax.swing.JList(listContainer.toArray());
+        listErrand = new javax.swing.JList(listContainer.toArray());
         jScrollPane1.setViewportView(listErrand);
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -240,7 +238,7 @@ public class EditErrand extends javax.swing.JDialog {
                    Logger.getLogger(EditErrand.class.getName()).log(Level.SEVERE, null, ex);
                }
            }
-       }
+        }
         for(int i = 0; i < listContainerwithoutErrand.size();i++){
            Container contTmp = new Container();
            contTmp = listContainerwithoutErrand.get(i);
@@ -329,7 +327,7 @@ public class EditErrand extends javax.swing.JDialog {
             Logger.getLogger(EditErrand.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-     listErrand = new javax.swing.JList(listContainer.toArray());
+    listErrand = new javax.swing.JList(listContainer.toArray());
     jScrollPane1.setViewportView(listErrand);
     listWithoutErrand = new javax.swing.JList(listContainerwithoutErrand.toArray());
     jScrollPane2.setViewportView(listWithoutErrand);

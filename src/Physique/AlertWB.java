@@ -78,6 +78,7 @@ public class AlertWB implements AlertService{
        
 
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/alert.php?tag=update&idAlert="+alert.getIdAlert()+"&state="+alert.getState()+"&description="+alert.getDescription()+"&date="+alert.getDate()+"&author="+alert.getIdCourier()+"&idContainer="+alert.getIdContainer()));
+        System.out.println("http://inovea.herobo.com/webhost/alert.php?tag=update&idAlert="+alert.getIdAlert()+"&state="+alert.getState()+"&description="+alert.getDescription()+"&date="+alert.getDate()+"&author="+alert.getIdCourier()+"&idContainer="+alert.getIdContainer());
         if(jsonObject.getInt("error") != 0){
             throw new Exception("Impossible de modifier l'alerte");
         }

@@ -77,8 +77,11 @@ public class ErrandWB implements ErrandService{
     @Override
     public void delete(int idCourier) throws Exception {
         wb = new WebService();
-       JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/errand.php?tag=delete&idErrand="+idCourier));
-      
+        JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/errand.php?tag=delete&idErrand="+idCourier));
+        System.out.println("http://inovea.herobo.com/webhost/errand.php?tag=delete&idErrand="+idCourier);
+        if(jsonObject.getInt("error") != 0){
+            throw new Exception("Impossible de supprimer la course");
+        }
     }
 
     @Override

@@ -184,7 +184,6 @@ public class TableauDeBord extends javax.swing.JFrame {
         jLabelErrandSelected = new javax.swing.JLabel();
         jButtonDelCourse = new javax.swing.JButton();
         jSeparator24 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
         jPanelMenuAlert = new javax.swing.JPanel();
         jButtonEditAlert = new javax.swing.JButton();
         jPanelBarSearchAlert = new javax.swing.JPanel();
@@ -463,7 +462,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanelUtilisateurSelectedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelUtilisateurSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                     .addGroup(jPanelUtilisateurSelectedLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabelUtilisateurSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -669,7 +668,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(66, 66, 66))
         );
@@ -765,7 +764,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jPanelMenuContain.setLayout(jPanelMenuContainLayout);
         jPanelMenuContainLayout.setHorizontalGroup(
             jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1155, Short.MAX_VALUE)
+            .addGap(0, 1168, Short.MAX_VALUE)
             .addGroup(jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMenuContainLayout.createSequentialGroup()
                     .addGap(20, 20, 20)
@@ -890,7 +889,7 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         jLabelNbFoundCourier1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabelNbFoundCourier1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNbFoundCourier1.setText("Aucun coursier n'a été cherché");
+        jLabelNbFoundCourier1.setText("Aucune course n'a été cherché");
 
         jLabel23.setForeground(new java.awt.Color(255, 102, 0));
         jLabel23.setText("<- Appuyer sur Entrée");
@@ -1018,7 +1017,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanelCourseSelectedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCourseSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
                     .addGroup(jPanelCourseSelectedLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabelErrandSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -1306,7 +1305,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         );
 
         jButtonDelAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Errand/errand_remove.png"))); // NOI18N
-        jButtonDelAlert.setText("Supprimer une alete");
+        jButtonDelAlert.setText("Supprimer une alerte");
         jButtonDelAlert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonDelAlertMouseClicked(evt);
@@ -1322,63 +1321,47 @@ public class TableauDeBord extends javax.swing.JFrame {
         jPanelMenuAlert.setLayout(jPanelMenuAlertLayout);
         jPanelMenuAlertLayout.setHorizontalGroup(
             jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator32)
-                    .addComponent(jPanelAlert, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelBarSearchAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator31)
-                    .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
-                        .addComponent(jButtonEditAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDelAlert)
-                        .addGap(237, 237, 237)
-                        .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addGap(0, 1168, Short.MAX_VALUE)
+            .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator32)
+                        .addComponent(jPanelAlert, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelBarSearchAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator31)
+                        .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jButtonEditAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonDelAlert)
+                            .addGap(246, 246, 246)
+                            .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap()))
         );
         jPanelMenuAlertLayout.setVerticalGroup(
             jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonDelAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonEditAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelBarSearchAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1155, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelMenuAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 721, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelMenuAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonDelAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEditAlert))
+                        .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jSeparator32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanelBarSearchAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanelAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
-        jTabbedPane.addTab("Alertes", jPanel1);
+        jTabbedPane.addTab("Alertes", jPanelMenuAlert);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1695,21 +1678,20 @@ public class TableauDeBord extends javax.swing.JFrame {
           try {
             int idErrand = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 0);
             String dateDebut = (String) errands.getValueAt(jTableErrand.getSelectedRow(), 1);
-             String dateFin= (String) errands.getValueAt(jTableErrand.getSelectedRow(), 2);
-             double duree = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 3);
-             double distance = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 4);
-             int idCoursier = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 5);
-             int state = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 6);
+            String dateFin= (String) errands.getValueAt(jTableErrand.getSelectedRow(), 2);
+            double duree = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 3);
+            double distance = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 4);
+            int idCoursier = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 5);
+            int state = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 6);
+            
             Errand errand = new Errand(idErrand,state,dateDebut,dateFin,duree,distance,idCoursier);
 
             setSelectedErrand(errand);
            
-                courierTmp = courierMetierService.getById(errand.getIdCourier());
+            courierTmp = getCourierFromTableById(errand.getIdCourier());
             if (courierTmp.getName() != null) {
-          
                 jLabelErrandSelected.setText("<html><body><font color='#FF6666'><b>" + courierTmp.getName() + " </b></font></body></html>");
-            } else {
-                 
+            } else {        
                 jLabelErrandSelected.setText("<html><body><b>Aucun coursier est affecté a cette course </b></body></html>");
             }
 
@@ -1743,7 +1725,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                            containerMetierService.update(listTmp.get(i));
                        }
                        errandMetierService.delete(selectedE.getIdErrand());
-                         this.actualisation();
+                       this.actualisation();
                     } catch (Exception ex) {
                         Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
@@ -1776,13 +1758,14 @@ public class TableauDeBord extends javax.swing.JFrame {
             String description = (String) alerts.getValueAt(jTableAlert.getSelectedRow(), 3);
             int state = (int) alerts.getValueAt(jTableAlert.getSelectedRow(), 4);
             String date = (String) alerts.getValueAt(jTableAlert.getSelectedRow(), 5);
+            
             Alert alert = new Alert(state,date,description,idCourier,idContainer,idAlert);
-            courierAlert = courierMetierService.getById(idCourier);
+            //courierAlert = courierMetierService.getById(idCourier);
+            courierAlert = getCourierFromTableById(idCourier);
             setSelectedAlert(alert);
-            selectedContainerAlert = containerMetierService.getByIdContainers(idContainer);
-          
-          
-                jLabelAlertSelected.setText("<html><body><font color='#FF6666'><b>" + selectedContainerAlert.getName() + " </b></font></body></html>");
+            //selectedContainerAlert = containerMetierService.getByIdContainers(idContainer);
+            selectedContainerAlert = getContainerFromTableById(idContainer);
+            jLabelAlertSelected.setText("<html><body><font color='#FF6666'><b>" + selectedContainerAlert.getName() + " </b></font></body></html>");
             
 
         } catch (Exception ex) {
@@ -1891,7 +1874,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNbFoundCourier1;
     private javax.swing.JLabel jLabelUtilisateurConnecte;
     private javax.swing.JLabel jLabelUtilisateurSelected;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -2381,6 +2363,26 @@ public class TableauDeBord extends javax.swing.JFrame {
     }
      public void setSelectedAlert(Alert selectedAlert) {
         this.selectedAlert = selectedAlert;
+    }
+     
+    public Courier getCourierFromTableById(int id){
+        List<Courier> couriers = utilisateurs.getCouriers();
+        for(Courier courier : couriers){
+            if(id == courier.getId()){
+                return courier;
+            }
+        }
+        return null;
+    }
+    
+    public Container getContainerFromTableById(int id){
+        List<Container> containerz = containerModel.getContainer();
+        for(Container cont : containerz){
+            if(id == cont.getId()){
+                return cont;
+            }
+        }
+        return null;
     }
 
 }
