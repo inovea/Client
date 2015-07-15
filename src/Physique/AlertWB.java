@@ -21,7 +21,8 @@ import org.json.JSONObject;
  */
 public class AlertWB implements AlertService{
     private WebService wb;
-     public Alert getAlert(JSONObject obj) throws JSONException, ParseException{
+    
+    public Alert getAlert(JSONObject obj) throws JSONException, ParseException{
         Alert alert = new Alert();
         alert.setIdAlert(obj.getJSONObject("alert").getInt("idAlert"));
         if(String.valueOf(obj.getJSONObject("alert").getInt("state"))!=null)
@@ -63,7 +64,7 @@ public class AlertWB implements AlertService{
     }
     @Override
     public Alert add(Alert alert) throws Exception {
-         wb = new WebService();
+        wb = new WebService();
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/alert.php?tag=create&state="+alert.getState()+"&description="+alert.getDescription()+"&author="+alert.getIdCourier()+"&idContainer="+alert.getIdContainer()));
         if(jsonObject.getInt("error") != 0){
             throw new Exception("Impossible d'ajouter l'alerte");
@@ -75,8 +76,6 @@ public class AlertWB implements AlertService{
     @Override
     public Alert update(Alert alert) throws Exception {
         wb = new WebService();
-       
-
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/alert.php?tag=update&idAlert="+alert.getIdAlert()+"&state="+alert.getState()+"&description="+alert.getDescription()+"&date="+alert.getDate()+"&author="+alert.getIdCourier()+"&idContainer="+alert.getIdContainer()));
         System.out.println("http://inovea.herobo.com/webhost/alert.php?tag=update&idAlert="+alert.getIdAlert()+"&state="+alert.getState()+"&description="+alert.getDescription()+"&date="+alert.getDate()+"&author="+alert.getIdCourier()+"&idContainer="+alert.getIdContainer());
         if(jsonObject.getInt("error") != 0){

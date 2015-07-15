@@ -1464,23 +1464,25 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1168" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonEditAlert" min="-2" pref="259" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonDelAlert" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="660" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jSeparator32" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanelAlert" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jPanelBarSearchAlert" alignment="0" max="32767" attributes="0"/>
                               <Component id="jSeparator31" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Component id="jButtonEditAlert" min="-2" pref="267" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonDelAlert" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="744" max="-2" attributes="0"/>
                                   <Component id="jPanelAlertSelected" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="jPanelBarSearchAlert" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1489,17 +1491,18 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonDelAlert" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonEditAlert" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="617" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonDelAlert" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="jButtonEditAlert" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jPanelAlertSelected" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jPanelAlertSelected" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator32" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1524,6 +1527,18 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditAlertActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonDelAlert">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Pictures/Errand/errand_remove.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Supprimer une alerte"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonDelAlertMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDelAlertActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanelBarSearchAlert">
@@ -1890,18 +1905,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButtonDelAlert">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Errand/errand_remove.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Supprimer une alerte"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonDelAlertMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDelAlertActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator32">
             </Component>
           </SubComponents>

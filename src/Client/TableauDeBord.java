@@ -77,7 +77,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
         SwingFXWebView sw = new SwingFXWebView();
         jTabbedPane.add("Map", sw);
-        jTabbedPane.setSelectedComponent(jTabbedPane.getComponentAt(3));
+        jTabbedPane.setSelectedComponent(jTabbedPane.getComponentAt(4));
         
         this.setVisible(true);
 
@@ -186,6 +186,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jSeparator24 = new javax.swing.JSeparator();
         jPanelMenuAlert = new javax.swing.JPanel();
         jButtonEditAlert = new javax.swing.JButton();
+        jButtonDelAlert = new javax.swing.JButton();
         jPanelBarSearchAlert = new javax.swing.JPanel();
         jSeparator29 = new javax.swing.JSeparator();
         jSeparator30 = new javax.swing.JSeparator();
@@ -208,7 +209,6 @@ public class TableauDeBord extends javax.swing.JFrame {
         jPanelAlertSelected = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         jLabelAlertSelected = new javax.swing.JLabel();
-        jButtonDelAlert = new javax.swing.JButton();
         jSeparator32 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1097,6 +1097,19 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
 
+        jButtonDelAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Errand/errand_remove.png"))); // NOI18N
+        jButtonDelAlert.setText("Supprimer une alerte");
+        jButtonDelAlert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDelAlertMouseClicked(evt);
+            }
+        });
+        jButtonDelAlert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDelAlertActionPerformed(evt);
+            }
+        });
+
         jSeparator29.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jSeparator30.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -1304,52 +1317,41 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButtonDelAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Errand/errand_remove.png"))); // NOI18N
-        jButtonDelAlert.setText("Supprimer une alerte");
-        jButtonDelAlert.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonDelAlertMouseClicked(evt);
-            }
-        });
-        jButtonDelAlert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDelAlertActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelMenuAlertLayout = new javax.swing.GroupLayout(jPanelMenuAlert);
         jPanelMenuAlert.setLayout(jPanelMenuAlertLayout);
         jPanelMenuAlertLayout.setHorizontalGroup(
             jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1168, Short.MAX_VALUE)
+            .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonEditAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDelAlert)
+                .addContainerGap(660, Short.MAX_VALUE))
             .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jSeparator32)
                         .addComponent(jPanelAlert, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanelBarSearchAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator31)
                         .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
-                            .addGap(4, 4, 4)
-                            .addComponent(jButtonEditAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonDelAlert)
-                            .addGap(246, 246, 246)
-                            .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(744, 744, 744)
+                            .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanelBarSearchAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap()))
         );
         jPanelMenuAlertLayout.setVerticalGroup(
             jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDelAlert)
+                    .addComponent(jButtonEditAlert))
+                .addContainerGap(617, Short.MAX_VALUE))
             .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonDelAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEditAlert))
-                        .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelAlertSelected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jSeparator32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1436,12 +1438,12 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jTableContainerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContainerMouseClicked
         try {
-            int id = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 0);
-            String nom = (String) containerModel.getValueAt(jTableContainer.getSelectedRow(), 1);
-            String adresse = (String) containerModel.getValueAt(jTableContainer.getSelectedRow(), 2);
-            double lat = (double) containerModel.getValueAt(jTableContainer.getSelectedRow(), 3);
-            double lng = (double) containerModel.getValueAt(jTableContainer.getSelectedRow(), 4);
-            int state = (int) containerModel.getValueAt(jTableContainer.getSelectedRow(), 5);
+            int id = (int) containerModel.getValueAt(jTableContainer.convertRowIndexToModel(jTableContainer.getSelectedRow()), 0);
+            String nom = (String) containerModel.getValueAt(jTableContainer.convertRowIndexToModel(jTableContainer.getSelectedRow()), 1);
+            String adresse = (String) containerModel.getValueAt(jTableContainer.convertRowIndexToModel(jTableContainer.getSelectedRow()), 2);
+            double lat = (double) containerModel.getValueAt(jTableContainer.convertRowIndexToModel(jTableContainer.getSelectedRow()), 3);
+            double lng = (double) containerModel.getValueAt(jTableContainer.convertRowIndexToModel(jTableContainer.getSelectedRow()), 4);
+            int state = (int) containerModel.getValueAt(jTableContainer.convertRowIndexToModel(jTableContainer.getSelectedRow()), 5);
 
             Container container = new Container(nom, lat, lng, adresse);
             container.setId(id);
@@ -1559,11 +1561,11 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jTableCourierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCourierMouseClicked
         try {
-            int id = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 0);
-            String nom = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 1);
-            String prenom = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 2);
-            String mail = (String) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 3);
-            int scheduler = (int) utilisateurs.getValueAt(jTableCourier.getSelectedRow(), 4);
+            int id = (int) utilisateurs.getValueAt(jTableCourier.convertRowIndexToModel(jTableCourier.getSelectedRow()), 0);
+            String nom = (String) utilisateurs.getValueAt(jTableCourier.convertRowIndexToModel(jTableCourier.getSelectedRow()), 1);
+            String prenom = (String) utilisateurs.getValueAt(jTableCourier.convertRowIndexToModel(jTableCourier.getSelectedRow()), 2);
+            String mail = (String) utilisateurs.getValueAt(jTableCourier.convertRowIndexToModel(jTableCourier.getSelectedRow()), 3);
+            int scheduler = (int) utilisateurs.getValueAt(jTableCourier.convertRowIndexToModel(jTableCourier.getSelectedRow()), 4);
 
             Courier courier = new Courier(mail, null, nom, prenom, scheduler);
             courier.setId(id);
@@ -1676,13 +1678,14 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jTableErrandMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableErrandMouseClicked
           try {
-            int idErrand = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 0);
-            String dateDebut = (String) errands.getValueAt(jTableErrand.getSelectedRow(), 1);
-            String dateFin= (String) errands.getValueAt(jTableErrand.getSelectedRow(), 2);
-            double duree = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 3);
-            double distance = (double) errands.getValueAt(jTableErrand.getSelectedRow(), 4);
-            int idCoursier = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 5);
-            int state = (int) errands.getValueAt(jTableErrand.getSelectedRow(), 6);
+            int row = jTableErrand.convertRowIndexToModel(jTableErrand.getSelectedRow());
+            int idErrand = (int) errands.getValueAt(row, 0);
+            String dateDebut = (String) errands.getValueAt(row, 1);
+            String dateFin= (String) errands.getValueAt(row, 2);
+            double duree = (double) errands.getValueAt(row, 3);
+            double distance = (double) errands.getValueAt(row, 4);
+            int idCoursier = (int) errands.getValueAt(row, 5);
+            int state = (int) errands.getValueAt(row, 6);
             
             Errand errand = new Errand(idErrand,state,dateDebut,dateFin,duree,distance,idCoursier);
 
@@ -1738,26 +1741,19 @@ public class TableauDeBord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonDelCourseActionPerformed
 
-    private void jButtonDelAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelAlertActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDelAlertActionPerformed
-
-    private void jButtonDelAlertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelAlertMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDelAlertMouseClicked
-
     private void jTableAlertMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlertMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableAlertMousePressed
 
     private void jTableAlertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlertMouseClicked
         try {
-            int idAlert = (int) alerts.getValueAt(jTableAlert.getSelectedRow(), 0);
-            int idContainer = (int) alerts.getValueAt(jTableAlert.getSelectedRow(), 1);
-            int idCourier = (int) alerts.getValueAt(jTableAlert.getSelectedRow(), 2);
-            String description = (String) alerts.getValueAt(jTableAlert.getSelectedRow(), 3);
-            int state = (int) alerts.getValueAt(jTableAlert.getSelectedRow(), 4);
-            String date = (String) alerts.getValueAt(jTableAlert.getSelectedRow(), 5);
+            int row = jTableAlert.convertRowIndexToModel(jTableAlert.getSelectedRow());
+            int idAlert = (int) alerts.getValueAt(row, 0);
+            int idContainer = (int) alerts.getValueAt(row, 1);
+            int idCourier = (int) alerts.getValueAt(row, 2);
+            String description = (String) alerts.getValueAt(row, 3);
+            int state = (int) alerts.getValueAt(row, 4);
+            String date = (String) alerts.getValueAt(row, 5);
             
             Alert alert = new Alert(state,date,description,idCourier,idContainer,idAlert);
             //courierAlert = courierMetierService.getById(idCourier);
@@ -1765,6 +1761,9 @@ public class TableauDeBord extends javax.swing.JFrame {
             setSelectedAlert(alert);
             //selectedContainerAlert = containerMetierService.getByIdContainers(idContainer);
             selectedContainerAlert = getContainerFromTableById(idContainer);
+            if(selectedContainerAlert == null){
+                jLabelAlertSelected.setText("<html><body><b>Aucun</b></body></html>");
+            }
             jLabelAlertSelected.setText("<html><body><font color='#FF6666'><b>" + selectedContainerAlert.getName() + " </b></font></body></html>");
             
 
@@ -1782,7 +1781,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSearchCourier2ActionPerformed
 
     private void jButtonEditAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAlertActionPerformed
-//        if (!jLabelAlertSelected.getText().equals("Aucun")) {
+        //        if (!jLabelAlertSelected.getText().equals("Aucun")) {
             try {
                 EditAlert edit = new EditAlert(this,true);
                 edit.setAlertSelected(selectedAlert);
@@ -1793,12 +1792,33 @@ public class TableauDeBord extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
             }
-       
-       
-      //   } else {
-       //     JOptionPane.showMessageDialog(this, "Veuillez sélectionner une Alerte...", "Attention", JOptionPane.WARNING_MESSAGE);
-      //  }
+
+            //   } else {
+            //     JOptionPane.showMessageDialog(this, "Veuillez sélectionner une Alerte...", "Attention", JOptionPane.WARNING_MESSAGE);
+            //  }
     }//GEN-LAST:event_jButtonEditAlertActionPerformed
+
+    private void jButtonDelAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelAlertActionPerformed
+        if(!jLabelAlertSelected.getText().equals("Aucun")){
+            int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer l'alerte n°<font color='#FF6666'><b>" + selectedAlert.getIdAlert() + "</b> <i> </i></font> ?</body></html>\n");
+                if (answer == 0) {
+                    try {
+                        alertMetierService.delete(selectedAlert);
+                        this.actualisation();
+                    } catch (Exception ex) {
+                        Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(this, ex.getMessage(), "Attention", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+             
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner une alerte...", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonDelAlertActionPerformed
+
+    private void jButtonDelAlertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelAlertMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDelAlertMouseClicked
 
     /**
      * @param args the command line arguments
