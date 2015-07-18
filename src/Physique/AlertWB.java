@@ -96,7 +96,7 @@ public class AlertWB implements AlertService{
 
     @Override
     public Alert getById(int idAlert) throws Exception {
-         wb = new WebService();
+        wb = new WebService();
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/alert.php?tag=getById&idAlert="+idAlert));
         if(jsonObject.getInt("error") != 0){
             throw new Exception("Impossible de recuperer l'alerte");
