@@ -171,7 +171,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jRadioButtonStateErrand = new javax.swing.JRadioButton();
         jPanel9 = new javax.swing.JPanel();
         jTextFieldSearchErrand = new javax.swing.JTextField();
-        jLabelNbFoundCourier1 = new javax.swing.JLabel();
+        jLabelNbFoundErrand = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -893,9 +893,9 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
 
-        jLabelNbFoundCourier1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabelNbFoundCourier1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNbFoundCourier1.setText("Aucune course n'a été cherché");
+        jLabelNbFoundErrand.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabelNbFoundErrand.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNbFoundErrand.setText("Aucune course n'a été cherché");
 
         jLabel23.setForeground(new java.awt.Color(255, 102, 0));
         jLabel23.setText("<- Appuyer sur Entrée");
@@ -910,7 +910,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabelNbFoundCourier1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNbFoundErrand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -928,7 +928,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addComponent(jTextFieldSearchErrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelNbFoundCourier1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelNbFoundErrand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1681,7 +1681,38 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSearchErrandActionPerformed
 
     private void jTextFieldSearchErrandKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchErrandKeyTyped
-        //TODO
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            String toSearch = jTextFieldSearchErrand.getText();
+            if (jRadioButtonIdErrand.isSelected()) {
+                try {
+                    this.searchErrandById(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            } else if (jRadioButtonDateDebutErrand.isSelected()) {
+                try {
+                    this.searchErrandByDateDebut(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            } else if (jRadioButtonCoursierErrand.isSelected()) {
+                try {
+                    this.searchErrandByCourier(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            } else if (jRadioButtonStateErrand.isSelected()) {
+                try {
+                    this.searchErrandByState(toSearch);
+                } catch (Exception ex) {
+                    Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+                    jLabelNbFoundCourier.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                }
+            }
+        }
     }//GEN-LAST:event_jTextFieldSearchErrandKeyTyped
 
     private void jTableErrandMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableErrandMouseClicked
@@ -1830,7 +1861,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-            //   } else {
+        //   } else {
         //     JOptionPane.showMessageDialog(this, "Veuillez sélectionner une Alerte...", "Attention", JOptionPane.WARNING_MESSAGE);
         //  }
     }//GEN-LAST:event_jButtonEditAlertActionPerformed
@@ -1928,7 +1959,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNbFoundAlert;
     private javax.swing.JLabel jLabelNbFoundContainer;
     private javax.swing.JLabel jLabelNbFoundCourier;
-    private javax.swing.JLabel jLabelNbFoundCourier1;
+    private javax.swing.JLabel jLabelNbFoundErrand;
     private javax.swing.JLabel jLabelUtilisateurConnecte;
     private javax.swing.JLabel jLabelUtilisateurSelected;
     private javax.swing.JPanel jPanel10;
@@ -2009,27 +2040,26 @@ public class TableauDeBord extends javax.swing.JFrame {
             jTextFieldSearchCourier.setText("");
             jLabelNbFoundCourier.setText("Aucun utilisateur n'a été cherché");
             jLabelUtilisateurSelected.setText("Aucun");
-            jRadioButtonNomCourier.setSelected(true);
+            jRadioButtonIdCourier.setSelected(true);
         } else if (jPanelMenuContain.isShowing()) {
             this.fireJTableContainer(null, null);
             jTextFieldSearchContainer.setText("");
             jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
             jLabelContainerSelected.setText("Aucun");
-            jRadioButtonNomContainer.setSelected(true);
+            jRadioButtonIdContainer.setSelected(true);
         } else if (jPanelMenuCourse.isShowing()) {
             this.fireJTableErrand(null, null);
+            jTextFieldSearchErrand.setText("");
+            jLabelNbFoundErrand.setText("Aucune course n'a été cherché");
             jLabelErrandSelected.setText("Aucun");
-            //  jTextFieldSearchBiblio2.setText("");
-            // jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
-            // jLabelUtilisateurSelected.setText("Aucun");
-            // jRadioButtonNomBiblio2.setSelected(true);
+            jRadioButtonIdErrand.setSelected(true);
         } else if (jPanelMenuAlert.isShowing()) {
             this.fireJTableAlert(null, null);
             jLabelAlertSelected.setText("Aucun");
-            //  jTextFieldSearchBiblio2.setText("");
-            // jLabelNbFoundContainer.setText("Aucun container n'a été cherché");
-            // jLabelUtilisateurSelected.setText("Aucun");
-            // jRadioButtonNomBiblio2.setSelected(true);
+            jTextFieldSearchAlert.setText("");
+            jLabelNbFoundAlert.setText("Aucune alerte n'a été cherché");
+            jLabelAlertSelected.setText("Aucun");
+            jRadioButtonIdAlert.setSelected(true);
         }
     }
 
@@ -2134,7 +2164,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             errands = new JTableModelErrand(errand);
             jTableErrand.setModel(errands);
             TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTableErrand.getModel());
-            jTableCourier.setRowSorter(sorter);
+            jTableErrand.setRowSorter(sorter);
         } else {
             try {
                 errands = new JTableModelErrand();
@@ -2143,7 +2173,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 jTableErrand.setRowSorter(sorter);
             } catch (Exception ex) {
                 Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-                jLabelNbFoundCourier1.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
+                jLabelNbFoundErrand.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
             }
         }
     }
@@ -2547,6 +2577,108 @@ public class TableauDeBord extends javax.swing.JFrame {
         } else {
             jLabelNbFoundAlert.setText("Aucun alerte n'a été cherché");
             this.fireJTableAlert(null, null);
+        }
+    }
+
+    public void searchErrandById(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            try {
+                int id = Integer.parseInt(toSearch);
+                Errand byId = errandMetierService.getByIdErrand(id);
+                if (byId != null) {
+                    jLabelNbFoundErrand.setText("1 course a été trouvé");
+                    this.fireJTableErrand(null, byId);
+                } else {
+                    jLabelNbFoundErrand.setText("Aucune course n'a été trouvé");
+                    this.fireJTableErrand(null, null);
+                }
+            } catch (NumberFormatException nfe) {
+                jLabelNbFoundErrand.setText("<html><body><font color='red'>Ce n'est pas un identifiant valide</font></body></html>");
+            }
+        } else {
+            jLabelNbFoundErrand.setText("Aucune course n'a été cherché");
+            this.fireJTableErrand(null, null);
+        }
+    }
+
+    public void searchErrandByDateDebut(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            List<Errand> newErrand = new ArrayList<Errand>();
+            List<Errand> errandz = errands.getErrands();
+            for (Errand errand : errandz) {
+                if (errand.getDateDebut().contains(toSearch)) {
+                    newErrand.add(errand);
+                }
+            }
+            if (newErrand.size() > 1) {
+                jLabelNbFoundErrand.setText(newErrand.size() + " courses ont été trouvés");
+                this.fireJTableErrand(newErrand, null);
+            } else {
+                if (newErrand.size() == 1) {
+                    jLabelNbFoundAlert.setText(newErrand.size() + " course a été trouvé");
+                    this.fireJTableErrand(newErrand, null);
+                } else {
+                    jLabelNbFoundAlert.setText("Aucune course n'a été trouvé");
+                    this.fireJTableErrand(null, null);
+                }
+            }
+        } else {
+            jLabelNbFoundErrand.setText("Aucun course n'a été cherché");
+            this.fireJTableErrand(null, null);
+        }
+    }
+
+    public void searchErrandByCourier(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            List<Errand> newErrand = new ArrayList<Errand>();
+            List<Errand> errandz = errands.getErrands();
+            for (Errand errand : errandz) {
+                if(Integer.valueOf(toSearch) == errand.getIdCourier()){
+                    newErrand.add(errand);
+                }
+            }
+            if (newErrand.size() > 1) {
+                jLabelNbFoundErrand.setText(newErrand.size() + " courses ont été trouvés");
+                this.fireJTableErrand(newErrand, null);
+            } else {
+                if (newErrand.size() == 1) {
+                    jLabelNbFoundAlert.setText(newErrand.size() + " course a été trouvé");
+                    this.fireJTableErrand(newErrand, null);
+                } else {
+                    jLabelNbFoundAlert.setText("Aucune course n'a été trouvé");
+                    this.fireJTableErrand(null, null);
+                }
+            }
+        } else {
+            jLabelNbFoundErrand.setText("Aucun course n'a été cherché");
+            this.fireJTableErrand(null, null);
+        }
+    }
+    
+    public void searchErrandByState(String toSearch) throws Exception {
+        if (!toSearch.equals("")) {
+            List<Errand> newErrand = new ArrayList<Errand>();
+            List<Errand> errandz = errands.getErrands();
+            for (Errand errand : errandz) {
+                if(Integer.valueOf(toSearch) == errand.getState()){
+                    newErrand.add(errand);
+                }
+            }
+            if (newErrand.size() > 1) {
+                jLabelNbFoundErrand.setText(newErrand.size() + " courses ont été trouvés");
+                this.fireJTableErrand(newErrand, null);
+            } else {
+                if (newErrand.size() == 1) {
+                    jLabelNbFoundAlert.setText(newErrand.size() + " course a été trouvé");
+                    this.fireJTableErrand(newErrand, null);
+                } else {
+                    jLabelNbFoundAlert.setText("Aucune course n'a été trouvé");
+                    this.fireJTableErrand(null, null);
+                }
+            }
+        } else {
+            jLabelNbFoundErrand.setText("Aucun course n'a été cherché");
+            this.fireJTableErrand(null, null);
         }
     }
 
