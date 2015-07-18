@@ -100,11 +100,9 @@ public class JTableModelAlert extends AbstractTableModel {
         }
     }
 
-    public List<Alert> getContainer() {
+    public List<Alert> getAlert() {
         return alert;
     }
-    
-    
     
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {

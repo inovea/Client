@@ -570,23 +570,31 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1168" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButtonAddContainer" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButtonEditContain" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButtonDelContain" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jPanelContainerSelected" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanelBarSearchContainer" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jSeparator28" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanelContainer" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jPanelBarSearchContainer" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButtonAddContainer" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButtonEditContain" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButtonDelContain" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jPanelContainerSelected" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="jSeparator27" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -596,21 +604,23 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jButtonDelContain" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButtonEditContain" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanelContainerSelected" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButtonAddContainer" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jPanelBarSearchContainer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="414" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jButtonDelContain" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButtonEditContain" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanelContainerSelected" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jButtonAddContainer" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                           <Component id="jSeparator28" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanelBarSearchContainer" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                           <Component id="jSeparator27" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanelContainer" max="32767" attributes="0"/>
@@ -657,7 +667,7 @@
                           <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jSeparator26" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="109" max="32767" attributes="0"/>
+                          <EmptySpace pref="129" max="32767" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
@@ -931,7 +941,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel30" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel30" alignment="0" pref="389" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                   <Component id="jLabelContainerSelected" max="32767" attributes="0"/>
@@ -1132,13 +1142,13 @@
                                   <Component id="jLabel22" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonIdCourier1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonPrenomCourier1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonIdErrand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonCoursierErrand" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonNomCourier1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonMailCourier1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonDateDebutErrand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonStateErrand" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1153,13 +1163,13 @@
                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButtonIdCourier1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonNomCourier1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonIdErrand" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonDateDebutErrand" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButtonPrenomCourier1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonMailCourier1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonCoursierErrand" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonStateErrand" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1167,7 +1177,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonIdCourier1">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonIdErrand">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
@@ -1175,20 +1185,20 @@
                         <Property name="text" type="java.lang.String" value="Par identifiant"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonNomCourier1">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonDateDebutErrand">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Par nom"/>
+                        <Property name="text" type="java.lang.String" value="Par date debut"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonPrenomCourier1">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonCoursierErrand">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Par pr&#xe9;nom"/>
+                        <Property name="text" type="java.lang.String" value="Par coursier"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel22">
@@ -1199,12 +1209,12 @@
                         <Property name="text" type="java.lang.String" value="Crit&#xe8;res de recherches :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonMailCourier1">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonStateErrand">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Par mail"/>
+                        <Property name="text" type="java.lang.String" value="Par etat"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1221,7 +1231,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel25" min="-2" pref="80" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldSearchCourier1" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldSearchErrand" min="-2" pref="180" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1236,7 +1246,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSearchCourier1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSearchErrand" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1247,10 +1257,10 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextFieldSearchCourier1">
+                    <Component class="javax.swing.JTextField" name="jTextFieldSearchErrand">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSearchCourier1ActionPerformed"/>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchCourier1KeyTyped"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSearchErrandActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchErrandKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabelNbFoundCourier1">
@@ -1466,10 +1476,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonEditAlert" min="-2" pref="259" max="-2" attributes="0"/>
+                      <Component id="jButtonEditAlert" min="-2" pref="227" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonDelAlert" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="660" max="32767" attributes="0"/>
+                      <EmptySpace pref="704" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -1497,7 +1507,7 @@
                           <Component id="jButtonDelAlert" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonEditAlert" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="617" max="32767" attributes="0"/>
+                      <EmptySpace pref="629" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -1521,7 +1531,7 @@
             <Component class="javax.swing.JButton" name="jButtonEditAlert">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Errand/errand_parameter.png"/>
+                  <Image iconType="3" name="/Pictures/Alerte/alert-edit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modifier une alerte"/>
               </Properties>
@@ -1532,7 +1542,7 @@
             <Component class="javax.swing.JButton" name="jButtonDelAlert">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Pictures/Errand/errand_remove.png"/>
+                  <Image iconType="3" name="/Pictures/Alerte/alert_remove.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Supprimer une alerte"/>
               </Properties>
@@ -1603,20 +1613,22 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel31" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonIdCourier2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonPrenomCourier2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel31" min="-2" pref="207" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jRadioButtonIdAlert" max="32767" attributes="0"/>
+                                          <Component id="jRadioButtonCoursierAlert" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonNomCourier2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonMailCourier2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonConteneurAlert" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonStateAlert" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1627,13 +1639,13 @@
                               <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButtonIdCourier2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonNomCourier2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonIdAlert" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonConteneurAlert" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButtonPrenomCourier2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonMailCourier2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonCoursierAlert" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonStateAlert" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1641,7 +1653,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonIdCourier2">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonIdAlert">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
@@ -1649,20 +1661,20 @@
                         <Property name="text" type="java.lang.String" value="Par identifiant"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonNomCourier2">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonConteneurAlert">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Par nom"/>
+                        <Property name="text" type="java.lang.String" value="Par conteneur"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonPrenomCourier2">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonCoursierAlert">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Par pr&#xe9;nom"/>
+                        <Property name="text" type="java.lang.String" value="Par coursier"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel31">
@@ -1673,12 +1685,12 @@
                         <Property name="text" type="java.lang.String" value="Crit&#xe8;res de recherches :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButtonMailCourier2">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButtonStateAlert">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupCritereRechercheCourse"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Par mail"/>
+                        <Property name="text" type="java.lang.String" value="Par etat"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1695,7 +1707,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel33" min="-2" pref="80" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldSearchCourier2" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldSearchAlert" min="-2" pref="180" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1710,7 +1722,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSearchCourier2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSearchAlert" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1721,10 +1733,10 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextFieldSearchCourier2">
+                    <Component class="javax.swing.JTextField" name="jTextFieldSearchAlert">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSearchCourier2ActionPerformed"/>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchCourier2KeyTyped"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSearchAlertActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchAlertKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabelNbFoundAlert">
