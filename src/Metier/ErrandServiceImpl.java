@@ -34,7 +34,7 @@ private ErrandService errandPhysiqueService = PhysiqueDataFactory.getErrandDataS
 
     @Override
     public Errand getByIdErrand(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return errandPhysiqueService.getByIdErrand(id);
     }
 
     @Override

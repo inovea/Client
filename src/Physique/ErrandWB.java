@@ -85,8 +85,13 @@ public class ErrandWB implements ErrandService{
     }
 
     @Override
-    public Errand getByIdErrand(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Errand getByIdErrand(int id) throws Exception {   
+        wb = new WebService();
+        JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/errand.php?tag=getById&idErrand="+id));
+        if(jsonObject.getInt("error") != 0){
+            throw new Exception("Impossible de recuperer l'alerte");
+        }
+        return getErrand(jsonObject);
     }
 
     @Override
