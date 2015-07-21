@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author root
+ * @author Bentalha Oussama
  */
 public class EditUtilisateur extends javax.swing.JDialog {
 
@@ -310,17 +310,8 @@ public class EditUtilisateur extends javax.swing.JDialog {
         try {
             Courier utilisateurEdited = new Courier(jTextFieldMail.getText(), utilisateur.getPassword(), jTextFieldNom.getText(), jTextFieldPrenom.getText(), jCheckBoxScheduler.isSelected() ? 1 : 0);
             utilisateurEdited.setId(utilisateur.getId());
-
             courierMetierService.update(utilisateurEdited);
 
-            /*if (mdpEdited == null) {
-             bibliothecaireEdited = adherentMetierService.newBibliothecaire(jTextFieldNom.getText(), jTextFieldPrenom.getText(), jTextFieldMail.getText(), bibliothecaire.getMotDePasse(), true);
-             } else {
-             bibliothecaireEdited = adherentMetierService.newBibliothecaire(jTextFieldNom.getText(), jTextFieldPrenom.getText(), jTextFieldMail.getText(), mdpEdited, false);
-             }*/
-            /*utilisateurEdited = courierMetierService.
-             bibliothecaireEdited.setId(bibliothecaire.getId());
-             bibliothecaires.updateBiblio(bibliothecaireEdited);*/
             this.dispose();
         } catch (Exception ex) {
             Logger.getLogger(EditUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
@@ -332,8 +323,6 @@ public class EditUtilisateur extends javax.swing.JDialog {
         ChangePass changePass = new ChangePass(null, true);
         changePass.setCourierSelected(utilisateur);
         changePass.setIhm(this);
-//        changePass.setBibliothecaireSelected(bibliothecaire);
-//        changePass.setIhm(this);
         changePass.setVisible(true);
 
     }//GEN-LAST:event_jButtonChangePassWordActionPerformed
@@ -411,7 +400,7 @@ public class EditUtilisateur extends javax.swing.JDialog {
         this.utilisateur = courier;
     }
 
-    public void setModelBiblio(JTableModelUtilisateur utilisateurs) {
+    public void setModelUser(JTableModelUtilisateur utilisateurs) {
         this.utilisateurs = utilisateurs;
     }
 

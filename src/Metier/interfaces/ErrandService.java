@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Oussama
+ * @author Bentalha Oussama
  */
 public interface ErrandService {
    // public Errand register(String name, String firstname, String mail, String password, int scheduler) throws Exception;

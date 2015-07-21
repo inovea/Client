@@ -68,8 +68,6 @@ public class JTableModelAlert extends AbstractTableModel {
                 return alert.get(rowIndex).getState();
             case 5:
                 return alert.get(rowIndex).getDate();
-//            case 6:
-//                return container.get(rowIndex).getLastCollect();
             default:
                 return null;
         }

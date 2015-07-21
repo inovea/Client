@@ -11,7 +11,7 @@ import Client.Container.JTableModelContainer;
 import Client.Container.UpdateContainer;
 import Client.Errand.EditErrand;
 
-import Client.Errand.EditParamErrand1;
+import Client.Errand.EditParamErrand;
 import Client.Errand.JTableModelErrand;
 import Client.Thread.Selected;
 import Client.Utilisateur.AddUtilisateur;
@@ -27,15 +27,12 @@ import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
 import Metier.interfaces.ErrandService;
 import java.awt.event.KeyEvent;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -45,25 +42,31 @@ import javax.swing.table.TableRowSorter;
  * @author Bentalha Oussama
  */
 public class TableauDeBord extends javax.swing.JFrame {
-
+    
+    //Services de traitement
     private CourierService courierMetierService = MetierServiceFactory.getCourierService();
     private ContainerService containerMetierService = MetierServiceFactory.getContainerService();
     private ErrandService errandMetierService = MetierServiceFactory.getErrandService();
     private AlertService alertMetierService = MetierServiceFactory.getAlertService();
-
+    
+    //Tableaux de contenue
     private JTableModelUtilisateur utilisateurs = null;
     private JTableModelErrand errands = null;
     private JTableModelContainer containerModel = null;
     private JTableModelAlert alerts = null;
-
-    private Courier selectedC;
+    
+    //Objet transit de l'IHM
     private Courier courierConnected;
+    
+    private Courier selectedC;
     private Errand selectedE;
     private Alert selectedAlert;
     private Container selectedContainer;
-    private Courier courierTmp;
-    private Container selectedContainerAlert;
+    
+    private Courier courierTmp;   
     private Courier courierAlert;
+    //Container appartenant à l'alerte
+    private Container selectedContainerAlert;
 
     /**
      * Creates new form TableauDeBord
@@ -1399,7 +1402,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonQuitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
         if (this.courierConnected == null) {
             JOptionPane.showMessageDialog(this, "Utilisateur inexistant ! Session invalide...", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
             this.dispose();
@@ -1415,7 +1417,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMouseClicked
-
         this.actualisation();
     }//GEN-LAST:event_jTabbedPaneMouseClicked
 
@@ -1504,7 +1505,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSearchContainerKeyTyped
 
     private void jRadioButtonIdContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIdContainerActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonIdContainerActionPerformed
 
     private void jButtonEditContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContainActionPerformed
@@ -1521,7 +1521,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditContainActionPerformed
 
     private void jButtonAddContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContainerActionPerformed
-
         new AddContainer(this);
 
         List<Container> list = new ArrayList<Container>();
@@ -1621,7 +1620,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSearchCourierKeyTyped
 
     private void jTextFieldSearchCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchCourierActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSearchCourierActionPerformed
 
     private void jButtonEditCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCourierActionPerformed
@@ -1629,7 +1627,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             try {
                 EditUtilisateur editUtilisateur = new EditUtilisateur(this, true);
                 editUtilisateur.setUtilisateurSelected(this.selectedC);
-                editUtilisateur.setModelBiblio(utilisateurs);
+                editUtilisateur.setModelUser(utilisateurs);
                 editUtilisateur.setVisible(true);
                 this.actualisation();
             } catch (Exception ex) {
@@ -1643,7 +1641,7 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jButtonAddCourierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCourierActionPerformed
         AddUtilisateur addBiblio = new AddUtilisateur(this, true);
-        addBiblio.setModelBiblio(utilisateurs);
+        addBiblio.setModelUser(utilisateurs);
         addBiblio.setVisible(true);
     }//GEN-LAST:event_jButtonAddCourierActionPerformed
 
@@ -1661,9 +1659,9 @@ public class TableauDeBord extends javax.swing.JFrame {
     private void jButtonEditParamErrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditParamErrandActionPerformed
         if (!jLabelErrandSelected.getText().equals("Aucun")) {
             try {
-                EditParamErrand1 editParamErrand = new EditParamErrand1(this, true);
+                EditParamErrand editParamErrand = new EditParamErrand(this, true);
                 editParamErrand.setErrandSelected(this.selectedE);
-                editParamErrand.setModelBiblio(errands);
+                editParamErrand.setModelErrand(errands);
                 editParamErrand.setCourier(courierTmp);
                 editParamErrand.setVisible(true);
                 this.actualisation();
@@ -1677,7 +1675,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditParamErrandActionPerformed
 
     private void jTextFieldSearchErrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchErrandActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSearchErrandActionPerformed
 
     private void jTextFieldSearchErrandKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchErrandKeyTyped
@@ -1780,7 +1777,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDelCourseActionPerformed
 
     private void jTableAlertMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlertMousePressed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTableAlertMousePressed
 
     private void jTableAlertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlertMouseClicked
@@ -1794,10 +1790,9 @@ public class TableauDeBord extends javax.swing.JFrame {
             String date = (String) alerts.getValueAt(row, 5);
 
             Alert alert = new Alert(state, date, description, idCourier, idContainer, idAlert);
-            //courierAlert = courierMetierService.getById(idCourier);
+            //Recherche depuis le tableau des Coursiers
             courierAlert = getCourierFromTableById(idCourier);
             setSelectedAlert(alert);
-            //selectedContainerAlert = containerMetierService.getByIdContainers(idContainer);
             selectedContainerAlert = getContainerFromTableById(idContainer);
             if (selectedContainerAlert == null) {
                 jLabelAlertSelected.setText("<html><body><b>Aucun</b></body></html>");
@@ -1845,25 +1840,24 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSearchAlertKeyTyped
 
     private void jTextFieldSearchAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchAlertActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSearchAlertActionPerformed
 
     private void jButtonEditAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAlertActionPerformed
-        //        if (!jLabelAlertSelected.getText().equals("Aucun")) {
-        try {
-            EditAlert edit = new EditAlert(this, true);
-            edit.setAlertSelected(selectedAlert);
-            edit.setContainerSelected(selectedContainerAlert);
-            edit.setCourier(courierAlert);
-            edit.setVisible(true);
-            this.actualisation();
-        } catch (Exception ex) {
-            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (!jLabelAlertSelected.getText().equals("Aucun")) {
+            try {
+                EditAlert edit = new EditAlert(this, true);
+                edit.setAlertSelected(selectedAlert);
+                edit.setContainerSelected(selectedContainerAlert);
+                edit.setCourier(courierAlert);
+                edit.setVisible(true);
+                this.actualisation();
+            } catch (Exception ex) {
+                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        //   } else {
-        //     JOptionPane.showMessageDialog(this, "Veuillez sélectionner une Alerte...", "Attention", JOptionPane.WARNING_MESSAGE);
-        //  }
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner une Alerte...", "Attention", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonEditAlertActionPerformed
 
     private void jButtonDelAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelAlertActionPerformed
@@ -1885,7 +1879,6 @@ public class TableauDeBord extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDelAlertActionPerformed
 
     private void jButtonDelAlertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelAlertMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDelAlertMouseClicked
 
     /**
@@ -2315,21 +2308,6 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     public void setCourierSelected(Courier courier) {
         this.selectedC = courier;
-    }
-
-    public void setStatut(String statut, String label) {
-        /*if (label.equals("livre")) {
-         jLabelNbFoundLivre.setText(statut);
-         }
-         if (label.equals("adherent")) {
-         jLabelNbFoundAdherent.setText(statut);
-         }
-         if (label.equals("emprunt")) {
-         jLabelNbFoundEmprunt.setText(statut);
-         }
-         if(label.equals("admin")) {
-         jLabelNbFoundBiblio.setText(statut);
-         }*/
     }
 
     private void searchByIdContainer(String toSearch) throws Exception {

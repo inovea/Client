@@ -40,8 +40,6 @@ public class ContainerServiceImpl implements ContainerService{
 
     @Override
     public Container update(Container container) throws Exception {
-     
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return containerPhysiqueService.update(container);
     }
 
@@ -84,13 +82,11 @@ public class ContainerServiceImpl implements ContainerService{
              throw  new Exception("adresse manquante");
         }
         return containerPhysiqueService.recupLatAndLong(address);
-//  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Container getByIdContainers(int id) throws Exception {
         return containerPhysiqueService.getByIdContainers(id);
-// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -107,7 +103,6 @@ public class ContainerServiceImpl implements ContainerService{
            throw  new Exception("Etat manquant");
        }
        return containerPhysiqueService.getByState(state);
-        //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

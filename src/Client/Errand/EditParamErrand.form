@@ -34,7 +34,6 @@
                       <Component id="jLabelStatut" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="jLabel" alignment="0" pref="331" max="32767" attributes="0"/>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
@@ -312,7 +311,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(list.toArray())"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="List&lt;Courier&gt; list = new ArrayList();&#xa;        try {&#xa;            list = courierMetierService.getAll();&#xa;            Courier c = new Courier();&#xa;           &#xa;        } catch (Exception ex) {&#xa;            Logger.getLogger(EditParamErrand1.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="List&lt;Courier&gt; list = new ArrayList();&#xa;        try {&#xa;            list = courierMetierService.getAll();&#xa;            Courier c = new Courier();&#xa;           &#xa;        } catch (Exception ex) {&#xa;            Logger.getLogger(EditParamErrand.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinner3">

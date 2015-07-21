@@ -5,7 +5,6 @@
  */
 package Metier;
 
-import Metier.interfaces.CourierService;
 import Metier.interfaces.ErrandService;
 import Physique.PhysiqueDataFactory;
 import java.util.List;

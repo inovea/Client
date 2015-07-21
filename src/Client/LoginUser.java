@@ -207,15 +207,12 @@ private TableauDeBord tb = null;
     }//GEN-LAST:event_btnConnexionActionPerformed
 
     private void tbPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbPassActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_tbPassActionPerformed
 
     private void tbPassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPassMouseEntered
-        
     }//GEN-LAST:event_tbPassMouseEntered
 
     private void tbPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPassKeyPressed
-        
     }//GEN-LAST:event_tbPassKeyPressed
 
     private void tbPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPassKeyTyped

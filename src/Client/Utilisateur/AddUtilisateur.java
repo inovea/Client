@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author drouinjonathan
+ * @author Bentalha Oussama
  */
 public class AddUtilisateur extends javax.swing.JDialog {
 
@@ -23,7 +23,7 @@ public class AddUtilisateur extends javax.swing.JDialog {
     private CourierService courierService = MetierServiceFactory.getCourierService();
 
     /**
-     * Creates new form AddBiblio
+     * Creates new form AddUser
      */
     public AddUtilisateur(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -222,8 +222,6 @@ public class AddUtilisateur extends javax.swing.JDialog {
                 Courier courier = courierService.register(jTextFieldName.getText(), jTextFieldFirstname.getText(), jTextFieldMail.getText(), sb.toString(), admin);       
                 users.addCourier(courier);
                 
-                //MetierServiceFactory.getBibliotheque().getTab().setStatut("<html><body><font color='green'>Le bibliothécaire a été ajouté</font></body></html>", "admin");
-                
                 this.dispose();
             }else{
                 jLabelStatut.setText("<html><body><font color='orange'>Le deux mots de passe ne correspondent pas</font></body></html>");
@@ -300,7 +298,7 @@ public class AddUtilisateur extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldName;
     // End of variables declaration//GEN-END:variables
 
-    public void setModelBiblio(JTableModelUtilisateur utilisateur) {
+    public void setModelUser(JTableModelUtilisateur utilisateur) {
         this.users = utilisateur;
     }
 

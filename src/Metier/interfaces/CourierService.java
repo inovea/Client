@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Oussama
+ * @author Bentalha Oussama
  */
 public interface CourierService {
     public Courier register(String name, String firstname, String mail, String password, int scheduler) throws Exception;

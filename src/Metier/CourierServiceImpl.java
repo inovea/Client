@@ -36,11 +36,6 @@ public class CourierServiceImpl implements CourierService{
             throw new Exception("Veuillez saisir une adresse mail valide");
         }
         
-        /*Courier courierTemp = this.getByMail(courier.getMail());
-        if(courierTemp.getMail().equals(courier.getMail())){
-            throw new Exception(courier.toString()+" existe déjà");
-        }*/
-        
         return courierPhysiqueService.add(courier);
     }
 
@@ -65,9 +60,7 @@ public class CourierServiceImpl implements CourierService{
         if (mail.equals("") || password.equals("")) {
             throw new Exception("Attention un champs n'est pas renseigné");
         }
-       /* if (!mail.contains("@") || !mail.contains(".")) {
-            throw new Exception("Veuillez saisir une adresse mail valide");
-        }*/
+
         return courierPhysiqueService.login(mail, password);
     }
 
@@ -92,7 +85,6 @@ public class CourierServiceImpl implements CourierService{
         if (!mail.contains("@") || !mail.contains(".")) {
             throw new Exception("Veuillez saisir une adresse mail valide");
         }
-        //TODO
         return null;
     }
 

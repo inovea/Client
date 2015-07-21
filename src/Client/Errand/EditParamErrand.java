@@ -25,9 +25,9 @@ import javax.swing.SpinnerDateModel;
 
 /**
  *
- * @author root
+ * @author Bentalha Oussama
  */
-public class EditParamErrand1 extends javax.swing.JDialog {
+public class EditParamErrand extends javax.swing.JDialog {
 
     private Errand errand;
     private JTableModelErrand errands;
@@ -38,7 +38,7 @@ public class EditParamErrand1 extends javax.swing.JDialog {
     /**
      * Creates new form EditBiblio
      */
-    public EditParamErrand1(java.awt.Frame parent, boolean modal) {
+    public EditParamErrand(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -81,7 +81,7 @@ public class EditParamErrand1 extends javax.swing.JDialog {
             Courier c = new Courier();
 
         } catch (Exception ex) {
-            Logger.getLogger(EditParamErrand1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditParamErrand.class.getName()).log(Level.SEVERE, null, ex);
         }
         jComboBox1 = new javax.swing.JComboBox(list.toArray());
         Date date = new Date();
@@ -308,8 +308,7 @@ public class EditParamErrand1 extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabelStatut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -374,7 +373,7 @@ public class EditParamErrand1 extends javax.swing.JDialog {
                errandMetierService.update(errandEdited);
            this.dispose();
         } catch (Exception ex) {
-            Logger.getLogger(EditParamErrand1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditParamErrand.class.getName()).log(Level.SEVERE, null, ex);
             jLabelStatut.setText("<html><body><font color='red'>" + ex.getMessage() + "</font></body></html>");
         }
     }//GEN-LAST:event_jButtonEditActionPerformed
@@ -396,8 +395,24 @@ public class EditParamErrand1 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditParamErrand1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditParamErrand.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -419,7 +434,7 @@ public class EditParamErrand1 extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                EditParamErrand1 dialog = new EditParamErrand1(new javax.swing.JFrame(), true);
+                EditParamErrand dialog = new EditParamErrand(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -470,7 +485,7 @@ public class EditParamErrand1 extends javax.swing.JDialog {
     public void setCourier(Courier s) {
        this.courier = s;
     }
-    public void setModelBiblio(JTableModelErrand errands) {
+    public void setModelErrand(JTableModelErrand errands) {
         this.errands = errands;
     }
 

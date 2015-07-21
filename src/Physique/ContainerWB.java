@@ -27,23 +27,20 @@ public class ContainerWB implements ContainerService {
 
     public Container getLatAndLong(JSONObject obj, String adress) throws Exception {
         Container cont = new Container();
-        System.out.println("Result: " + obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
-
-        //  System.out.println(obj.getJSONArray("results").getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
         cont.setAddress(adress);
         System.out.println("GetLatAndLong :" + cont.getAddress());
         cont.setLat(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
         cont.setLng(obj.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
         return cont;
     }
-public List<Container> getListElements(JSONObject obj) throws JSONException, ParseException {
+
+    public List<Container> getListElements(JSONObject obj) throws JSONException, ParseException {
         List<Container> list = new ArrayList<Container>();
         JSONArray containers = obj.getJSONArray("container");
         for (int i = 0; i < containers.length(); i++) {
             Container container = new Container();
             JSONObject tempCont = containers.getJSONObject(i);
             container.setId(tempCont.getInt("idContainer"));
-            System.out.println("GetListElements : " +tempCont.getString("address"));
             container.setAddress(tempCont.getString("address"));
             container.setLat(tempCont.getDouble("lat"));
             container.setLng(tempCont.getDouble("lng"));
@@ -54,7 +51,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
             list.add(i, container);
         }
         return list;
-        
+
     }
 
     public List<Container> getContainersWithoutErrand(JSONObject obj) throws JSONException, ParseException {
@@ -64,8 +61,8 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
         for (int i = 0; i < containers.length(); i++) {
             Container container = new Container();
             JSONObject tempCont = containers.getJSONObject(i);
-             System.out.println(tempCont.getLong("Errand_idErrand"));
-            if(tempCont.getLong("Errand_idErrand") == 1){
+            System.out.println(tempCont.getLong("Errand_idErrand"));
+            if (tempCont.getLong("Errand_idErrand") == 1) {
                 container.setId(tempCont.getInt("idContainer"));
                 container.setAddress(tempCont.getString("address"));
                 container.setLat(tempCont.getDouble("lat"));
@@ -76,15 +73,16 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
                 container.setIdErrand(tempCont.getInt("Errand_idErrand"));
                 list.add(compteur, container);
                 compteur++;
-               
+
             }
-           
+
         }
         return list;
-        
+
     }
- public Container getElement(JSONObject obj) throws JSONException, ParseException {
-        
+
+    public Container getElement(JSONObject obj) throws JSONException, ParseException {
+
         Container container = new Container();
         container.setId(obj.getJSONObject("container").getInt("idContainer"));
         container.setAddress(obj.getJSONObject("container").getString("address"));
@@ -98,7 +96,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
         return container;
 
     }
-   
+
     @Override
     public Container add(Container container) throws Exception {
         WebService wb = new WebService();
@@ -109,7 +107,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
 
     @Override
     public Container update(Container container) throws Exception {
-       WebService wb = new WebService();
+        WebService wb = new WebService();
         // System.out.println("State dans le WB : "+container.getState() );
         System.out.println("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect=0000-00-00%2000:00:00&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand());
         JSONObject jsonObject = wb.addAndUpdateContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect=0000-00-00%2000:00:00&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand()));
@@ -126,7 +124,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
 
     @Override
     public List<Container> getAll() throws Exception {
-       WebService wb = new WebService();
+        WebService wb = new WebService();
         JSONObject jsonObject = wb.getListElements(new URL("http://inovea.herobo.com/webhost/container.php?tag=getAll"));
 
         return this.getListElements(jsonObject);
@@ -145,7 +143,7 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
 
     @Override
     public Container getByIdContainers(int id) throws Exception {
-       WebService wb = new WebService();
+        WebService wb = new WebService();
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/container.php?tag=getById&idContainer=" + id));
         return this.getElement(jsonObject);
     }
@@ -157,38 +155,36 @@ public List<Container> getListElements(JSONObject obj) throws JSONException, Par
 
     @Override
     public List<Container> getByIdErrand(int id) throws Exception {
-         WebService wb = new WebService();
+        WebService wb = new WebService();
         JSONObject jsonObject = wb.getListElements(new URL("http://inovea.herobo.com/webhost/container.php?tag=getByErrand&idErrand=" + id));
-        if(jsonObject.getInt("error") != 0){
+        if (jsonObject.getInt("error") != 0) {
             List<Container> cont = new ArrayList<>();
             return cont;
-        }  
+        }
         return this.getListElements(jsonObject);
     }
 
     @Override
     public List<Container> getByState(int state) throws Exception {
-       WebService wb = new WebService();
+        WebService wb = new WebService();
         JSONObject jsonObject = wb.getElement(new URL("http://inovea.herobo.com/webhost/container.php?tag=getByState&state=" + state));
-        if(jsonObject.getInt("error") != 0){
+        if (jsonObject.getInt("error") != 0) {
             throw new Exception("Aucun Etat pour cette ID");
-        }  
+        }
         return this.getListElements(jsonObject);
     }
 
     @Override
     public List<Container> getContainerWithoutErrand() throws Exception {
-      WebService wb = new WebService();
+        WebService wb = new WebService();
         JSONObject jsonObject = wb.getListElements(new URL("http://inovea.herobo.com/webhost/container.php?tag=getAll"));
-        if(jsonObject.getInt("error") != 0){
-           
-             List<Container> cont = new ArrayList<>();
+        if (jsonObject.getInt("error") != 0) {
+
+            List<Container> cont = new ArrayList<>();
             return cont;
-        } 
+        }
 
-       return this.getContainersWithoutErrand(jsonObject);
+        return this.getContainersWithoutErrand(jsonObject);
     }
-
-    
 
 }

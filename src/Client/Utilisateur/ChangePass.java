@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author root
+ * @author Bentalha Oussama
  */
 public class ChangePass extends javax.swing.JDialog {
 
@@ -192,7 +192,6 @@ public class ChangePass extends javax.swing.JDialog {
 
     private void jButtonChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChangeActionPerformed
         try {
-            // TODO add your handling code here:
             char[] mdp = jPasswordFieldOldPass.getPassword();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < mdp.length; i++) {

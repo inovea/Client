@@ -304,21 +304,19 @@ public class EditAlert extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
         lbIdAlert.setText(String.valueOf(alert.getIdAlert()));
         lbDate.setText(alert.getDate());
         lbDesc.setText(alert.getDescription());
         lbEditDesc.setText(lbDesc.getText());
                 
        // lb.setText(String.valueOf(errand.getDistance()));
-      /*  jTextFieldNom.setText(utilisateur.getName());
+       /*  jTextFieldNom.setText(utilisateur.getName());
         jTextFieldPrenom.setText(utilisateur.getFirstname());
         jTextFieldMail.setText(utilisateur.getMail());*/
        
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
-        // TODO add your handling code here:
            try {              
             //  if(String.valueOf(courierTmp.getId()).equals(null)){
                // Errand errandEdited = new Errand(Integer.parseInt(lbIdErrand.getText()),(int)this.jSpinner1.getValue(),dateFormateeD,dateFormateeF,Double.parseDouble(lbDuree.getText()),Double.parseDouble(lbDistance.getText()),cou);

@@ -11,13 +11,12 @@ import Metier.interfaces.ErrandService;
 
 /**
  *
- * @author drouinjonathan
+ * @author Bentalha Oussama
  */
 public class MetierServiceFactory {
     
     
     private static CourierService courierService;
-//    private static Bibliotheque bibliotheque;
     private static ContainerService containerService;
     private static ErrandService errandService;
     private static AlertService alertService;

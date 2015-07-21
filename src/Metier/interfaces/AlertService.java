@@ -6,7 +6,6 @@
 package Metier.interfaces;
 import Metier.Alert;
 import java.util.List;
-import org.json.JSONObject;
 /**
  *
  * @author Lyes Atek
