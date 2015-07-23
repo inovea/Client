@@ -220,7 +220,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jSeparator32 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Centre de gestion de la bibliothèque");
+        setTitle("Inovea");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);

@@ -55,6 +55,7 @@ private TableauDeBord tb = null;
         tbPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inovea");
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(27, 68, 34));
 
