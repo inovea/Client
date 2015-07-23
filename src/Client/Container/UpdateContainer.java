@@ -35,6 +35,8 @@ public class UpdateContainer extends javax.swing.JFrame {
         this.tbAdd.setText(cont.getAddress());
         this.tbLng.setText(Double.toString(cont.getLng()));
         this.tbErrand.setText(String.valueOf(cont.getIdErrand()));
+        this.tbLat.setEditable(false);
+        this.tbLng.setEditable(false);
        
     }
 

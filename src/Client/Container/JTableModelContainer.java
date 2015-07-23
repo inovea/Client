@@ -65,8 +65,8 @@ public class JTableModelContainer extends AbstractTableModel {
                 return container.get(rowIndex).getLng();
             case 5:
                 return container.get(rowIndex).getState();
-//            case 6:
-//                return container.get(rowIndex).getLastCollect();
+            case 6:
+                return container.get(rowIndex).getLastCollect();
             default:
                 return null;
         }
