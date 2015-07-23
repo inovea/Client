@@ -218,7 +218,7 @@ public class EditErrand extends javax.swing.JDialog {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
        for(int i = 0; i < listContainer.size();i++){
            Container contTmp = new Container();
-           contTmp = listContainer.get(i);
+           contTmp = listContainer.get(i); 
            if(contTmp.getIdErrand() == 1){
                contTmp.setIdErrand(errand.getIdErrand());
                try {

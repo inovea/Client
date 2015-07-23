@@ -26,11 +26,16 @@ import Metier.interfaces.AlertService;
 import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
 import Metier.interfaces.ErrandService;
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -80,7 +85,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
         SwingFXWebView sw = new SwingFXWebView();
         jTabbedPane.add("Map", sw);
-        jTabbedPane.setSelectedComponent(jTabbedPane.getComponentAt(4));
+        jTabbedPane.setSelectedComponent(jTabbedPane.getComponentAt(2));
 
         this.setVisible(true);
 
@@ -1418,8 +1423,16 @@ public class TableauDeBord extends javax.swing.JFrame {
 
     private void jTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMouseClicked
         this.actualisation();
+        if(this.jTabbedPane.getSelectedIndex() == 4){
+           String Url = "http://www.inovea.herobo.com/googlemap/googlemaps.html";
+            try {
+                Desktop.getDesktop().browse(URI.create(Url));
+            } catch (IOException ex) {
+                Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jTabbedPaneMouseClicked
-
+ 
     private void jButtonDelContainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelContainActionPerformed
         if (!jLabelContainerSelected.getText().equals("Aucun")) {
             int answer = JOptionPane.showConfirmDialog(this, "<html><body>Êtes-vous sûr de vouloir supprimer <font color='#FF6666'><b>" + this.selectedContainer.getName() + "</b></font> ?</body></html>\n");
@@ -1432,7 +1445,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                         this.actualisation();
                     } catch (Exception ex) {
                         Logger.getLogger(AddContainer.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    } 
                 } else {
                     JOptionPane.showMessageDialog(this, "Le conteneur selectionné est déja affecté dans une course.", "Attention", JOptionPane.WARNING_MESSAGE);
                 }
