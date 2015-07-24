@@ -27,6 +27,8 @@ import Metier.interfaces.ContainerService;
 import Metier.interfaces.CourierService;
 import Metier.interfaces.ErrandService;
 import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URI;
@@ -36,6 +38,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JEditorPane;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -80,12 +83,13 @@ public class TableauDeBord extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(this.getExtendedState() | TableauDeBord.MAXIMIZED_BOTH);
+        
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         jTableContainer.setDefaultRenderer(String.class, centerRenderer);
         SwingFXWebView sw = new SwingFXWebView();
         jTabbedPane.add("Map", sw);
-        jTabbedPane.setSelectedComponent(jTabbedPane.getComponentAt(2));
+        jTabbedPane.setSelectedComponent(jTabbedPane.getComponentAt(4));
 
         this.setVisible(true);
 
@@ -110,6 +114,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jPanelDetails = new javax.swing.JPanel();
         jLabelUtilisateurConnecte = new javax.swing.JLabel();
         jButtonQuit = new javax.swing.JButton();
+        jButtonRefresh = new javax.swing.JButton();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanelMenuAdmin = new javax.swing.JPanel();
         jButtonAddCourier = new javax.swing.JButton();
@@ -237,6 +242,13 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
 
+        jButtonRefresh.setText("Rafraichir");
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelDetailsLayout = new javax.swing.GroupLayout(jPanelDetails);
         jPanelDetails.setLayout(jPanelDetailsLayout);
         jPanelDetailsLayout.setHorizontalGroup(
@@ -245,6 +257,8 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelUtilisateurConnecte, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonRefresh)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonQuit)
                 .addContainerGap())
         );
@@ -254,16 +268,21 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUtilisateurConnecte, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                    .addComponent(jButtonQuit))
+                    .addComponent(jButtonQuit)
+                    .addComponent(jButtonRefresh))
                 .addContainerGap())
         );
 
         jTabbedPane.setBackground(new java.awt.Color(255, 0, 102));
+        jTabbedPane.setMinimumSize(new java.awt.Dimension(84, 76));
+        jTabbedPane.setPreferredSize(new java.awt.Dimension(1317, 747));
         jTabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPaneMouseClicked(evt);
             }
         });
+
+        jPanelMenuAdmin.setPreferredSize(new java.awt.Dimension(1191, 719));
 
         jButtonAddCourier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/Admin/user_add.png"))); // NOI18N
         jButtonAddCourier.setText("Ajouter un coursier");
@@ -452,7 +471,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelUtilisateurLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -726,7 +745,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -807,7 +826,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                     .addComponent(jButtonAddContainer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jPanelBarSearchContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(414, Short.MAX_VALUE))
+                .addContainerGap(412, Short.MAX_VALUE))
             .addGroup(jPanelMenuContainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMenuContainLayout.createSequentialGroup()
                     .addGap(129, 129, 129)
@@ -1008,7 +1027,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCourseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1293,7 +1312,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             jPanelAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlertLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1357,7 +1376,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDelAlert)
                     .addComponent(jButtonEditAlert))
-                .addContainerGap(629, Short.MAX_VALUE))
+                .addContainerGap(627, Short.MAX_VALUE))
             .addGroup(jPanelMenuAlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelMenuAlertLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1382,7 +1401,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addComponent(jPanelDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane)
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1390,7 +1409,7 @@ public class TableauDeBord extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -1889,6 +1908,18 @@ public class TableauDeBord extends javax.swing.JFrame {
     private void jButtonDelAlertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelAlertMouseClicked
     }//GEN-LAST:event_jButtonDelAlertMouseClicked
 
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
+        try {
+            utilisateurs = null;
+            containerModel = null;
+            errands = null;
+            alerts = null;
+            this.createAllJTable();
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1934,6 +1965,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditErrand;
     private javax.swing.JButton jButtonEditParamErrand;
     private javax.swing.JButton jButtonQuit;
+    private javax.swing.JButton jButtonRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;

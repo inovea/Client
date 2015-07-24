@@ -60,7 +60,7 @@ public class EditErrand extends javax.swing.JDialog {
         btnAnnuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Ajouter un bibliothécaire");
+        setTitle("Modifier une course");
 
         jScrollPane2.setViewportView(listWithoutErrand);
 
