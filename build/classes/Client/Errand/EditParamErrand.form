@@ -32,8 +32,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabelStatut" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel" alignment="0" pref="331" max="32767" attributes="0"/>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
@@ -52,10 +53,15 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabelStatut" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jLabelStatut" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
@@ -85,27 +91,25 @@
                               <Component id="lblDateDebut" min="-2" max="-2" attributes="0"/>
                               <Component id="lblstate" min="-2" max="-2" attributes="0"/>
                               <Component id="lblIdErrand" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDuree" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbIdErrand" max="32767" attributes="0"/>
+                              <Component id="lbIdErrand" pref="246" max="32767" attributes="0"/>
                               <Component id="lbState" max="32767" attributes="0"/>
                               <Component id="lbDateDebut" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lbDuree" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblDuree" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDateFin" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDistance" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCoursier" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbDateFin" max="32767" attributes="0"/>
                               <Component id="lbDistance" max="32767" attributes="0"/>
-                              <Component id="lbDuree" max="32767" attributes="0"/>
                               <Component id="lbCoursier" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -132,11 +136,6 @@
                       <Component id="lblDateDebut" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbDateDebut" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblDateFin" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="lbDateFin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblDuree" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
@@ -152,7 +151,7 @@
                       <Component id="lblCoursier" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="lbCoursier" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -184,16 +183,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbDateDebut">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="-"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblDateFin">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Date Fin"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbDateFin">
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
@@ -239,15 +228,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jComboBox2" max="32767" attributes="0"/>
+                      <Component id="jComboBox2" pref="245" max="32767" attributes="0"/>
                       <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jSpinner3" alignment="0" max="32767" attributes="0"/>
                       <Component id="jSpinner4" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -269,15 +256,10 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -291,11 +273,6 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="text" type="java.lang.String" value="Date Debut :"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Date Fin :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -312,13 +289,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(list.toArray())"/>
             <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="List&lt;Courier&gt; list = new ArrayList();&#xa;        try {&#xa;            list = courierMetierService.getAll();&#xa;            Courier c = new Courier();&#xa;           &#xa;        } catch (Exception ex) {&#xa;            Logger.getLogger(EditParamErrand.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner3">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(sm)"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date = new Date();&#xa;SpinnerDateModel sm = &#xa;new SpinnerDateModel(date, null, null, Calendar.DAY_OF_MONTH);"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner3, &quot;yyyy-MM-dd HH:mm:ss&quot;);&#xa;jSpinner3.setEditor(de);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinner4">

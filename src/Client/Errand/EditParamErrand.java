@@ -62,8 +62,6 @@ public class EditParamErrand extends javax.swing.JDialog {
         lbState = new javax.swing.JLabel();
         lblDateDebut = new javax.swing.JLabel();
         lbDateDebut = new javax.swing.JLabel();
-        lblDateFin = new javax.swing.JLabel();
-        lbDateFin = new javax.swing.JLabel();
         lblDuree = new javax.swing.JLabel();
         lblDistance = new javax.swing.JLabel();
         lblCoursier = new javax.swing.JLabel();
@@ -73,7 +71,6 @@ public class EditParamErrand extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         List<Courier> list = new ArrayList();
         try {
@@ -84,10 +81,6 @@ public class EditParamErrand extends javax.swing.JDialog {
             Logger.getLogger(EditParamErrand.class.getName()).log(Level.SEVERE, null, ex);
         }
         jComboBox1 = new javax.swing.JComboBox(list.toArray());
-        Date date = new Date();
-        SpinnerDateModel sm =
-        new SpinnerDateModel(date, null, null, Calendar.DAY_OF_MONTH);
-        jSpinner3 = new javax.swing.JSpinner(sm);
         Date date2 = new Date();
         SpinnerDateModel sm2 =
         new SpinnerDateModel(date2, null, null, Calendar.DAY_OF_MONTH);
@@ -122,10 +115,6 @@ public class EditParamErrand extends javax.swing.JDialog {
 
         lbDateDebut.setText("-");
 
-        lblDateFin.setText("Date Fin");
-
-        lbDateFin.setText("-");
-
         lblDuree.setText("Durée");
 
         lblDistance.setText("Distance");
@@ -149,24 +138,22 @@ public class EditParamErrand extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblDateDebut)
                             .addComponent(lblstate)
-                            .addComponent(lblIdErrand))
+                            .addComponent(lblIdErrand)
+                            .addComponent(lblDuree))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbIdErrand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbIdErrand, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                             .addComponent(lbState, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbDateDebut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lbDateDebut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbDuree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDuree)
-                            .addComponent(lblDateFin)
                             .addComponent(lblDistance)
                             .addComponent(lblCoursier))
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbDateFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbDistance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbDuree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbCoursier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -185,10 +172,6 @@ public class EditParamErrand extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDateDebut)
                     .addComponent(lbDateDebut))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDateFin, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbDateFin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDuree, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,19 +184,14 @@ public class EditParamErrand extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCoursier, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbCoursier))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jLabel4.setText("Etat :");
 
         jLabel8.setText("Date Debut :");
 
-        jLabel5.setText("Date Fin :");
-
         jLabel6.setText("Coursier :");
-
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner3, "yyyy-MM-dd HH:mm:ss");
-        jSpinner3.setEditor(de);
 
         JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinner4, "yyyy-MM-dd HH:mm:ss");
         jSpinner4.setEditor(de2);
@@ -228,14 +206,12 @@ public class EditParamErrand extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel8)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox2, 0, 245, Short.MAX_VALUE)
                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSpinner3)
                     .addComponent(jSpinner4))
                 .addContainerGap())
         );
@@ -252,13 +228,9 @@ public class EditParamErrand extends javax.swing.JDialog {
                     .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jButtonAnnuler.setText("Annuler");
@@ -307,8 +279,9 @@ public class EditParamErrand extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabelStatut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
                     .addComponent(jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -323,10 +296,13 @@ public class EditParamErrand extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelStatut, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabelStatut, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -342,7 +318,6 @@ public class EditParamErrand extends javax.swing.JDialog {
         // TODO add your handling code here:
         lbIdErrand.setText(String.valueOf(errand.getIdErrand()));
         lbDateDebut.setText(errand.getDateDebut());
-        lbDateFin.setText(errand.getDateFin());
         lbDistance.setText(String.valueOf(errand.getDistance()));
         lbDuree.setText(String.valueOf(errand.getDuree()));
         lbCoursier.setText(courier.getName());
@@ -363,12 +338,12 @@ public class EditParamErrand extends javax.swing.JDialog {
                SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
                SimpleDateFormat formatDateJour2 = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
             String dateFormateeD = formatDateJour.format(jSpinner4.getValue());
-             String dateFormateeF = formatDateJour2.format(jSpinner3.getValue());
+             String dateF = "01-01-01 01:00:00";
             //  if(String.valueOf(courierTmp.getId()).equals(null)){
                // Errand errandEdited = new Errand(Integer.parseInt(lbIdErrand.getText()),(int)this.jSpinner1.getValue(),dateFormateeD,dateFormateeF,Double.parseDouble(lbDuree.getText()),Double.parseDouble(lbDistance.getText()),cou);
                   
             //  }
-               Errand errandEdited = new Errand(Integer.parseInt(lbIdErrand.getText()),this.jComboBox2.getSelectedIndex(),dateFormateeD,dateFormateeF,Double.parseDouble(lbDuree.getText()),Double.parseDouble(lbDistance.getText()),courierTmp.getId());
+               Errand errandEdited = new Errand(Integer.parseInt(lbIdErrand.getText()),this.jComboBox2.getSelectedIndex(),dateFormateeD,dateF,Double.parseDouble(lbDuree.getText()),Double.parseDouble(lbDistance.getText()),courierTmp.getId());
                 System.out.println("errandEdited :"+errandEdited.getDateFin());
                errandMetierService.update(errandEdited);
            this.dispose();
@@ -452,25 +427,21 @@ public class EditParamErrand extends javax.swing.JDialog {
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelStatut;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JLabel lbCoursier;
     private javax.swing.JLabel lbDateDebut;
-    private javax.swing.JLabel lbDateFin;
     private javax.swing.JLabel lbDistance;
     private javax.swing.JLabel lbDuree;
     private javax.swing.JLabel lbIdErrand;
     private javax.swing.JLabel lbState;
     private javax.swing.JLabel lblCoursier;
     private javax.swing.JLabel lblDateDebut;
-    private javax.swing.JLabel lblDateFin;
     private javax.swing.JLabel lblDistance;
     private javax.swing.JLabel lblDuree;
     private javax.swing.JLabel lblIdErrand;
