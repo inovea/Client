@@ -102,31 +102,6 @@ public class JTableModelAlert extends AbstractTableModel {
         return alert;
     }
     
-    @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        /*    if(aValue != null) {
-         try {
-         Container ctr = container.get(rowIndex);
-         Container copy = (Container) container.clone();
-         switch(columnIndex) {
-         case 1 :
-         copy.setName((String)aValue);
-                        
-         break;
-         case 2 :
-         copy.setPrenom((String)aValue);
-                       
-         break;
-         case 3 :
-         copy.setLogin((String)aValue);
-                        
-         }
-         couriers.set(rowIndex, copy);
-         } catch (Exception ex) {
-         Logger.getLogger(JTableModelBibliothecaire.class.getName()).log(Level.SEVERE, null, ex);
-         MetierServiceFactory.getBibliotheque().getTab().setStatut("<html><body><font color='red'>"+ex.getMessage()+"</font></body></html>", "admin");
-         }
-         }*/
-    }
+   
 
 }

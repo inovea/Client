@@ -994,11 +994,6 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
         jScrollPane5.setViewportView(jTableErrand);
-        if (jTableErrand.getColumnModel().getColumnCount() > 0) {
-            jTableErrand.getColumnModel().getColumn(4).setHeaderValue("Distance");
-            jTableErrand.getColumnModel().getColumn(5).setHeaderValue("Coursier");
-            jTableErrand.getColumnModel().getColumn(6).setHeaderValue("Etat");
-        }
 
         javax.swing.GroupLayout jPanelCourseLayout = new javax.swing.GroupLayout(jPanelCourse);
         jPanelCourse.setLayout(jPanelCourseLayout);

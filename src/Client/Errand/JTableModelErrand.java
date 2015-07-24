@@ -56,7 +56,10 @@ public class JTableModelErrand extends AbstractTableModel {
             case 0:
                 return errands.get(rowIndex).getIdErrand();
             case 1:
-                return errands.get(rowIndex).getDateDebut();
+                if(errands.get(rowIndex).getDateDebut() != "0000-00-00 00:00:00")
+                    return errands.get(rowIndex).getDateDebut();
+                else
+                    return "0000-00-00 00:00:00";
             case 2:
                 return errands.get(rowIndex).getDateFin();
             case 3:
