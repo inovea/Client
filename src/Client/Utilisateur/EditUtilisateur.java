@@ -68,7 +68,7 @@ public class EditUtilisateur extends javax.swing.JDialog {
         jLabelStatut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Modifier un bibliothécaire");
+        setTitle("Modifier un utilisateur");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
