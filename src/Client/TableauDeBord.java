@@ -221,6 +221,7 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Centre de gestion de la bibliothèque");
+        setPreferredSize(new java.awt.Dimension(1300, 801));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -994,11 +995,6 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
         jScrollPane5.setViewportView(jTableErrand);
-        if (jTableErrand.getColumnModel().getColumnCount() > 0) {
-            jTableErrand.getColumnModel().getColumn(4).setHeaderValue("Distance");
-            jTableErrand.getColumnModel().getColumn(5).setHeaderValue("Coursier");
-            jTableErrand.getColumnModel().getColumn(6).setHeaderValue("Etat");
-        }
 
         javax.swing.GroupLayout jPanelCourseLayout = new javax.swing.GroupLayout(jPanelCourse);
         jPanelCourse.setLayout(jPanelCourseLayout);

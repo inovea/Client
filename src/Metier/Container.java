@@ -81,7 +81,14 @@ public class Container {
 
     public void setLastCollect(String lastCollect) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-        Date d = sdf.parse(lastCollect);
+        Date d;
+        if (lastCollect.equals("0000-00-00 00:00:00")){
+            d = sdf.parse("0001-01-01 01:00:00");
+        }
+        else{
+             d = sdf.parse(lastCollect);
+        }
+            
         this.lastCollect = d;
 
     }
