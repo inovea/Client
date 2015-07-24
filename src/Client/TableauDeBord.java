@@ -114,6 +114,7 @@ public class TableauDeBord extends javax.swing.JFrame {
         jPanelDetails = new javax.swing.JPanel();
         jLabelUtilisateurConnecte = new javax.swing.JLabel();
         jButtonQuit = new javax.swing.JButton();
+        jButtonRefresh = new javax.swing.JButton();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanelMenuAdmin = new javax.swing.JPanel();
         jButtonAddCourier = new javax.swing.JButton();
@@ -225,7 +226,6 @@ public class TableauDeBord extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inovea");
-        setPreferredSize(new java.awt.Dimension(1193, 720));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -242,6 +242,13 @@ public class TableauDeBord extends javax.swing.JFrame {
             }
         });
 
+        jButtonRefresh.setText("Rafraichir");
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelDetailsLayout = new javax.swing.GroupLayout(jPanelDetails);
         jPanelDetails.setLayout(jPanelDetailsLayout);
         jPanelDetailsLayout.setHorizontalGroup(
@@ -250,6 +257,8 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelUtilisateurConnecte, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonRefresh)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonQuit)
                 .addContainerGap())
         );
@@ -259,7 +268,8 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUtilisateurConnecte, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                    .addComponent(jButtonQuit))
+                    .addComponent(jButtonQuit)
+                    .addComponent(jButtonRefresh))
                 .addContainerGap())
         );
 
@@ -1903,6 +1913,18 @@ public class TableauDeBord extends javax.swing.JFrame {
     private void jButtonDelAlertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDelAlertMouseClicked
     }//GEN-LAST:event_jButtonDelAlertMouseClicked
 
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
+        try {
+            utilisateurs = null;
+            containerModel = null;
+            errands = null;
+            alerts = null;
+            this.createAllJTable();
+        } catch (Exception ex) {
+            Logger.getLogger(TableauDeBord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1948,6 +1970,7 @@ public class TableauDeBord extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditErrand;
     private javax.swing.JButton jButtonEditParamErrand;
     private javax.swing.JButton jButtonQuit;
+    private javax.swing.JButton jButtonRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
