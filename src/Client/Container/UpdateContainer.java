@@ -64,6 +64,7 @@ public class UpdateContainer extends javax.swing.JFrame {
         tbState = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modifier un conteneur");
         setMinimumSize(new java.awt.Dimension(237, 342));
 
         jLabel1.setText("Adresse");
