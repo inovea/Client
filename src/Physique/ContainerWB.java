@@ -100,7 +100,8 @@ public class ContainerWB implements ContainerService {
     @Override
     public Container add(Container container) throws Exception {
         WebService wb = new WebService();
-        System.out.println("http://inovea.herobo.com/webhost/container.php?tag=create&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "&address=" + container.getAddress());
+        container.setAddress(container.getAddress().replaceAll(" ", "%20"));
+        //System.out.println("http://inovea.herobo.com/webhost/container.php?tag=create&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "&address=" + container.getAddress());
         JSONObject jsonObject = wb.addAndUpdateContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=create&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "&address=" + container.getAddress()));
         return this.getElement(jsonObject);
     }
@@ -108,9 +109,9 @@ public class ContainerWB implements ContainerService {
     @Override
     public Container update(Container container) throws Exception {
         WebService wb = new WebService();
-        // System.out.println("State dans le WB : "+container.getState() );
-        System.out.println("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect=0000-00-00%2000:00:00&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand());
-        JSONObject jsonObject = wb.addAndUpdateContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect=0000-00-00%2000:00:00&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand()));
+        container.setAddress(container.getAddress().replaceAll(" ", "%20"));
+        String tmpLastCollect =container.getLastCollect().replaceAll(" ", "%20");
+        JSONObject jsonObject = wb.addAndUpdateContainer(new URL("http://inovea.herobo.com/webhost/container.php?tag=update&idContainer=" + container.getId() + "&name=" + container.getName() + "&lat=" + container.getLat() + "&lng=" + container.getLng() + "+&state=" + container.getState() + "&lastCollect="+tmpLastCollect+"&address=" + container.getAddress() + "&idErrand=" + container.getIdErrand()));
         return this.getElement(jsonObject);
     }
 

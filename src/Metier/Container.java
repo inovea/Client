@@ -74,17 +74,26 @@ public class Container {
 
     public String getLastCollect() {
         SimpleDateFormat formatDateJour = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        String date ;
+        if(lastCollect == null){  
+            date = "01-01-01 01:00:00";
+            return date;
+        }
         String dateFormatee = formatDateJour.format(lastCollect);
 
         return dateFormatee;
     }
 
-    public void setLastCollect(String lastCollect) throws ParseException {
+     public void setLastCollect(String lastCollect) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-        Date d = sdf.parse(lastCollect);
-        this.lastCollect = d;
-
-    }
+        Date d;
+        if (lastCollect.equals("0000-00-00 00:00:00")){
+            d = sdf.parse("0001-01-01 01:00:00");
+        }
+        else{
+             d = sdf.parse(lastCollect);
+        }
+     }
 
     public String getAddress() {
         return address;

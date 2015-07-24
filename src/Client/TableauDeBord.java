@@ -258,7 +258,7 @@ public class TableauDeBord extends javax.swing.JFrame {
                 .addComponent(jLabelUtilisateurConnecte, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonRefresh)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonQuit)
                 .addContainerGap())
         );
@@ -1292,7 +1292,8 @@ public class TableauDeBord extends javax.swing.JFrame {
                 "Identifiant", "Conteneur", "Coursier", "Description", "Etat", "Date"
             }
         ));
-        jTableAlert.setColumnSelectionAllowed(true);
+        jTableAlert.setCellSelectionEnabled(false);
+        jTableAlert.setRowSelectionAllowed(true);
         jTableAlert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableAlertMouseClicked(evt);
